@@ -29,22 +29,22 @@ export default function Card({
 
   return (
     <Link
-      className="flex rounded-md apply-hover-bg flex-col gap-2 p-3 select-none cursor-pointer"
+      className="apply-hover-bg flex cursor-pointer select-none flex-col gap-2 rounded-md p-3"
       href={href}
       onClick={onClick}
     >
-      <div className="w-80 aspect-video rounded-md overflow-clip relative">
+      <div className="relative aspect-video w-80 overflow-clip rounded-md">
         {logo ?
           <img
             src={logo}
-            className="absolute bottom-0 left-0 h-6 p-4 box-content bg-black bg-opacity-50 rounded-tr-md"
+            className="absolute bottom-0 left-0 box-content h-6 rounded-tr-md bg-black bg-opacity-50 p-4"
           />
         : null}
 
-        <img src={img} className="w-fit aspect-video object-cover" />
+        <img src={img} className="aspect-video w-fit object-cover" />
 
         {liveProgress ?
-          <div className="absolute bottom-0 rounded-full h-1 w-full bg-white bg-opacity-25">
+          <div className="absolute bottom-0 h-1 w-full rounded-full bg-white bg-opacity-25">
             <div
               className="h-full bg-white"
               style={{ width: `${liveProgress}%` }}

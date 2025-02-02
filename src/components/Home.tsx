@@ -7,7 +7,7 @@ import useHome from '@/hooks/useHome';
 import useLives from '@/hooks/useLives';
 import useTopic from '@/hooks/useTopic';
 
-import Logo from './Logo';
+import Portal from './Portal';
 
 // https://ztnr.rtve.es/ztnr/7047909.mpd
 // https://api.rtve.es/api/token/7047909
@@ -148,14 +148,8 @@ export default function Home() {
   const { home, isLoading, error } = useHome();
 
   return (
-    <div className="flex flex-col divide-y-[1px] divide-white divide-opacity-10">
-      <div className="sticky top-0 bg-black bg-opacity-90 backdrop-blur-md z-10 flex flex-row justify-end gap-4 p-4">
-        <button
-          className="flex-1 apply-hover-opacity"
-          onClick={() => window.scrollTo(0, 0)}
-        >
-          <Logo />
-        </button>
+    <>
+      <Portal slotId="header-slot">
         <button
           onClick={() => console.log(home)}
           className="apply-hover-underline"
@@ -164,11 +158,12 @@ export default function Home() {
         </button>
         <button
           onClick={() => mutate(() => true)}
-          className="disabled:opacity-50 apply-hover-underline"
+          className="apply-hover-underline disabled:opacity-50"
         >
           Actualizar
         </button>
-      </div>
+      </Portal>
+
       {error ?
         'error'
       : isLoading ?
@@ -209,6 +204,6 @@ export default function Home() {
           </Row>
         ))
       : null}
-    </div>
+    </>
   );
 }

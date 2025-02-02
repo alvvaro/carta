@@ -11,7 +11,7 @@ export default function Row({
 }) {
   return (
     <div className="">
-      <div className="text-xl p-6 pb-0 apply-hover-bg" onClick={onClick}>
+      <div className="apply-hover-bg p-6 pb-0 text-xl" onClick={onClick}>
         {title}
       </div>
       <div className="flex flex-row overflow-x-auto p-3">{children}</div>

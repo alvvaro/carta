@@ -25,21 +25,21 @@ export default function ContentVideo({
   );
 
   return (
-    <div className="flex flex-col divide-y-[1px] divide-white divide-opacity-10">
+    <>
       {error ?
         'errorVideo'
       : isLoading ?
         'isLoadingVideo'
       : videoEl ?
         <>
-          <div className="relative w-full aspect-video">
+          <div className="relative aspect-video w-full">
             {playing ?
               <VideoPlayer id={id} autoPlay />
             : <>
                 <img src={videoEl.thumbnail} />
                 <button
                   onClick={handleStartPlay}
-                  className="absolute top-0 w-full h-full bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-60 hover:underline"
+                  className="absolute top-0 h-full w-full bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-60 hover:underline"
                 >
                   PLAY
                 </button>
@@ -48,7 +48,7 @@ export default function ContentVideo({
           </div>
 
           <div
-            className="text-xl font-bold p-4 apply-hover-bg"
+            className="apply-hover-bg p-4 text-xl font-bold"
             onClick={() => console.log(video)}
           >
             {videoEl.title}
@@ -62,14 +62,14 @@ export default function ContentVideo({
           : null}
 
           {videoEl.casting ?
-            <div className="p-4 ">{videoEl.casting}</div>
+            <div className="p-4">{videoEl.casting}</div>
           : null}
 
           {date ?
-            <div className="p-4 ">{date.format('D MMMM YYYY - LT')}</div>
+            <div className="p-4">{date.format('D MMMM YYYY - LT')}</div>
           : null}
         </>
       : null}
-    </div>
+    </>
   );
 }

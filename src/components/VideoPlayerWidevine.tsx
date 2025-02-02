@@ -25,7 +25,7 @@ const VideoPlayerWidevine = memo(function VideoPlayerWidevine({
 
         return () => player.destroy();
       }}
-      className="w-full aspect-video"
+      className="aspect-video w-full"
     />
   );
 });
