@@ -65,7 +65,7 @@ function Collection({ code }: { code: string | undefined }) {
           subtitle={collectionItem.promoText || collectionItem.metaTitle}
           liveProgress={collectionItem.porcentaje || undefined}
           start={collectionItem.inicio}
-          href={`${collectionItem.contentType}/${collectionItem.lastMultimedia?.id || collectionItem.idAsset || collectionItem.id}`}
+          href={`${collectionItem.contentType === 'directo' ? 'live' : collectionItem.contentType}/${collectionItem.lastMultimedia?.id || collectionItem.idAsset || collectionItem.id}`}
         />
       ))
     : null
@@ -169,10 +169,10 @@ export default function Home() {
       : isLoading ?
         'isLoading'
       : home ?
-        home.rows.map((row) => (
+        home.rows.map((row, i) => (
           <Row
             key={JSON.stringify(row)}
-            title={row.title || '--- SIN TITULO ---'}
+            title={row.title || (i === 0 && 'Portada') || 'Destacado'}
             onClick={() => console.log(row)}
           >
             {row.moduleType === 'Collection' ?

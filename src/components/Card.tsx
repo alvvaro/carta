@@ -29,7 +29,7 @@ export default function Card({
 
   return (
     <Link
-      className="apply-hover-bg flex cursor-pointer select-none flex-col gap-2 rounded-md p-3"
+      className="apply-hover-bg flex cursor-pointer select-none flex-col gap-2 p-3 [&_.card-title]:hover:underline"
       href={href}
       onClick={onClick}
     >
@@ -37,11 +37,16 @@ export default function Card({
         {logo ?
           <img
             src={logo}
+            loading="lazy"
             className="absolute bottom-0 left-0 box-content h-6 rounded-tr-md bg-black bg-opacity-50 p-4"
           />
         : null}
 
-        <img src={img} className="aspect-video w-fit object-cover" />
+        <img
+          src={img}
+          loading="lazy"
+          className="aspect-video w-fit object-cover"
+        />
 
         {liveProgress ?
           <div className="absolute bottom-0 h-1 w-full rounded-full bg-white bg-opacity-25">
@@ -54,7 +59,7 @@ export default function Card({
       </div>
       <div className="">
         <div className="opacity-40">{pretitle}</div>
-        <div className="font-bold">{title}</div>
+        <div className="card-title font-bold">{title}</div>
         {start ?
           <div className="opacity-80">{date}</div>
         : null}

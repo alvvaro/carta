@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import useVideo from '@/hooks/useVideo';
 import toDate from '@/utils/date';
 
+import Portal from './Portal';
 import VideoPlayer from './VideoPlayer';
 
 export default function ContentVideo({
@@ -23,9 +24,22 @@ export default function ContentVideo({
     () => toDate(videoEl?.dateOfEmission),
     [videoEl?.dateOfEmission],
   );
+  const expiration = useMemo(
+    () => toDate(videoEl?.expirationDate || undefined),
+    [videoEl?.expirationDate],
+  );
 
   return (
     <>
+      <Portal slotId="header-slot">
+        <button
+          onClick={() => console.log(video)}
+          className="apply-hover-underline"
+        >
+          log video
+        </button>
+      </Portal>
+
       {error ?
         'errorVideo'
       : isLoading ?
@@ -47,11 +61,9 @@ export default function ContentVideo({
             }
           </div>
 
-          <div
-            className="apply-hover-bg p-4 text-xl font-bold"
-            onClick={() => console.log(video)}
-          >
-            {videoEl.title}
+          <div className="p-4 text-xl font-bold">
+            {videoEl.title}{' '}
+            {videoEl.productionDate ? `(${videoEl.productionDate})` : null}
           </div>
 
           {videoEl.description ?
@@ -61,12 +73,28 @@ export default function ContentVideo({
             />
           : null}
 
-          {videoEl.casting ?
-            <div className="p-4">{videoEl.casting}</div>
+          {videoEl.director || videoEl.casting ?
+            <div className="p-4">
+              {videoEl.director ?
+                <div>Dirigido por: {videoEl.director}</div>
+              : null}
+              {videoEl.casting ?
+                <div>Casting: {videoEl.casting}</div>
+              : null}
+            </div>
           : null}
 
-          {date ?
-            <div className="p-4">{date.format('D MMMM YYYY - LT')}</div>
+          {date || expiration ?
+            <div className="p-4">
+              {date ?
+                <div>Publicado el: {date.format('D MMMM YYYY LT')}</div>
+              : null}
+              {expiration ?
+                <div>
+                  Disponible hasta: {expiration.format('D MMMM YYYY LT')}
+                </div>
+              : null}
+            </div>
           : null}
         </>
       : null}
