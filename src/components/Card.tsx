@@ -29,7 +29,7 @@ export default function Card({
 
   return (
     <Link
-      className="apply-hover-bg flex cursor-pointer select-none flex-col gap-2 p-3 [&_.card-title]:hover:underline"
+      className="apply-hover-bg flex cursor-pointer select-none flex-col gap-2 p-3 hover:[&_.card-title]:underline"
       href={href}
       onClick={onClick}
     >

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -18,14 +16,14 @@
   scroll-behavior: smooth;
 }
 
-.apply-hover-bg {
-  @apply hover:bg-black hover:bg-opacity-20;
-}
+/* .apply-hover-bg {
+  @apply hover:bg-opacity-20 hover:bg-black;
+} */
 
-.apply-hover-opacity {
+/* .apply-hover-opacity {
   @apply hover:opacity-80;
-}
+} */
 
-.apply-hover-underline {
+/* .apply-hover-underline {
   @apply hover:underline;
-}
+} */
