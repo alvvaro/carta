@@ -1,5 +1,7 @@
 import useToken from '@/hooks/useToken';
 
+import ErrorMessage from './ErrorMessage';
+import Skeleton from './Skeleton';
 import VideoPlayerWidevine from './VideoPlayerWidevine';
 
 export default function VideoPlayer({
@@ -14,8 +16,12 @@ export default function VideoPlayer({
   const { token, isLoading, error } = useToken(id);
 
   return (
-    error ? 'error'
-    : isLoading ? 'isLoading'
+    error ?
+      <ErrorMessage
+        error={error}
+        text="No se han podido obtener los derechos de streaming de este contenido"
+      />
+    : isLoading ? <Skeleton />
     : token ?
       <VideoPlayerWidevine
         url={url}

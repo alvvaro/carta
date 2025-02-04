@@ -3,7 +3,9 @@ import { useMemo, useState } from 'react';
 import useVideo from '@/hooks/useVideo';
 import toDate from '@/utils/date';
 
+import ErrorMessage from './ErrorMessage';
 import Portal from './Portal';
+import Skeleton from './Skeleton';
 import VideoPlayer from './VideoPlayer';
 
 export default function ContentVideo({
@@ -41,9 +43,9 @@ export default function ContentVideo({
       </Portal>
 
       {error ?
-        'errorVideo'
+        <ErrorMessage className="aspect-video w-full" error={error} />
       : isLoading ?
-        'isLoadingVideo'
+        <Skeleton className="aspect-video w-full" />
       : videoEl ?
         <>
           <div className="relative aspect-video w-full">

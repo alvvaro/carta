@@ -7,7 +7,9 @@ import useHome from '@/hooks/useHome';
 import useLives from '@/hooks/useLives';
 import useTopic from '@/hooks/useTopic';
 
+import ErrorMessage from './ErrorMessage';
 import Portal from './Portal';
+import Skeleton from './Skeleton';
 
 // https://ztnr.rtve.es/ztnr/7047909.mpd
 // https://api.rtve.es/api/token/7047909
@@ -17,8 +19,9 @@ function Collection({ code }: { code: string | undefined }) {
   const { collection, isLoading, error } = useCollection(code);
 
   return (
-    error ? 'error'
-    : isLoading ? 'isLoading'
+    error ?
+      <ErrorMessage error={error} className="m-3 h-64 w-full rounded-md" />
+    : isLoading ? <Skeleton className="m-3 h-64 w-full rounded-md" />
     : collection ?
       collection.page.items[0].collectionItems.map((collectionItem) => (
         <Card
@@ -76,8 +79,9 @@ function Lives({ code }: { code: string | undefined }) {
   const { lives, isLoading, error } = useLives(code);
 
   return (
-    error ? 'error'
-    : isLoading ? 'isLoading'
+    error ?
+      <ErrorMessage className="m-3 h-64 w-full rounded-md" error={error} />
+    : isLoading ? <Skeleton className="m-3 h-64 w-full rounded-md" />
     : lives ?
       lives.page.items.map((liveItem) => (
         <Card
@@ -100,8 +104,9 @@ function Topic({ code, type }: { code: string | undefined; type?: string }) {
   const { topic, isLoading, error } = useTopic(code, type);
 
   return (
-    error ? 'error'
-    : isLoading ? 'isLoading'
+    error ?
+      <ErrorMessage className="m-3 h-64 w-full rounded-md" error={error} />
+    : isLoading ? <Skeleton className="m-3 h-64 w-full rounded-md" />
     : topic ?
       topic.page.items.map((topicItem) => (
         <Card
@@ -165,9 +170,13 @@ export default function Home() {
       </Portal>
 
       {error ?
-        'error'
+        <ErrorMessage
+          className="h-96 w-full"
+          error={error}
+          text="No se ha podido conectar con RTVE Play"
+        />
       : isLoading ?
-        'isLoading'
+        <Skeleton className="h-96" />
       : home ?
         home.rows.map((row, i) => (
           <Row
