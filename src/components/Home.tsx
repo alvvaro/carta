@@ -16,13 +16,13 @@ export default function Home() {
       <Portal slotId="header-slot">
         <button
           onClick={() => console.log(home)}
-          className="apply-hover-underline"
+          className="apply-hover-bg-white px-4"
         >
           log home
         </button>
         <button
           onClick={() => mutate(() => true)}
-          className="apply-hover-underline disabled:opacity-50"
+          className="apply-hover-bg-white px-4 disabled:opacity-50"
         >
           Actualizar
         </button>

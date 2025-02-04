@@ -16,14 +16,10 @@
   scroll-behavior: smooth;
 }
 
-/* .apply-hover-bg {
-  @apply hover:bg-opacity-20 hover:bg-black;
-} */
+.apply-hover-bg {
+  @apply hover:bg-black/40;
+}
 
-/* .apply-hover-opacity {
-  @apply hover:opacity-80;
-} */
-
-/* .apply-hover-underline {
-  @apply hover:underline;
-} */
+.apply-hover-bg-white {
+  @apply hover:bg-white/10;
+}

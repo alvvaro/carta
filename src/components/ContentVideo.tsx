@@ -36,7 +36,7 @@ export default function ContentVideo({
       <Portal slotId="header-slot">
         <button
           onClick={() => console.log(video)}
-          className="apply-hover-underline"
+          className="apply-hover-bg-white px-4"
         >
           log video
         </button>
@@ -55,7 +55,7 @@ export default function ContentVideo({
                 <img src={videoEl.thumbnail} />
                 <button
                   onClick={handleStartPlay}
-                  className="absolute top-0 h-full w-full bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-60 hover:underline"
+                  className="absolute top-0 h-full w-full bg-black/40 hover:bg-black/60 hover:underline"
                 >
                   PLAY
                 </button>

@@ -11,7 +11,7 @@ export default function ErrorMessage({
 }) {
   return (
     <div
-      className={`flex h-full flex-col items-center justify-center bg-white bg-opacity-10 ${className}`}
+      className={`flex h-full flex-col items-center justify-center bg-white/10 ${className}`}
     >
       <div className="flex max-w-96 flex-col items-center justify-center gap-4 text-center">
         <div>

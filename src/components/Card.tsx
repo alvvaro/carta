@@ -29,7 +29,7 @@ export default function Card({
 
   return (
     <Link
-      className="apply-hover-bg flex cursor-pointer select-none flex-col gap-2 p-3 hover:[&_.card-title]:underline"
+      className="apply-hover-bg flex cursor-pointer flex-col gap-2 p-3 select-none hover:[&_.card-title]:underline"
       href={href}
       onClick={onClick}
     >
@@ -38,7 +38,7 @@ export default function Card({
           <img
             src={logo}
             loading="lazy"
-            className="absolute bottom-0 left-0 box-content h-6 rounded-tr-md bg-black bg-opacity-50 p-4"
+            className="absolute bottom-0 left-0 box-content h-6 rounded-tr-md bg-black/50 p-4"
           />
         : null}
 
@@ -49,7 +49,7 @@ export default function Card({
         />
 
         {liveProgress ?
-          <div className="absolute bottom-0 h-1 w-full rounded-full bg-white bg-opacity-25">
+          <div className="absolute bottom-0 h-1 w-full rounded-full bg-white/25">
             <div
               className="h-full bg-white"
               style={{ width: `${liveProgress}%` }}
