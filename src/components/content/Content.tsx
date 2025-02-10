@@ -1,6 +1,6 @@
 import { useParams } from 'wouter';
 
-import ContentVideo from './ContentVideo';
+import ContentVideo from '@/components/content/ContentVideo';
 
 enum ContentType {
   live = 'live',

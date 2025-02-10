@@ -1,12 +1,11 @@
 import { mutate } from 'swr';
 
-import Row from '@/components/Row';
+import ErrorMessage from '@/components/common/ErrorMessage';
+import Skeleton from '@/components/common/Skeleton';
+import HomeModule from '@/components/home/HomeModule';
+import Portal from '@/components/layout/Portal';
+import Row from '@/components/layout/Row';
 import useHome from '@/hooks/useHome';
-
-import ErrorMessage from './ErrorMessage';
-import Module from './Module';
-import Portal from './Portal';
-import Skeleton from './Skeleton';
 
 export default function Home() {
   const { home, isLoading, error } = useHome();
@@ -43,7 +42,7 @@ export default function Home() {
             title={row.title || (i === 0 && 'Portada') || 'Destacado'}
             onClick={() => console.log(row)}
           >
-            <Module row={row} />
+            <HomeModule row={row} />
           </Row>
         ))
       : null}

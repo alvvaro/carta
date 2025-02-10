@@ -22,6 +22,22 @@ export default function Layout({ children }: { children: ReactNode }) {
       <div className="flex flex-col divide-y-[1px] divide-white/10">
         {children}
       </div>
+
+      <div className="border-t-[1px] border-white/10 bg-white/15 p-4">
+        <div className="flex flex-row">
+          <div className="flex-1 opacity-50">
+            Carta — Un frontal alternativo para RTVE Play de código abierto
+          </div>
+          <div className="opacity-50">
+            <a className="hover:underline">GitHub</a> |{' '}
+            <a className="hover:underline">Acerca</a>
+          </div>
+        </div>
+        {/* <div className="flex flex-row">
+          <div className="opacity-25">
+          </div>
+        </div> */}
+      </div>
     </div>
   );
 }

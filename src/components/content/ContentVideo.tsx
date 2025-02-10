@@ -1,12 +1,11 @@
 import { useMemo, useState } from 'react';
 
+import ErrorMessage from '@/components/common/ErrorMessage';
+import Skeleton from '@/components/common/Skeleton';
+import Portal from '@/components/layout/Portal';
+import VideoPlayer from '@/components/videoPlayer/VideoPlayer';
 import useVideo from '@/hooks/useVideo';
 import toDate from '@/utils/date';
-
-import ErrorMessage from './ErrorMessage';
-import Portal from './Portal';
-import Skeleton from './Skeleton';
-import VideoPlayer from './VideoPlayer';
 
 export default function ContentVideo({
   id,

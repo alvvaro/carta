@@ -1,8 +1,7 @@
+import ErrorMessage from '@/components/common/ErrorMessage';
+import Skeleton from '@/components/common/Skeleton';
+import VideoPlayerWidevine from '@/components/videoPlayer/VideoPlayerWidevine';
 import useToken from '@/hooks/useToken';
-
-import ErrorMessage from './ErrorMessage';
-import Skeleton from './Skeleton';
-import VideoPlayerWidevine from './VideoPlayerWidevine';
 
 export default function VideoPlayer({
   id,

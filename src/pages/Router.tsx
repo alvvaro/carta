@@ -1,8 +1,8 @@
 import { Route, Switch, Router as Wouter } from 'wouter';
 
-import Content from '@/components/Content';
-import Home from '@/components/Home';
-import Layout from '@/components/Layout';
+import Content from '@/components/content/Content';
+import Home from '@/components/home/Home';
+import Layout from '@/components/layout/Layout';
 
 export default function Router() {
   return (

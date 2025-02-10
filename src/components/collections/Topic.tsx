@@ -1,8 +1,7 @@
+import Card from '@/components/common/Card';
+import ErrorMessage from '@/components/common/ErrorMessage';
+import Skeleton from '@/components/common/Skeleton';
 import useTopic from '@/hooks/useTopic';
-
-import Card from './Card';
-import ErrorMessage from './ErrorMessage';
-import Skeleton from './Skeleton';
 
 export default function Topic({
   code,
