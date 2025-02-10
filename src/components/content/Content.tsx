@@ -2,6 +2,8 @@ import { useParams } from 'wouter';
 
 import ContentVideo from '@/components/content/ContentVideo';
 
+import ContentProgram from './ContentProgram';
+
 enum ContentType {
   live = 'live',
   video = 'video',
@@ -20,6 +22,8 @@ export default function Content() {
         <ContentVideo id={id} />
       : kind === ContentType.live ?
         <ContentVideo id={id} autoPlay />
+      : kind === ContentType.program ?
+        <ContentProgram id={id} />
       : JSON.stringify(params)}
     </>
   );

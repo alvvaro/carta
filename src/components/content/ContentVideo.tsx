@@ -80,7 +80,7 @@ export default function ContentVideo({
                 <div>Dirigido por: {videoEl.director}</div>
               : null}
               {videoEl.casting ?
-                <div>Casting: {videoEl.casting}</div>
+                <div>Reparto: {videoEl.casting}</div>
               : null}
             </div>
           : null}
