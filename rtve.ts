@@ -12,6 +12,7 @@ export interface APIAgrProgramas2210_ProgramasPage {
     numElements: number;
 }
 
+
 export interface PurpleItem {
     uri:                      string;
     htmlUrl:                  string;
@@ -56,7 +57,7 @@ export interface PurpleItem {
     fanBoxID:                 null;
     ageRangeUid:              AgeRangeUid | null;
     ageRange:                 AgeRange | null;
-    recommendAgesForChilds:   any[];
+    recommendAgesForChilds:   null[];
     seccionesRef:             string;
     temporadasRef:            string;
     temporadaShortTitle:      null;
@@ -241,7 +242,7 @@ export interface FluffyItem {
     fanBoxID:                 null;
     ageRangeUid:              AgeRangeUid | null;
     ageRange:                 AgeRange | null;
-    recommendAgesForChilds:   any[];
+    recommendAgesForChilds:   null[];
     seccionesRef:             string;
     temporadasRef:            string;
     temporadaShortTitle:      null;
@@ -2200,7 +2201,7 @@ export interface Item15 {
     metaDescription?: string;
     keywords?:        null;
     canonical?:       null;
-    vertical?:        Vertical | null;
+    vertical?:        null;
     hasPfNews?:       boolean;
     dias?:            number[];
     status?:          Status;
@@ -2211,8 +2212,6 @@ export interface Status {
     description: string;
 }
 
-export interface Vertical {
-}
 
 export interface APILivesBroadcasts4 {
     page: APILivesBroadcasts1_Page;
@@ -2362,7 +2361,7 @@ export interface Item18 {
     modificationDate:         string;
     pubState:                 PubState;
     mainTopic:                string;
-    topicsName:               any[];
+    topicsName:               string[];
     breadCrumbRef:            string;
     imageSEO:                 string;
     thumbnail:                null | string;
@@ -2516,7 +2515,7 @@ export interface Item19 {
     fanBoxID:                 null;
     ageRangeUid:              AgeRangeUid | null;
     ageRange:                 AgeRange | null;
-    recommendAgesForChilds:   any[];
+    recommendAgesForChilds:   null[];
     seccionesRef:             string;
     temporadasRef:            string;
     temporadaShortTitle:      null;
@@ -2838,7 +2837,7 @@ export interface Item22 {
     fanBoxID:                 null;
     ageRangeUid:              AgeRangeUid | null;
     ageRange:                 AgeRange | null;
-    recommendAgesForChilds:   any[];
+    recommendAgesForChilds:   null[];
     seccionesRef:             string;
     temporadasRef:            string;
     temporadaShortTitle:      null;
@@ -3241,7 +3240,7 @@ export interface Item26 {
     fanBoxID:                 null;
     ageRangeUid:              AgeRangeUid | null;
     ageRange:                 AgeRange | null;
-    recommendAgesForChilds:   any[];
+    recommendAgesForChilds:   null[];
     seccionesRef:             string;
     temporadasRef:            string;
     temporadaShortTitle:      null;
@@ -3270,7 +3269,7 @@ export interface Item26 {
     numSeasons:               number;
     productionDate:           FluffyProductionDate | null;
     rrss:                     null;
-    rrssApps:                 any[];
+    rrssApps:                 RrssApp[];
     mainTopic:                string;
     mainTopicUid:             string;
     title:                    string;
@@ -3777,7 +3776,7 @@ export interface Item32 {
     fanBoxID:                 null;
     ageRangeUid:              AgeRangeUid;
     ageRange:                 AgeRange;
-    recommendAgesForChilds:   any[];
+    recommendAgesForChilds:   null[];
     seccionesRef:             string;
     temporadasRef:            string;
     temporadaShortTitle:      null;
@@ -3806,7 +3805,7 @@ export interface Item32 {
     numSeasons:               number;
     productionDate:           PurpleProductionDate;
     rrss:                     null;
-    rrssApps:                 any[];
+    rrssApps:                 RrssApp[];
     mainTopic:                string;
     mainTopicUid:             string;
     title:                    LongTitle;
@@ -4070,13 +4069,15 @@ export interface Traducciones {
     ES: string;
 }
 
-export interface APITematicas863_VideosMasVistos {
+export interface Error {
     success:  boolean;
     httpCode: number;
-    message:  "Not Found";
-    response: any[];
-    errors:   any[];
-    build:    "42f7d564";
+  message: string;
+
+
+  response: string[];
+    errors:   string[];
+  build: string;
 }
 
 export interface APIToken7047909 {
