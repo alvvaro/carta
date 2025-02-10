@@ -71,7 +71,7 @@ export interface PurpleItem {
   filtro: null;
   webRtve: null | string;
   webOficial: string;
-  promoText: PurplePromoText | null;
+  promoText: string | null;
   promoDesc: null | string;
   relatedByLangRef: string;
   modificationDate: string;
@@ -80,7 +80,7 @@ export interface PurpleItem {
   sgce: null | string;
   sgce2: null | string;
   kantar: null | string;
-  generos: PurpleGenero[];
+  generos: Genero002[];
   seasons: ItemSeasonClass[] | null;
   numSeasons: number;
   productionDate: null | string;
@@ -229,7 +229,7 @@ export type Intention =
   | 'Intención / Enriquecer / Enriquecimiento Inspirador'
   | 'Intención / Informar';
 
-export interface PurpleGenero {
+export interface Genero002 {
   generoInf?: GeneroInf;
   generoInfUid?: GeneroInfUid;
   generoId: string;
@@ -399,21 +399,6 @@ export type ProgramType =
   | 'Recetas'
   | 'Contenedor Películas';
 
-export type PurplePromoText =
-  | 'NOMINADO A LOS PREMIOS DE VENECIA'
-  | 'NUEVO PROGRAMA'
-  | 'PREMIO IRIS'
-  | 'PREMIO NACIONAL DE TV'
-  | 'PREMIO ALARES'
-  | 'Estreno'
-  | 'Nuevo capítulo'
-  | 'Serie completa'
-  | 'ORIGINAL'
-  | 'GRAN ESTRENO, ESTA NOCHE'
-  | 'COMPLETO'
-  | 'CADA JUEVES'
-  | 'CADA LUNES';
-
 export interface PubState {
   code: Code;
   description: Description;
@@ -518,7 +503,7 @@ export interface FluffyItem {
   filtro: null;
   webRtve: null | string;
   webOficial: string;
-  promoText: PurplePromoText | null;
+  promoText: string | null;
   promoDesc: null | string;
   relatedByLangRef: string;
   modificationDate: string;
@@ -527,7 +512,7 @@ export interface FluffyItem {
   sgce: null | string;
   sgce2: null | string;
   kantar: null | string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: ItemSeasonClass[] | null;
   numSeasons: number;
   productionDate: null | string;
@@ -556,7 +541,7 @@ export interface FluffyItem {
   country?: 'ES';
 }
 
-export interface FluffyGenero {
+export interface Genero001 {
   generoInf?: GeneroInf;
   generoInfUid?: GeneroInfUid;
   generoId?: string;
@@ -646,7 +631,7 @@ export interface PurpleCollectionItem {
   programTypeId: number | null;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[] | null;
+  generos: Genero001[] | null;
   seasons: CollectionItemSeason[] | null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -901,7 +886,7 @@ export interface FluffyCollectionItem {
   programTypeId: number | null;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[] | null;
+  generos: Genero001[] | null;
   seasons: CollectionItemSeason[] | null;
   numSeasons: number;
   paidCountries?: PaidCountry[] | null;
@@ -1125,19 +1110,19 @@ export interface TentacledCollectionItem {
   imgBanner2?: string;
   imgPinta?: string;
   imagePodcast?: string;
-  mainTopic?: CollectionItemMainTopic;
+  mainTopic?: Collectionstring;
   programType?: ProgramType;
   programTypeId?: number;
   isComplete?: boolean;
   noFragments?: boolean;
-  generos?: FluffyGenero[];
+  generos?: Genero001[];
   seasons?: null;
   numSeasons?: number;
   contentType: ContentTypeEnum;
   lastMultimedia: PurpleLastMultimedia;
 }
 
-export type CollectionItemMainTopic =
+export type Collectionstring =
   | 'Televisión/Programas de TVE/Cine/Somos cine'
   | 'Televisión/Programas de TVE/Cine/Cine de siempre'
   | 'Televisión/Programas de TVE/Cine/Cine internacional'
@@ -1214,12 +1199,12 @@ export interface StickyCollectionItem {
   imgBanner2: string;
   imgPinta: string;
   imagePodcast: string;
-  mainTopic: CollectionItemMainTopic;
+  mainTopic: Collectionstring;
   programType: ProgramType;
   programTypeId: number;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -1356,9 +1341,9 @@ export interface IndigoCollectionItem {
   htmlUrl: string;
   ageRangeUid: AgeRangeUid | null;
   ageRange: AgeRange | null;
-  name: FluffyName;
+  name: string;
   description: string;
-  promoText: FluffyPromoText | null;
+  promoText: string | null;
   promoDesc: null | string;
   channel: CollectionItemChannel;
   imageSEO: string;
@@ -1380,23 +1365,13 @@ export interface IndigoCollectionItem {
   programTypeId: number;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
   contentType: ContentTypeEnum;
   lastMultimedia?: PurpleLastMultimedia;
   paidCountries?: null;
 }
-
-export type FluffyName =
-  | 'Imprescindibles'
-  | 'En portada'
-  | 'Somos Documentales'
-  | 'Documentos TV'
-  | '11M, 20 años'
-  | 'Crónicas';
-
-export type FluffyPromoText = 'CADA JUEVES' | 'PREMIO ONDAS' | 'PREMIO ALARES';
 
 export interface APICollection262 {
   page: APICollection262_Page;
@@ -1468,7 +1443,7 @@ export interface ItemDestacado {
   programTypeId: number | null;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
   contentType: ItemDestacadoAssetType;
@@ -1573,7 +1548,7 @@ export interface IndecentCollectionItem {
   programTypeId: number | null;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
   paidCountries?: null;
@@ -1629,7 +1604,7 @@ export interface HilariousCollectionItem {
   ageRange: AgeRange;
   name: string;
   description: string;
-  promoText: PurplePromoText;
+  promoText: string;
   promoDesc: null;
   channel: CollectionItemChannel;
   imageSEO: string;
@@ -1651,7 +1626,7 @@ export interface HilariousCollectionItem {
   programTypeId: number;
   isComplete: boolean;
   noFragments: boolean;
-  generos: PurpleGenero[];
+  generos: Genero002[];
   seasons: null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -1728,7 +1703,7 @@ export interface AmbitiousCollectionItem {
   programTypeId: number;
   isComplete: boolean;
   noFragments: boolean;
-  generos: PurpleGenero[];
+  generos: Genero002[];
   seasons: null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -1805,7 +1780,7 @@ export interface CunningCollectionItem {
   programTypeId: number;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -1896,7 +1871,7 @@ export interface MagentaCollectionItem {
   programTypeId?: number;
   isComplete?: boolean;
   noFragments?: boolean;
-  generos?: FluffyGenero[] | null;
+  generos?: Genero001[] | null;
   seasons?: null;
   numSeasons?: number;
   contentType: ContentTypeEnum;
@@ -1973,7 +1948,7 @@ export interface FriskyCollectionItem {
   programTypeId: number;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -2144,7 +2119,7 @@ export interface MischievousCollectionItem {
   programTypeId: number | null;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[] | null;
+  generos: Genero001[] | null;
   seasons: null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -2237,7 +2212,7 @@ export interface BraggadociousCollectionItem {
   programTypeId: number;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: CollectionItemSeason[] | null;
   numSeasons: number;
   contentType: ContentTypeEnum;
@@ -2315,7 +2290,7 @@ export interface CollectionItem1 {
   programTypeId: number | null;
   isComplete: boolean;
   noFragments: boolean;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: CollectionItemSeason[] | null;
   numSeasons: number;
   paidCountries?: PaidCountry[] | null;
@@ -2703,12 +2678,12 @@ export interface Item17 {
   hasPfNews?: boolean;
 }
 
-export interface APIProgramas1000874_Multimedias {
-  page: APIProgramas1000090_AudiosPage;
+export interface ProgramasAudios018 {
+  page: ProgramasAudiosPage018;
 }
 
-export interface APIProgramas1000090_AudiosPage {
-  items: Item18[];
+export interface ProgramasAudiosPage018 {
+  items: Item018[];
   number: number;
   size: number;
   offset: number;
@@ -2717,13 +2692,13 @@ export interface APIProgramas1000090_AudiosPage {
   numElements: number;
 }
 
-export interface Item18 {
+export interface Item018 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
   id: string;
   language: Lang;
-  anteTitle: PurpleAnteTitle;
+  anteTitle: string;
   anteTitleUrl: null;
   longTitle: string;
   shortTitle: string;
@@ -2745,7 +2720,7 @@ export interface Item18 {
   publicationDateTimestamp: number;
   productionDate: null;
   contentType: ItemDestacadoAssetType;
-  consumption: PurpleConsumption;
+  consumption: Consumption002;
   type: TypeClass;
   assetType: ItemDestacadoAssetType;
   statistics: Statistics;
@@ -2774,7 +2749,7 @@ export interface Item18 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: null;
   ageRange: null;
@@ -2785,18 +2760,10 @@ export interface Item18 {
   promoTitle: null;
   promoDesc: null;
   title: string;
-  generos: PurpleGenero[];
+  generos: Genero002[];
 }
 
-export type PurpleAnteTitle =
-  | 'No sangro purpurina'
-  | 'La teoría de la amistad'
-  | 'La Teoría de la Amistad'
-  | 'Santísima Charleta'
-  | 'Santísima charleta'
-  | 'GG WP';
-
-export type PurpleConsumption = 'podcast' | 'ondemand';
+export type Consumption002 = 'podcast' | 'ondemand';
 
 export interface ProgramInfo {
   id: string;
@@ -2819,44 +2786,24 @@ export interface Quality {
   identifier: number;
   language: Lang;
   numOfChannels?: number;
-  preset: Preset;
-  type: QualityType;
+  preset: 'HIGH' | 'HD_FULL' | 'HD_READY' | 'HQ' | 'MED' | 'Original';
+  type: 'audio/mpeg' | 'application/mp4';
   previewPath?: string;
   height?: number;
   width?: number;
 }
-
-export type Preset =
-  | 'HIGH'
-  | 'HD_FULL'
-  | 'HD_READY'
-  | 'HQ'
-  | 'MED'
-  | 'Original';
-
-export type QualityType = 'audio/mpeg' | 'application/mp4';
-
-export type SignEnum =
-  | 'rtve'
-  | 'Radio 5'
-  | 'rne'
-  | 'RTVE'
-  | 'RTVE Catalunya'
-  | 'RTVE.cat'
-  | 'RNE'
-  | 'alacarta';
 
 export interface Statistics {
   numComentarios: number;
   numCompartidas: number;
 }
 
-export interface APIProgramas178476 {
-  page: APIProgramas1000149_Page;
+export interface Programas019 {
+  page: ProgramasPage019;
 }
 
-export interface APIProgramas1000149_Page {
-  items: Item19[];
+export interface ProgramasPage019 {
+  items: Item019[];
   number: number;
   size: number;
   offset: number;
@@ -2865,7 +2812,7 @@ export interface APIProgramas1000149_Page {
   numElements: number;
 }
 
-export interface Item19 {
+export interface Item019 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
@@ -2924,7 +2871,7 @@ export interface Item19 {
   filtro: null;
   webRtve: null;
   webOficial: string;
-  promoText: PurplePromoText | null;
+  promoText: string | null;
   promoDesc: null | string;
   relatedByLangRef: string;
   modificationDate: string;
@@ -2933,10 +2880,10 @@ export interface Item19 {
   sgce: string;
   sgce2: null;
   kantar: null | string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
-  productionDate: PurpleProductionDate | null;
+  productionDate: string | null;
   rrss: null | string;
   rrssApps: RrssApp[];
   mainTopic: string;
@@ -2963,20 +2910,12 @@ export interface Item19 {
   programTypeID?: number;
 }
 
-export type PurpleProductionDate =
-  | '01-01-2023 00:00:00'
-  | '01-01-2024 00:00:00'
-  | '01-01-2024 14:27:27'
-  | '20-02-2024 01:00:00'
-  | '01-01-1994 10:37:53'
-  | '01-01-2025 00:00:00';
-
-export interface APIProgramas40111_Audios {
-  page: APIProgramas1000149_AudiosPage;
+export interface ProgramasAudios020 {
+  page: ProgramasAudiosPage020;
 }
 
-export interface APIProgramas1000149_AudiosPage {
-  items: Item20[];
+export interface ProgramasAudiosPage020 {
+  items: Item020[];
   number: number;
   size: number;
   offset: number;
@@ -2985,13 +2924,13 @@ export interface APIProgramas1000149_AudiosPage {
   numElements: number;
 }
 
-export interface Item20 {
+export interface Item020 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
   id: string;
   language: Lang;
-  anteTitle: FluffyAnteTitle | null;
+  anteTitle: string | null;
   anteTitleUrl: null;
   longTitle: string;
   shortTitle: string;
@@ -3002,8 +2941,8 @@ export interface Item20 {
   publicationDate: string;
   modificationDate: string;
   pubState: PubState;
-  mainTopic: ItemMainTopic;
-  mainTopicUid?: MainTopicUid;
+  mainTopic: string;
+  mainTopicUid?: string;
   topicsName: string[];
   breadCrumbRef: string;
   imageSEO: string;
@@ -3014,7 +2953,7 @@ export interface Item20 {
   publicationDateTimestamp: number;
   productionDate: null | string;
   contentType: ItemDestacadoAssetType;
-  consumption: PurpleConsumption;
+  consumption: Consumption002;
   type: TypeClass;
   assetType: ItemDestacadoAssetType;
   statistics: Statistics;
@@ -3043,7 +2982,7 @@ export interface Item20 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: AgeRangeUid | null;
   ageRange: null | string;
@@ -3054,50 +2993,15 @@ export interface Item20 {
   promoTitle: null | string;
   promoDesc: null;
   title: string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
 }
 
-export type FluffyAnteTitle =
-  | 'Algo habrás hecho'
-  | 'Protagonistas del aula'
-  | 'Te crío mucho'
-  | 'De éxodos'
-  | 'Éxodos'
-  | 'Educando Emociones'
-  | 'Educando emociones'
-  | 'Redes de aprendizaje'
-  | '¿Y si...?'
-  | '¿Y si?'
-  | '¿Y si....?'
-  | 'De Éxodos';
-
-export type ItemMainTopic =
-  | 'Radio/Especiales/RNE solo en Podcast/Algo habrás hecho'
-  | 'Radio/Programas de RNE/Educación/Protagonistas del aula'
-  | 'Radio/Programas de RNE/Educación/Te crío mucho'
-  | 'Radio/Especiales/RNE solo en Podcast/De éxodos'
-  | 'Televisión/Programas de TVE/Informativos/Parlamento'
-  | 'Radio/Especiales/RNE solo en Podcast/Educando emociones'
-  | 'Radio/Especiales/RNE solo en Podcast/Redes de aprendizaje'
-  | 'Radio/Especiales/RNE solo en Podcast/¿Y si...?'
-  | 'Televisión/Programas de TVE/Informativos/Especiales informativos';
-
-export type MainTopicUid =
-  | 'TE_RNE/TE_SESPE03/TE_RRNE19P/SHO_ALGRNE'
-  | 'TE_RNE/TE_RPROGR/TE_RNOKJGK/TE_SCRIOMU'
-  | 'TE_RNE/TE_SESPE03/TE_RRNE19P/SHO_DEEMUS'
-  | 'TE_TVE/TE_PROGRA/TE_PINFORM/TE_SPARLA'
-  | 'TE_RNE/TE_SESPE03/TE_RRNE19P/TE_SEDUEMO'
-  | 'TE_RNE/TE_SESPE03/TE_RRNE19P/TE_SREDAPR'
-  | 'TE_RNE/TE_SESPE03/TE_RRNE19P/TE_SYSISIS'
-  | 'TE_TVE/TE_PROGRA/TE_PINFORM/TE_SESPECA';
-
-export interface APIVideos16440364 {
-  page: APIProgramas1000230_MultimediasPage;
+export interface ProgramasMultimedias021 {
+  page: ProgramasMultimediasPage021;
 }
 
-export interface APIProgramas1000230_MultimediasPage {
-  items: Item21[];
+export interface ProgramasMultimediasPage021 {
+  items: Item021[];
   number: number;
   size: number;
   offset: number;
@@ -3106,13 +3010,13 @@ export interface APIProgramas1000230_MultimediasPage {
   numElements: number;
 }
 
-export interface Item21 {
+export interface Item021 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
   id: string;
   language: Lang;
-  anteTitle: TentacledAnteTitle | null;
+  anteTitle: string | null;
   anteTitleUrl: null;
   longTitle: string;
   shortTitle: null | string;
@@ -3133,11 +3037,11 @@ export interface Item21 {
   dateOfEmission: string;
   publicationDateTimestamp: number;
   productionDate: null;
-  contentType: PurpleTType;
-  consumption: PurpleConsumption;
+  contentType: TType002;
+  consumption: Consumption002;
   type: TypeClass;
   subType?: TypeClass | null;
-  assetType: PurpleTType;
+  assetType: TType002;
   statistics: Statistics;
   alt: null | string;
   foot: null;
@@ -3166,7 +3070,7 @@ export interface Item21 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: null;
   ageRange: null;
@@ -3183,11 +3087,11 @@ export interface Item21 {
   title: string;
   idWiki?: null;
   idImdb?: null;
-  director?: PurpleDirector | null;
+  director?: string | null;
   producedBy?: null;
   showMan?: null;
   casting?: null;
-  generos: PurpleGenero[];
+  generos: Genero002[];
   technicalTeam?: null;
   audioDescription?: null;
   audioOriginal?: null | string;
@@ -3202,30 +3106,14 @@ export interface Item21 {
   requireLogged?: boolean;
 }
 
-export type TentacledAnteTitle =
-  | 'Santísima Charleta'
-  | 'Santísima charleta'
-  | 'Brainrot'
-  | 'Fuera de Patrón'
-  | 'Fuera de patrón';
+export type TType002 = 'video' | 'audio';
 
-export type PurpleTType = 'video' | 'audio';
-
-export type PurpleDirector =
-  | 'Narciso Ibáñez Serrador'
-  | 'José Luis Cuevas | Miquel Fortuny'
-  | 'Penny Jay'
-  | 'Chenta Tsai | Putochinomaricón'
-  | 'Paula Moreu'
-  | 'Antonio Gárate'
-  | 'José Carlos Gallardo';
-
-export interface APIProgramas175378_Relacionados {
-  page: APIProgramas1000230_RelacionadosPage;
+export interface ProgramasRelacionados022 {
+  page: ProgramasRelacionadosPage022;
 }
 
-export interface APIProgramas1000230_RelacionadosPage {
-  items: Item22[];
+export interface ProgramasRelacionadosPage022 {
+  items: Item022[];
   number: number;
   size: number;
   offset: number;
@@ -3234,7 +3122,7 @@ export interface APIProgramas1000230_RelacionadosPage {
   numElements: number;
 }
 
-export interface Item22 {
+export interface Item022 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
@@ -3293,7 +3181,7 @@ export interface Item22 {
   filtro: null;
   webRtve: null;
   webOficial: string;
-  promoText: PromoT | null;
+  promoText: string | null;
   promoDesc: null | string;
   relatedByLangRef: string;
   modificationDate: string;
@@ -3302,10 +3190,10 @@ export interface Item22 {
   sgce: null | string;
   sgce2: null;
   kantar: null | string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   seasons: null;
   numSeasons: number;
-  productionDate: PurpleProductionDate | null;
+  productionDate: string | null;
   rrss: null | string;
   rrssApps: RrssApp[];
   mainTopic: string;
@@ -3322,23 +3210,19 @@ export interface Item22 {
   casting: null | string;
   technicalTeam: null | string;
   idWiki: null | string;
-  idImdb: PurpleIDImdb;
+  idImdb: string;
   showFragments: boolean;
   notDownloadable: boolean;
   paidCountries: null;
   escort: Escort;
 }
 
-export type PurpleIDImdb = 'tt30015542' | '' | 'tt1824543';
-
-export type PromoT = 'Nuevo capítulo' | 'ORIGINAL' | 'ESTRENA';
-
-export interface APIProgramas1000954_Multimedias {
-  page: APIProgramas1000236_AudiosPage;
+export interface ProgramasAudios023 {
+  page: ProgramasAudiosPage023;
 }
 
-export interface APIProgramas1000236_AudiosPage {
-  items: Item23[];
+export interface ProgramasAudiosPage023 {
+  items: Item023[];
   number: number;
   size: number;
   offset: number;
@@ -3347,13 +3231,13 @@ export interface APIProgramas1000236_AudiosPage {
   numElements: number;
 }
 
-export interface Item23 {
+export interface Item023 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
   id: string;
   language: Lang;
-  anteTitle: StickyAnteTitle | null;
+  anteTitle: string | null;
   anteTitleUrl: null;
   longTitle: string;
   shortTitle: null | string;
@@ -3375,7 +3259,7 @@ export interface Item23 {
   publicationDateTimestamp: number;
   productionDate: null | string;
   contentType: ItemDestacadoAssetType;
-  consumption: PurpleConsumption;
+  consumption: Consumption002;
   type: TypeClass;
   assetType: ItemDestacadoAssetType;
   statistics: Statistics;
@@ -3404,7 +3288,7 @@ export interface Item23 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: null;
   ageRange: null;
@@ -3415,21 +3299,15 @@ export interface Item23 {
   promoTitle: null;
   promoDesc: null;
   title: string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
 }
 
-export type StickyAnteTitle =
-  | 'Cantapalabracanta'
-  | 'Econoclan'
-  | 'Escuela de Reporteros'
-  | "Un tubico con ...':";
-
-export interface APIVideos16422030 {
-  page: APIProgramas1000661_MultimediasPage;
+export interface ProgramasMultimedias024 {
+  page: ProgramasMultimediasPage024;
 }
 
-export interface APIProgramas1000661_MultimediasPage {
-  items: Item24[];
+export interface ProgramasMultimediasPage024 {
+  items: Item024[];
   number: number;
   size: number;
   offset: number;
@@ -3438,7 +3316,7 @@ export interface APIProgramas1000661_MultimediasPage {
   numElements: number;
 }
 
-export interface Item24 {
+export interface Item024 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
@@ -3466,7 +3344,7 @@ export interface Item24 {
   publicationDateTimestamp: number;
   productionDate: null;
   contentType: ContentTypeEnum;
-  consumption: FluffyConsumption;
+  consumption: Consumption001;
   type: TypeClass;
   subType: TypeClass | null;
   assetType: ContentTypeEnum;
@@ -3498,10 +3376,10 @@ export interface Item24 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: AgeRangeUid | null;
-  ageRange: ParentalRating | null;
+  ageRange: string | null;
   contentInitDate: null;
   contentEndDate: null;
   disabledAlacarta: boolean;
@@ -3519,7 +3397,7 @@ export interface Item24 {
   producedBy: null;
   showMan: null;
   casting: null | string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   technicalTeam: null;
   audioDescription: null | string;
   audioOriginal: null | string;
@@ -3535,25 +3413,14 @@ export interface Item24 {
   consumptionUid?: 'D_PACK';
 }
 
-export type ParentalRating =
-  | 'Programas no recomendados para menores de 7 años (NR7)'
-  | 'Programas para todos los públicos'
-  | 'Programas no recomendados para menores de 16 años (NR16)'
-  | 'Programas no recomendados para menores de 12 años (NR12)'
-  | 'Recomendado para mayores de 7 años'
-  | 'Recomendado para todos los públicos'
-  | 'Programas no recomendados para menores de 18 años (NR18)'
-  | 'Recomendado para mayores de 16 años'
-  | 'Recomendado para mayores de 12 años';
+export type Consumption001 = 'ondemand' | 'EMPAQUETADO';
 
-export type FluffyConsumption = 'ondemand' | 'EMPAQUETADO';
-
-export interface APIProgramas821_Audios {
-  page: APIProgramas1000671_AudiosPage;
+export interface ProgramasAudios025 {
+  page: ProgramasAudiosPage025;
 }
 
-export interface APIProgramas1000671_AudiosPage {
-  items: Item25[];
+export interface ProgramasAudiosPage025 {
+  items: Item025[];
   number: number;
   size: number;
   offset: number;
@@ -3562,13 +3429,13 @@ export interface APIProgramas1000671_AudiosPage {
   numElements: number;
 }
 
-export interface Item25 {
+export interface Item025 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
   id: string;
   language: Lang;
-  anteTitle: IndigoAnteTitle | null;
+  anteTitle: string | null;
   anteTitleUrl: null;
   longTitle: string;
   shortTitle: string;
@@ -3591,7 +3458,7 @@ export interface Item25 {
   publicationDateTimestamp: number;
   productionDate: null | string;
   contentType: ItemDestacadoAssetType;
-  consumption: PurpleConsumption;
+  consumption: Consumption002;
   type: TypeClass;
   assetType: ItemDestacadoAssetType;
   statistics: Statistics;
@@ -3620,7 +3487,7 @@ export interface Item25 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: null;
   ageRange: null;
@@ -3631,22 +3498,15 @@ export interface Item25 {
   promoTitle: null;
   promoDesc: null;
   title: string;
-  generos: PurpleGenero[];
+  generos: Genero002[];
 }
 
-export type IndigoAnteTitle =
-  | 'Créditos Iniciales'
-  | 'Sapiensantes'
-  | 'El profesor Melorock'
-  | 'Mosquis, un podcast amarillo!'
-  | '¡Mosquis, un podcast amarillo!';
-
-export interface APIProgramas821_Relacionados {
-  page: APIProgramas1000789_RelacionadosPage;
+export interface ProgramasRelacionados026 {
+  page: ProgramasRelacionadosPage026;
 }
 
-export interface APIProgramas1000789_RelacionadosPage {
-  items: Item26[];
+export interface ProgramasRelacionadosPage026 {
+  items: Item026[];
   number: number;
   size: number;
   offset: number;
@@ -3655,7 +3515,7 @@ export interface APIProgramas1000789_RelacionadosPage {
   numElements: number;
 }
 
-export interface Item26 {
+export interface Item026 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
@@ -3714,19 +3574,19 @@ export interface Item26 {
   filtro: null;
   webRtve: null;
   webOficial: string;
-  promoText: FluffyPromoText | null;
+  promoText: string | null;
   promoDesc: null | string;
   relatedByLangRef: string;
   modificationDate: string;
   publicationDateTimestamp: number;
   contentType: 'programa';
-  sgce: Sgce | null;
+  sgce: string | null;
   sgce2: null;
   kantar: null | string;
-  generos: PurpleGenero[];
+  generos: Genero002[];
   seasons: ItemSeasonClass[] | null;
   numSeasons: number;
-  productionDate: FluffyProductionDate | null;
+  productionDate: string | null;
   rrss: null;
   rrssApps: RrssApp[];
   mainTopic: string;
@@ -3738,55 +3598,24 @@ export interface Item26 {
   isComplete: boolean;
   inAZList: boolean;
   director: null | string;
-  producedBy: PurpleProducedBy | null;
+  producedBy: string | null;
   showMan: null | string;
   casting: null;
   technicalTeam: null | string;
   idWiki: null | string;
-  idImdb: FluffyIDImdb;
+  idImdb: string;
   showFragments: boolean;
   notDownloadable: boolean;
   paidCountries: null;
   escort: Escort;
 }
 
-export type FluffyIDImdb = '' | 'tt1379166';
-
-export type PurpleProducedBy =
-  | 'Xavier Forné'
-  | 'Emiliano de Pedraza | José Carbajo'
-  | 'Eduardo Deglané'
-  | 'Pedro Villafuertes Escobar | María Isabel Martín Muñoz';
-
-export type FluffyProductionDate =
-  | '01-01-1979 00:00:00'
-  | '01-01-2024 00:00:00'
-  | '04-10-2024 02:00:00'
-  | '30-08-2024 02:00:00'
-  | '01-01-1994 00:00:00'
-  | '30-11-1987 20:15:00'
-  | '01-01-2024 12:12:29'
-  | '01-01-1987 00:00:00'
-  | '01-01-2023 00:00:00'
-  | '01-01-1999 00:00:00';
-
-export type Sgce =
-  | 'I6140254'
-  | 'MTA50797'
-  | 'MLA10855'
-  | 'MLA10296'
-  | 'MLA10856'
-  | 'P000PGS00000'
-  | 'P599PGS00343'
-  | 'P611PGS00687'
-  | 'MRA60794';
-
-export interface APIVideos7037409 {
-  page: APIProgramas1000793_MultimediasPage;
+export interface Programas027 {
+  page: ProgramasPage027;
 }
 
-export interface APIProgramas1000793_MultimediasPage {
-  items: Item27[];
+export interface ProgramasPage027 {
+  items: Item027[];
   number: number;
   size: number;
   offset: number;
@@ -3795,13 +3624,13 @@ export interface APIProgramas1000793_MultimediasPage {
   numElements: number;
 }
 
-export interface Item27 {
+export interface Item027 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
   id: string;
   language: Lang;
-  anteTitle: LongTitle | null;
+  anteTitle: string | null;
   anteTitleUrl: null;
   longTitle: string;
   shortTitle: null | string;
@@ -3822,10 +3651,10 @@ export interface Item27 {
   dateOfEmission: string;
   publicationDateTimestamp: number;
   productionDate: null;
-  contentType: PurpleTType;
-  consumption: PurpleConsumption;
+  contentType: TType002;
+  consumption: Consumption002;
   type: TypeClass;
-  assetType: PurpleTType;
+  assetType: TType002;
   statistics: Statistics;
   alt: null | string;
   foot: null;
@@ -3852,7 +3681,7 @@ export interface Item27 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: null;
   ageRange: null;
@@ -3860,10 +3689,10 @@ export interface Item27 {
   contentEndDate: null;
   disabledAlacarta: boolean;
   noRegistrationRequired: boolean;
-  promoTitle: PromoT | null;
+  promoTitle: string | null;
   promoDesc: null;
   title: string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   subType?: TypeClass | null;
   temporadaId?: number | null;
   temporadaOrden?: number | null;
@@ -3873,7 +3702,7 @@ export interface Item27 {
   aspectRatio?: 'f16x9';
   idWiki?: null;
   idImdb?: null;
-  director?: FluffyDirector | null;
+  director?: string | null;
   producedBy?: null;
   showMan?: null | string;
   casting?: null;
@@ -3891,29 +3720,12 @@ export interface Item27 {
   requireLogged?: boolean;
 }
 
-export type LongTitle =
-  | 'Protagonistas del aula'
-  | 'De Éxodos'
-  | 'Cantapalabracanta'
-  | 'Farem el que podrem'
-  | 'Entrevista en TVE';
-
-export type FluffyDirector =
-  | 'Lorena Fernández'
-  | 'Sofía Comas'
-  | 'Luis Poyo (Edición)'
-  | 'Amaia Pérez de Mendiola (Edición)'
-  | 'Isabel de Haro'
-  | 'Sonia Domínguez'
-  | 'Quique Quera Turu'
-  | 'Xabier Fortes';
-
-export interface APIProgramas177790_Multimedias {
-  page: APIProgramas1000794_MultimediasPage;
+export interface ProgramasMultimedias028 {
+  page: ProgramasMultimediasPage028;
 }
 
-export interface APIProgramas1000794_MultimediasPage {
-  items: Item28[];
+export interface ProgramasMultimediasPage028 {
+  items: Item028[];
   number: number;
   size: number;
   offset: number;
@@ -3922,13 +3734,13 @@ export interface APIProgramas1000794_MultimediasPage {
   numElements: number;
 }
 
-export interface Item28 {
+export interface Item028 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
   id: string;
   language: Lang;
-  anteTitle: FluffyAnteTitle | null;
+  anteTitle: string | null;
   anteTitleUrl: null;
   longTitle: string;
   shortTitle: null | string;
@@ -3939,8 +3751,8 @@ export interface Item28 {
   publicationDate: string;
   modificationDate: string;
   pubState: PubState;
-  mainTopic: ItemMainTopic;
-  mainTopicUid?: MainTopicUid;
+  mainTopic: string;
+  mainTopicUid?: string;
   topicsName: string[];
   breadCrumbRef: string;
   imageSEO: string;
@@ -3950,10 +3762,10 @@ export interface Item28 {
   dateOfEmission: string;
   publicationDateTimestamp: number;
   productionDate: null | string;
-  contentType: PurpleTType;
-  consumption: PurpleConsumption;
+  contentType: TType002;
+  consumption: Consumption002;
   type: TypeClass;
-  assetType: PurpleTType;
+  assetType: TType002;
   statistics: Statistics;
   alt: null | string;
   foot: null;
@@ -3980,7 +3792,7 @@ export interface Item28 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: null;
   ageRange: null;
@@ -3991,7 +3803,7 @@ export interface Item28 {
   promoTitle: null;
   promoDesc: null;
   title: string;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   subType?: null;
   temporadaId?: null;
   temporadaOrden?: null;
@@ -4019,12 +3831,12 @@ export interface Item28 {
   requireLogged?: boolean;
 }
 
-export interface APIVideos6991409 {
-  page: APIProgramas1000843_MultimediasPage;
+export interface Programas029 {
+  page: ProgramasMultimediasPage029;
 }
 
-export interface APIProgramas1000843_MultimediasPage {
-  items: Item29[];
+export interface ProgramasMultimediasPage029 {
+  items: Item029[];
   number: number;
   size: number;
   offset: number;
@@ -4033,7 +3845,7 @@ export interface APIProgramas1000843_MultimediasPage {
   numElements: number;
 }
 
-export interface Item29 {
+export interface Item029 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
@@ -4061,7 +3873,7 @@ export interface Item29 {
   publicationDateTimestamp: number;
   productionDate: null;
   contentType: ContentTypeEnum;
-  consumption: FluffyConsumption;
+  consumption: Consumption001;
   type: TypeClass;
   subType: TypeClass | null;
   assetType: ContentTypeEnum;
@@ -4084,7 +3896,7 @@ export interface Item29 {
   transcriptionRef: string;
   temporadaId: number | null;
   temporadasRef: string;
-  temporada: Temporada | null;
+  temporada: string | null;
   temporadaShortTitle: null | string;
   temporadaOrden: number | null;
   programRef: string;
@@ -4093,10 +3905,10 @@ export interface Item29 {
   publicidadRef: null;
   comentariosRef: string;
   relatedByLangRef: string;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   estadisticasRef: string;
   ageRangeUid: AgeRangeUid | null;
-  ageRange: ParentalRating | null;
+  ageRange: string | null;
   contentInitDate: null;
   contentEndDate: null;
   disabledAlacarta: boolean;
@@ -4114,7 +3926,7 @@ export interface Item29 {
   producedBy: null;
   showMan: null;
   casting: null;
-  generos: PurpleGenero[];
+  generos: Genero002[];
   technicalTeam: null;
   audioDescription: null | string;
   audioOriginal: null | string;
@@ -4130,14 +3942,12 @@ export interface Item29 {
   consumptionUid?: 'D_PACK';
 }
 
-export type Temporada = 'Temporada 5' | 'Premios Goya 2025' | 'Europa 2024';
-
-export interface APIVideos16439037_Temporadas {
-  page: APIProgramas134450_TemporadasPage;
+export interface ProgramasTemporadas030 {
+  page: ProgramasTemporadasPage030;
 }
 
-export interface APIProgramas134450_TemporadasPage {
-  items: Item30[];
+export interface ProgramasTemporadasPage030 {
+  items: Item030[];
   number: number;
   size: number;
   offset: number;
@@ -4146,7 +3956,7 @@ export interface APIProgramas134450_TemporadasPage {
   numElements: number;
 }
 
-export interface Item30 {
+export interface Item030 {
   uri: string;
   id: number;
   title: string;
@@ -4163,24 +3973,18 @@ export interface Item30 {
   orden: number;
   numEpisodes: number;
   director: null | string;
-  producedBy: FluffyProducedBy | null;
+  producedBy: string | null;
   showMan: null | string;
   casting: null;
   technicalTeam: null | string;
 }
 
-export type FluffyProducedBy =
-  | 'Pedro Villafuertes Escobar,María Isabel Martín Muñoz'
-  | 'María Isabel Martín Muñoz,Pedro Villafuertes Escobar'
-  | 'Mabel Martín'
-  | 'Iñigo G. Aldalur';
-
-export interface APIProgramas58990_OtrasCadenas {
-  page: APIProgramas1535_OtrasCadenasPage;
+export interface ProgramasOtrasCadenas031 {
+  page: ProgramasOtrasCadenasPage031;
 }
 
-export interface APIProgramas1535_OtrasCadenasPage {
-  items: Item31[];
+export interface ProgramasOtrasCadenasPage031 {
+  items: Item031[];
   number: number;
   size: number;
   offset: number;
@@ -4189,7 +3993,7 @@ export interface APIProgramas1535_OtrasCadenasPage {
   numElements: number;
 }
 
-export interface Item31 {
+export interface Item031 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
@@ -4217,12 +4021,12 @@ export interface Item31 {
   multimediasPopularesRef: string;
 }
 
-export interface APIProgramas177130 {
-  page: APIProgramas177130_Page;
+export interface Programas032 {
+  page: ProgramasPage032;
 }
 
-export interface APIProgramas177130_Page {
-  items: Item32[];
+export interface ProgramasPage032 {
+  items: Item032[];
   number: number;
   size: number;
   offset: number;
@@ -4231,7 +4035,7 @@ export interface APIProgramas177130_Page {
   numElements: number;
 }
 
-export interface Item32 {
+export interface Item032 {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;
@@ -4239,11 +4043,11 @@ export interface Item32 {
   ctvId: number;
   oldCtvId: null;
   uid: string;
-  name: LongTitle;
+  name: string;
   permalink: string;
   language: Lang;
-  longTitle: LongTitle;
-  shortTitle: LongTitle;
+  longTitle: string;
+  shortTitle: string;
   description: string;
   audioDescription: boolean;
   longDescription: string;
@@ -4290,7 +4094,7 @@ export interface Item32 {
   filtro: null;
   webRtve: null;
   webOficial: string;
-  promoText: PromoT;
+  promoText: string;
   promoDesc: null;
   relatedByLangRef: string;
   modificationDate: string;
@@ -4299,21 +4103,21 @@ export interface Item32 {
   sgce: string;
   sgce2: null;
   kantar: string;
-  generos: PurpleGenero[];
+  generos: Genero002[];
   seasons: null;
   numSeasons: number;
-  productionDate: PurpleProductionDate;
+  productionDate: string;
   rrss: null;
   rrssApps: RrssApp[];
   mainTopic: string;
   mainTopicUid: string;
-  title: LongTitle;
+  title: string;
   disabledAlacarta: boolean;
   programType: ProgramType;
   programTypeId: number;
   isComplete: boolean;
   inAZList: boolean;
-  director: FluffyDirector;
+  director: string;
   producedBy: string;
   showMan: string;
   casting: null;
@@ -4328,15 +4132,15 @@ export interface Item32 {
   country: 'ES';
 }
 
-export interface APIScheduleTv1Cat {
+export interface ScheduleTv1Cat {
   diahoy: string;
   itemahora: number;
   nombreCanal: string;
   uidCanal: string;
-  items: APISchedule24HItem[];
+  items: Schedule24HItem[];
 }
 
-export interface APISchedule24HItem {
+export interface Schedule24HItem {
   name: string;
   description: string;
   begintime: string;
@@ -4356,37 +4160,24 @@ export interface APISchedule24HItem {
   idPrograma?: number;
   ahora?: boolean;
   dg?: null | string;
-  season?: PurpleSeason | null;
+  season?: string | null;
   api?: string;
 }
 
-export type PurpleSeason =
-  | 'Temporada 2'
-  | 'Temporada 8'
-  | 'Temporada 4'
-  | 'Temporada 1'
-  | 'Temporada 3'
-  | 'Benidorm Fest 2023'
-  | 'Eurovisión 2023'
-  | 'Benidorm Fest 2024'
-  | 'Eurovisión 2024'
-  | 'Benidorm Fest 2025'
-  | 'Benidorm Fest 2022';
-
-export interface APISchedulePlaypr {
+export interface SchedulePlayProgram {
   diahoy: string;
   itemahora: number;
   nombreCanal: string;
   uidCanal: string;
-  items: APISchedulePlayItem[];
+  items: SchedulePlayItem[];
 }
 
-export interface APISchedulePlayItem {
+export interface SchedulePlayItem {
   name: string;
   description: string;
   begintime: string;
   duration: string;
-  parentalRating: ParentalRating;
+  parentalRating: string;
   contentType: ContentTypeEnum;
   original_event_name: string;
   original_episode_name: string;
@@ -4398,38 +4189,25 @@ export interface APISchedulePlayItem {
   sgce: null | string;
   dg: null | string;
   idAsset: number;
-  season: FluffySeason | null;
+  season: string | null;
   orden: number;
   idPrograma?: number;
   ahora?: boolean;
 }
 
-export type FluffySeason =
-  | 'Temporada 3'
-  | 'Temporada 2'
-  | 'Temporada 1'
-  | 'La ruta del ámbar por Europa Oriental'
-  | 'Ruta del Cóndor'
-  | 'Ruta del Dragón'
-  | 'Temporada 20'
-  | 'Temporada 21'
-  | 'Temporada 22';
-
-export interface APISearch {
+export interface SearchError {
   message: 'Not Found';
-  error: Error;
+  error: {
+    status: number;
+  };
 }
 
-export interface Error {
-  status: number;
+export interface SearchProgram033 {
+  page: SearchProgramPage033;
 }
 
-export interface APISearchProgramsSearchPage1Size20ContextTveIsExpandedTrueIsChildTrueUseOntologyTrueGenre96152ProgramtypePeliculas {
-  page: APISearchProgramsSearchPage1Size20ContextTveIsExpandedTrueIsChildTrueUseOntologyTrueGenre136614ProgramtypePeliculasPage;
-}
-
-export interface APISearchProgramsSearchPage1Size20ContextTveIsExpandedTrueIsChildTrueUseOntologyTrueGenre136614ProgramtypePeliculasPage {
-  items: Item33[];
+export interface SearchProgramPage033 {
+  items: Item033[];
   numElements: number;
   number: number;
   offset: number;
@@ -4438,8 +4216,8 @@ export interface APISearchProgramsSearchPage1Size20ContextTveIsExpandedTrueIsChi
   totalPages: number;
 }
 
-export interface Item33 {
-  ageRange: ParentalRating;
+export interface Item033 {
+  ageRange: string;
   ageRangeUid: AgeRangeUid;
   allowedInCountry: boolean;
   alt: string;
@@ -4454,7 +4232,7 @@ export interface Item33 {
   comentariosRef: string;
   commentOptions: null;
   configPlayerRef: string;
-  consumption: FluffyConsumption;
+  consumption: Consumption001;
   contentEndDate: null;
   contentInitDate: null;
   contentType: ContentTypeEnum;
@@ -4471,7 +4249,7 @@ export interface Item33 {
   estadisticasRef: string;
   expirationDate: null | string;
   foot: null;
-  generos: FluffyGenero[];
+  generos: Genero001[];
   geolocalizado: boolean;
   hasCuePoints: boolean;
   hasDRM: boolean;
@@ -4517,7 +4295,7 @@ export interface Item33 {
   shortDescription: string;
   shortTitle: null | string;
   showMan: null;
-  sign: { [key: string]: SignEnum | null };
+  sign: { [key: string]: string | null };
   sip: null;
   statistics: Statistics;
   subType: TypeClass;
@@ -4539,12 +4317,12 @@ export interface Item33 {
   consumptionUid?: 'D_PACK';
 }
 
-export interface APITematicas863 {
-  page: APITematicas1000149_Page;
+export interface Tematicas034 {
+  page: TematicasPage034;
 }
 
-export interface APITematicas1000149_Page {
-  items: Item34[];
+export interface TematicasPage034 {
+  items: Item034[];
   number: number;
   size: number;
   offset: number;
@@ -4553,7 +4331,7 @@ export interface APITematicas1000149_Page {
   numElements: number;
 }
 
-export interface Item34 {
+export interface Item034 {
   permalink: string;
   pathUids: string;
   pathNames: string;
@@ -4592,25 +4370,24 @@ export interface Error {
   success: boolean;
   httpCode: number;
   message: string;
-
   response: string[];
   errors: string[];
   build: string;
 }
 
-export interface APIToken7047909 {
+export interface Token {
   token: string;
   widevineURL: string;
   fairplayURL: string;
   fairplayCert: string;
 }
 
-export interface APIVideos7043605_Subtitulos {
-  page: APIVideos15960245_SubtitulosPage;
+export interface VideosSubtitulos035 {
+  page: VideosSubtitulosPage035;
 }
 
-export interface APIVideos15960245_SubtitulosPage {
-  items: Item35[];
+export interface VideosSubtitulosPage035 {
+  items: Item035[];
   number: number;
   size: number;
   offset: number;
@@ -4619,7 +4396,7 @@ export interface APIVideos15960245_SubtitulosPage {
   numElements: number;
 }
 
-export interface Item35 {
+export interface Item035 {
   src: string;
   lang: Lang;
 }
@@ -4689,10 +4466,10 @@ export interface Radio {
 export interface RadioMenuBloque {
   orden: number;
   title: string;
-  menuItems: PurpleMenuItem[];
+  menuItems: MenuItem002[];
 }
 
-export interface PurpleMenuItem {
+export interface MenuItem002 {
   orden: number;
   title: string;
   resaltado: boolean;
@@ -4709,7 +4486,13 @@ export interface MenuItemMenuItem {
   orden: number;
   title: string;
   resaltado: boolean;
-  tipo: MenuItemTipo;
+  tipo:
+    | 'portada'
+    | 'descargas'
+    | 'mislistas'
+    | 'seguirviendo'
+    | 'intentApp'
+    | 'portadaCanalTematico';
   urlContent?: string;
   imgBackground?: string;
   logo?: string;
@@ -4721,14 +4504,6 @@ export interface MenuItemMenuItem {
   id?: string;
   subscriptor?: boolean;
 }
-
-export type MenuItemTipo =
-  | 'portada'
-  | 'descargas'
-  | 'mislistas'
-  | 'seguirviendo'
-  | 'intentApp'
-  | 'portadaCanalTematico';
 
 export interface RadioPortada {
   orden: number;
@@ -4743,7 +4518,7 @@ export interface RadioSecciones {
   directosRadio: DirectosRadio;
   portada: DirectosRadio;
   buscadorAZ: BuscadorAZ;
-  directos: PurpleDirectos;
+  directos: Directos002;
   parrilla: Parrilla;
   nowAndNext: NowAndNext;
   buscador: Buscador;
@@ -4755,26 +4530,26 @@ export interface Buscador {
   tituloLomasBuscado: string;
   urlBuscadorPredef: string;
   urlLomasBuscado: string;
-  generospeliculas?: Generospelicula[];
+  generospeliculas?: GeneroPelicula[];
 }
 
-export interface Generospelicula {
+export interface GeneroPelicula {
   'nav-pag_name': string;
   'nav-pag_url': string;
 }
 
 export interface BuscadorAZ {
-  canales: CategoriaElement[];
-  categorias: CategoriaElement[];
+  canales: Categoria[];
+  categorias: Categoria[];
 }
 
-export interface CategoriaElement {
+export interface Categoria {
   orden: number;
   title: string;
   urlContent: string;
 }
 
-export interface PurpleDirectos {
+export interface Directos002 {
   urlContent: string;
   urlbasestartover: string;
 }
@@ -4793,16 +4568,16 @@ export interface Emisora {
 }
 
 export interface Parrilla {
-  agrupadores: Agrupadore[];
+  agrupadores: Agrupador[];
 }
 
-export interface Agrupadore {
+export interface Agrupador {
   orden: number;
   title: string;
-  canales: AgrupadoreCanale[];
+  canales: AgrupadorCanal[];
 }
 
-export interface AgrupadoreCanale {
+export interface AgrupadorCanal {
   orden: number;
   title: string;
   logo: string;
@@ -4833,10 +4608,10 @@ export interface Television {
 export interface TelevisionMenuBloque {
   orden: number;
   title: string;
-  menuItems: FluffyMenuItem[];
+  menuItems: MenuItem001[];
 }
 
-export interface FluffyMenuItem {
+export interface MenuItem001 {
   orden: number;
   title: string;
   resaltado: boolean;
@@ -4863,14 +4638,14 @@ export interface TelevisionSecciones {
   portada: SeccionesPortada;
   auxiliares: Auxiliares;
   desconexionTerritorial: DesconexionTerritorial;
-  canalestematicos: Canalestematico[];
+  canalestematicos: CanalTematico[];
   buscadorAZ: BuscadorAZ;
-  directos: FluffyDirectos;
+  directos: Directos001;
   parrilla: Parrilla;
   buscador: Buscador;
   showDateEmision: string[];
   adsEnabled: string[];
-  especiales: Especiale[];
+  especiales: Especial[];
   concursos: Concurso[];
 }
 
@@ -4879,7 +4654,7 @@ export interface Auxiliares {
   hlios: string;
 }
 
-export interface Canalestematico {
+export interface CanalTematico {
   nombre: string;
   id: string;
   permalink: string;
@@ -4899,19 +4674,19 @@ export interface DesconexionTerritorial {
   urlLocalizacion: string;
 }
 
-export interface FluffyDirectos {
+export interface Directos001 {
   urlContent: string;
   urlbasestartover: string;
-  programsstartover: Programsstartover[];
+  programsstartover: StartOver[];
 }
 
-export interface Programsstartover {
+export interface StartOver {
   programId: string;
   idGolumi: string;
   sgce: string;
 }
 
-export interface Especiale {
+export interface Especial {
   programRefid: string;
   typeId: number;
 }
@@ -4932,7 +4707,7 @@ export interface PlayIndexApps {
 export interface Category {
   breadcrumb: string;
   id: number;
-  title: SignEnum;
+  title: string;
   uid: string;
 }
 
@@ -4940,7 +4715,7 @@ export interface Row {
   orden: number;
   title: null | string;
   noLabels?: boolean;
-  moduleType: ModuleType;
+  moduleType: 'Collection' | 'livesCollection' | 'KeepWatching' | 'catalogs';
   urlContent?: string;
   tipo: string;
   subTitle?: null;
@@ -4957,9 +4732,3 @@ export interface Link {
   imgHorizontal: string;
   imgSquare: string;
 }
-
-export type ModuleType =
-  | 'Collection'
-  | 'livesCollection'
-  | 'KeepWatching'
-  | 'catalogs';
