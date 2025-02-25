@@ -11,9 +11,12 @@ export default function ContentProgramSeason({
   programId: string;
   seasonId: string;
 }) {
-  const { videos, isLoading, error } = useProgramSeason(programId, seasonId);
+  const { videos, isLoading, error, hasMorePages, setSize } = useProgramSeason(
+    programId,
+    seasonId,
+  );
 
-  const videoElems = videos?.page.items;
+  const handleNextPage = () => setSize((s) => s + 1);
 
   return (
     <>
@@ -30,20 +33,31 @@ export default function ContentProgramSeason({
         <ErrorMessage className="w-full" error={error} />
       : isLoading ?
         <Skeleton className="w-full" />
-      : videoElems ?
+      : videos ?
         <>
-          {videoElems.map((videoEl) => (
-            <div key={videoEl.uri} className="bg-black/50 p-1">
+          {videos.map((video) => (
+            <div key={video.uri} className="bg-black/50 p-1">
               <Card
-                title={videoEl.title}
-                subtitle={videoEl.shortDescription}
-                href={`/video/${videoEl.id}`}
-                img={videoEl.thumbnail}
-                start={videoEl.publicationDate}
-                onClick={() => console.log(videoEl)}
+                title={video.title}
+                subtitle={video.shortDescription}
+                href={`/video/${video.id}`}
+                img={video.thumbnail}
+                start={video.publicationDate}
+                onClick={() => console.log(video)}
               />
             </div>
           ))}
+
+          {hasMorePages ?
+            <div className="bg-black/50 p-1">
+              <button
+                className="apply-hover-bg w-full p-4"
+                onClick={handleNextPage}
+              >
+                ▽ Más antiguos
+              </button>
+            </div>
+          : null}
 
           {/* <pre className="bg-black/50 p-4 text-wrap">
             {JSON.stringify(videos, undefined, 2)}

@@ -38,8 +38,8 @@ export default function Home() {
       : home ?
         home.rows.map((row, i) => (
           <Row
-            key={JSON.stringify(row)}
-            title={row.title || (i === 0 && 'Portada') || 'Destacado'}
+            key={row.orden}
+            title={row.title || (i === 0 ? 'Portada' : 'Destacado')}
             onClick={() => console.log(row)}
           >
             <HomeModule row={row} />
