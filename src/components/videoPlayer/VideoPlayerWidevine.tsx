@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import dashjs from 'dashjs';
+import { MediaPlayer } from 'dashjs';
 
 const VideoPlayerWidevine = memo(function VideoPlayerWidevine({
   url,
@@ -17,7 +17,7 @@ const VideoPlayerWidevine = memo(function VideoPlayerWidevine({
       controls
       autoPlay={false}
       ref={(video) => {
-        const player = dashjs.MediaPlayer().create();
+        const player = MediaPlayer().create();
         player.setProtectionData({
           'com.widevine.alpha': { serverURL: widevineURL },
         });

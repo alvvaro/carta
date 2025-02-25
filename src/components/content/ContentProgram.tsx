@@ -7,6 +7,7 @@ import useProgram from '@/hooks/useProgram';
 import { strConcat } from '@/utils/string';
 
 import ContentProgramSeason from './ContentProgramSeason';
+import ContentProgramVideos from './ContentProgramVideos';
 
 export default function ContentProgram({ id }: { id: string }) {
   const { program, isLoading, error } = useProgram(id);
@@ -90,7 +91,7 @@ export default function ContentProgram({ id }: { id: string }) {
               programId={programEl.id}
               seasonId={selectedSeasonId}
             />
-          : null}
+          : <ContentProgramVideos programId={programEl.id} />}
 
           {programEl.showMan || programEl.casting ?
             <div className="p-4">

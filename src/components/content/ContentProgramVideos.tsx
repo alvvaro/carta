@@ -1,0 +1,65 @@
+import Card from '@/components/common/Card';
+import ErrorMessage from '@/components/common/ErrorMessage';
+import Skeleton from '@/components/common/Skeleton';
+import Portal from '@/components/layout/Portal';
+import useProgramVideos from '@/hooks/useProgramVideos';
+
+export default function ContentProgramVideos({
+  programId,
+}: {
+  programId: string;
+}) {
+  const { videos, isLoading, error, hasMorePages, setSize } =
+    useProgramVideos(programId);
+
+  const handleNextPage = () => setSize((s) => s + 1);
+
+  return (
+    <>
+      <Portal slotId="header-slot">
+        <button
+          onClick={() => console.log(videos)}
+          className="apply-hover-bg-white px-4"
+        >
+          log videos
+        </button>
+      </Portal>
+
+      {error ?
+        <ErrorMessage className="w-full" error={error} />
+      : isLoading ?
+        <Skeleton className="w-full" />
+      : videos ?
+        <>
+          {videos.map((video) => (
+            <div key={video.uri} className="bg-black/50 p-1">
+              <Card
+                title={video.title}
+                subtitle={video.shortDescription}
+                href={`/video/${video.id}`}
+                img={video.thumbnail}
+                start={video.publicationDate}
+                onClick={() => console.log(video)}
+              />
+            </div>
+          ))}
+
+          {hasMorePages ?
+            <div className="bg-black/50 p-1">
+              <button
+                className="apply-hover-bg w-full p-4"
+                onClick={handleNextPage}
+              >
+                ▽ Más antiguos
+              </button>
+            </div>
+          : null}
+
+          {/* <pre className="bg-black/50 p-4 text-wrap">
+            {JSON.stringify(videos, undefined, 2)}
+          </pre> */}
+        </>
+      : null}
+    </>
+  );
+}
