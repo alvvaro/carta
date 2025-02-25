@@ -3,10 +3,14 @@ import Links from '@/components/collections/Links';
 import Lives from '@/components/collections/Lives';
 import Topic from '@/components/collections/Topic';
 import ErrorMessage from '@/components/common/ErrorMessage';
-import { RTVEHome } from '@/types/home';
+import RTVE from '@/types';
 import { strBetween } from '@/utils/string';
 
-export default function HomeModule({ row }: { row: RTVEHome['rows'][0] }) {
+export default function HomeModule({
+  row,
+}: {
+  row: RTVE['PlayIndexApps']['rows'][0];
+}) {
   if (row.tipo === 'seguirviendo') return null;
   if (!row.urlContent) {
     return (

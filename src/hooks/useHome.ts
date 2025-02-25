@@ -1,7 +1,7 @@
 import useSWRImmutable from 'swr/immutable';
 
 import { ClientError } from '@/lib/clientError';
-import { RTVEHome } from '@/types/home';
+import RTVE from '@/types';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath = () => {
@@ -9,7 +9,7 @@ const getApiPath = () => {
 };
 
 export default function useHome() {
-  const { data, ...rest } = useSWRImmutable<RTVEHome, ClientError>(
+  const { data, ...rest } = useSWRImmutable<RTVE['PlayIndexApps'], ClientError>(
     getApiPath(),
     fetchApi,
     { shouldRetryOnError: false },
