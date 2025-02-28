@@ -37,6 +37,7 @@ export default function Topic({
           title={
             topicItem.shortTitle || topicItem.longTitle || '--- SIN TITULO ---'
           }
+          duration={topicItem.duration}
           href={`${topicItem.contentType}/${topicItem.id}`}
         />
       ))

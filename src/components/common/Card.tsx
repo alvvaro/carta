@@ -2,7 +2,8 @@ import { useMemo } from 'react';
 
 import { Link } from 'wouter';
 
-import toDate from '@/utils/date';
+import dateUtils from '@/utils/date';
+import intersperseArr from '@/utils/intersperse';
 
 export default function Card({
   img,
@@ -13,6 +14,7 @@ export default function Card({
   subtitle,
   start,
   liveProgress,
+  duration,
   onClick,
 }: {
   img?: string;
@@ -23,9 +25,11 @@ export default function Card({
   subtitle?: string;
   start?: string;
   liveProgress?: number;
+  duration?: number;
   onClick?: () => void;
 }) {
-  const date = useMemo(() => toDate(start)?.calendar(), [start]);
+  const date = useMemo(() => dateUtils.toCalendar(start), [start]);
+  const durationStr = useMemo(() => dateUtils.toDuration(duration), [duration]);
 
   return (
     <Link
@@ -60,9 +64,13 @@ export default function Card({
       <div className="">
         <div className="opacity-40">{pretitle}</div>
         <div className="card-title font-bold">{title}</div>
-        {start ?
-          <div className="opacity-80">{date}</div>
+
+        {duration || start ?
+          <div className="opacity-80">
+            {intersperseArr([durationStr, date], ' · ')}
+          </div>
         : null}
+
         <div className="opacity-60">{subtitle}</div>
       </div>
     </Link>

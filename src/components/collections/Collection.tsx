@@ -33,6 +33,7 @@ export default function Collection({ code }: { code: string | undefined }) {
           subtitle={collectionUtils.getItemSubtitle(collectionItem)}
           liveProgress={collectionItem.porcentaje}
           start={collectionItem.inicio}
+          duration={collectionItem.duracion}
           href={collectionUtils.getItemHref(collectionItem)}
         />
       ))

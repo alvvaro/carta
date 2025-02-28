@@ -5,7 +5,7 @@ import Skeleton from '@/components/common/Skeleton';
 import Portal from '@/components/layout/Portal';
 import VideoPlayer from '@/components/videoPlayer/VideoPlayer';
 import useVideo from '@/hooks/useVideo';
-import toDate from '@/utils/date';
+import dateUtils from '@/utils/date';
 
 export default function ContentVideo({
   id,
@@ -22,11 +22,11 @@ export default function ContentVideo({
 
   const videoEl = video?.page.items[0];
   const date = useMemo(
-    () => toDate(videoEl?.dateOfEmission),
+    () => dateUtils.toDate(videoEl?.dateOfEmission),
     [videoEl?.dateOfEmission],
   );
   const expiration = useMemo(
-    () => toDate(videoEl?.expirationDate || undefined),
+    () => dateUtils.toDate(videoEl?.expirationDate || undefined),
     [videoEl?.expirationDate],
   );
 

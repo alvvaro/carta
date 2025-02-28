@@ -43,6 +43,7 @@ export default function ContentProgramSeason({
                 href={`/video/${video.id}`}
                 img={video.thumbnail}
                 start={video.publicationDate}
+                duration={video.duration}
                 onClick={() => console.log(video)}
               />
             </div>
