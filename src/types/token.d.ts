@@ -1,4 +1,4 @@
-interface RTVEToken {
+export default interface Token {
   token: string;
   widevineURL: string;
   fairplayURL: string;

@@ -1,4 +1,4 @@
-export interface MConfigsRtvePlayEstructura {
+export default interface MConfigsRtvePlayEstructura {
   version: number;
   fechaModificacion: Date;
   expirationTime: number;
