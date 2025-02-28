@@ -1,24 +1,21 @@
 import useSWRImmutable from 'swr/immutable';
 
 import { ClientError } from '@/lib/clientError';
-import { RTVEWelcome } from '@/types/welcome';
+import RTVE from '@/types';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath = () => {
   return 'http://www.rtve.es/m/configs/rtve_play/estructura.json';
 };
 
-const useWelcome = () => {
-  const { data, ...rest } = useSWRImmutable<RTVEWelcome, ClientError>(
-    getApiPath(),
-    fetchApi,
-    { shouldRetryOnError: false },
-  );
+export default function useWelcome() {
+  const { data, ...rest } = useSWRImmutable<
+    RTVE['MConfigsRtvePlayEstructura'],
+    ClientError
+  >(getApiPath(), fetchApi, { shouldRetryOnError: false });
 
   return {
     welcome: data,
     ...rest,
   };
-};
-
-export default useWelcome;
+}
