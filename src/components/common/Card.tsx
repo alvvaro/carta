@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { MouseEventHandler, useMemo } from 'react';
 
 import { Link } from 'wouter';
 
@@ -27,11 +27,18 @@ export default function Card({
 }) {
   const date = useMemo(() => toDate(start)?.calendar(), [start]);
 
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
+    if (event.altKey && onClick) {
+      event.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <Link
       className="apply-hover-bg flex cursor-pointer flex-col gap-2 p-3 select-none hover:[&_.card-title]:underline"
       href={href}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className="relative aspect-video w-80 overflow-clip rounded-md">
         {logo ?

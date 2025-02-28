@@ -1,7 +1,7 @@
 import useSWRImmutable from 'swr/immutable';
 
 import { ClientError } from '@/lib/clientError';
-import { RTVECollection } from '@/types/collection';
+import RTVE from '@/types';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath = (code: string | undefined) => {
@@ -11,7 +11,7 @@ const getApiPath = (code: string | undefined) => {
 };
 
 export default function useCollection(code: string | undefined) {
-  const { data, ...rest } = useSWRImmutable<RTVECollection, ClientError>(
+  const { data, ...rest } = useSWRImmutable<RTVE['Collection'], ClientError>(
     getApiPath(code),
     fetchApi,
     { shouldRetryOnError: false },

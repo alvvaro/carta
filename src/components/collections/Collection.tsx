@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import Card from '@/components/common/Card';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
@@ -6,12 +8,20 @@ import useCollection from '@/hooks/useCollection';
 export default function Collection({ code }: { code: string | undefined }) {
   const { collection, isLoading, error } = useCollection(code);
 
+  const collectionItems = useMemo(() => {
+    if (!collection) return [];
+
+    return [
+      ...collection.page.items.map((item) => item.itemDestacado),
+      ...collection.page.items.flatMap((item) => item.collectionItems),
+    ].filter((x) => !!x);
+  }, [collection]);
+
   return (
     error ?
       <ErrorMessage error={error} className="m-3 h-64 w-full rounded-md" />
     : isLoading ? <Skeleton className="m-3 h-64 w-full rounded-md" />
-    : collection ?
-      collection.page.items[0].collectionItems.map((collectionItem) => (
+    : collectionItems.map((collectionItem) => (
         <Card
           key={JSON.stringify(collectionItem)}
           onClick={() => console.log(collectionItem)}
@@ -53,12 +63,13 @@ export default function Collection({ code }: { code: string | undefined }) {
             collectionItem.titulo ||
             '--- SIN TITULO ---'
           }
-          subtitle={collectionItem.promoText || collectionItem.metaTitle}
-          liveProgress={collectionItem.porcentaje || undefined}
+          subtitle={
+            collectionItem.promoText || collectionItem.metaTitle || undefined
+          }
+          liveProgress={collectionItem.porcentaje}
           start={collectionItem.inicio}
           href={`${collectionItem.contentType === 'directo' ? 'live' : collectionItem.contentType}/${collectionItem.lastMultimedia?.id || collectionItem.idAsset || collectionItem.id}`}
         />
       ))
-    : null
   );
 }
