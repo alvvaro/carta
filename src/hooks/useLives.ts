@@ -1,6 +1,7 @@
 import useSWRImmutable from 'swr/immutable';
 
 import { ClientError } from '@/lib/clientError';
+import RTVE from '@/types';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath = (code: string | undefined) => {
@@ -10,7 +11,7 @@ const getApiPath = (code: string | undefined) => {
 };
 
 export default function useLives(code: string | undefined) {
-  const { data, ...rest } = useSWRImmutable<RTVELives, ClientError>(
+  const { data, ...rest } = useSWRImmutable<RTVE['Lives'], ClientError>(
     getApiPath(code),
     fetchApi,
     {

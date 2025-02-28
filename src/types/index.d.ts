@@ -5,6 +5,7 @@ import Genre from './Genre';
 import MConfigsRtvePlayEstructura from './MConfigsRtvePlayEstructura';
 import PlayIndexApps from './PlayIndexApps';
 import Token from './Token';
+import Lives from './lives';
 
 export default interface RTVE {
   AgeRange: AgeRange;
@@ -14,4 +15,5 @@ export default interface RTVE {
   MConfigsRtvePlayEstructura: MConfigsRtvePlayEstructura;
   PlayIndexApps: PlayIndexApps;
   Token: Token;
+  Lives: Lives;
 }
