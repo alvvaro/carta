@@ -42,16 +42,20 @@ const collectionUtils = {
       collectionItem.lastMultimedia?.title ||
       collectionItem.name ||
       collectionItem.titulo ||
-      '--- SIN TITULO ---'
+      collectionItem.id ||
+      'Recurso sin título'
     );
   },
   getItemSubtitle: (collectionItem: CollectionItem) => {
     return collectionItem.promoText || collectionItem.metaTitle || undefined;
   },
   getItemType: (collectionItem: CollectionItem) => {
-    return collectionItem.contentType === 'directo' ?
-        'live'
+    const type =
+      collectionItem.lastMultimedia ?
+        collectionItem.lastMultimedia.contentType
       : collectionItem.contentType;
+
+    return type === 'directo' ? 'live' : type;
   },
   getItemID: (collectionItem: CollectionItem) => {
     return (

@@ -29,6 +29,10 @@ export default function ContentVideo({
     () => dateUtils.toDate(videoEl?.expirationDate || undefined),
     [videoEl?.expirationDate],
   );
+  const duration = useMemo(
+    () => dateUtils.toDuration(videoEl?.duration),
+    [videoEl?.duration],
+  );
 
   return (
     <>
@@ -47,25 +51,30 @@ export default function ContentVideo({
         <Skeleton className="aspect-video w-full" />
       : videoEl ?
         <>
-          <div className="relative aspect-video w-full">
-            {playing ?
-              <VideoPlayer id={id} autoPlay />
-            : <>
-                <img src={videoEl.thumbnail} />
-                <button
-                  onClick={handleStartPlay}
-                  className="absolute top-0 h-full w-full bg-black/40 hover:bg-black/60 hover:underline"
-                >
-                  PLAY
-                </button>
-              </>
-            }
-          </div>
+          {playing ?
+            <VideoPlayer id={id} autoPlay />
+          : <div className="relative">
+              <img
+                src={videoEl.thumbnail}
+                className="aspect-video w-full object-cover"
+              />
+              <button
+                onClick={handleStartPlay}
+                className="absolute top-0 h-full w-full bg-black/40 hover:bg-black/60 hover:underline"
+              >
+                PLAY
+              </button>
+            </div>
+          }
 
           <div className="p-4 text-xl font-bold">
             {videoEl.title}{' '}
             {videoEl.productionDate ? `(${videoEl.productionDate})` : null}
           </div>
+
+          {duration ?
+            <div className="p-4">{duration}</div>
+          : null}
 
           {videoEl.description ?
             <div
@@ -74,13 +83,24 @@ export default function ContentVideo({
             />
           : null}
 
-          {videoEl.director || videoEl.casting ?
+          {(
+            videoEl.director ||
+            videoEl.casting ||
+            videoEl.producedBy ||
+            videoEl.technicalTeam
+          ) ?
             <div className="p-4">
               {videoEl.director ?
                 <div>Dirigido por: {videoEl.director}</div>
               : null}
               {videoEl.casting ?
                 <div>Reparto: {videoEl.casting}</div>
+              : null}
+              {videoEl.producedBy ?
+                <div>Producido por: {videoEl.producedBy}</div>
+              : null}
+              {videoEl.technicalTeam ?
+                <div>Equipo técnico: {videoEl.technicalTeam}</div>
               : null}
             </div>
           : null}

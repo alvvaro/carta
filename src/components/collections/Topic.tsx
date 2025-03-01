@@ -15,9 +15,14 @@ export default function Topic({
   return (
     error ?
       <ErrorMessage className="m-3 h-64 w-full rounded-md" error={error} />
-    : isLoading ? <Skeleton className="m-3 h-64 w-full rounded-md" />
-    : topic ?
-      topic.page.items.map((topicItem) => (
+    : isLoading ?
+      Array.from({ length: 10 }).map((_, i) => (
+        <Skeleton
+          key={i}
+          className="m-3 mb-24 aspect-video w-80 shrink-0 rounded-md"
+        />
+      ))
+    : topic?.page.items.map((topicItem) => (
         <Card
           key={JSON.stringify(topicItem)}
           onClick={() => console.log(topicItem)}
@@ -35,12 +40,14 @@ export default function Topic({
             (topicItem.anteTitle as unknown as string)
           }
           title={
-            topicItem.shortTitle || topicItem.longTitle || '--- SIN TITULO ---'
+            topicItem.shortTitle ||
+            topicItem.longTitle ||
+            topicItem.title ||
+            topicItem.id
           }
           duration={topicItem.duration}
           href={`${topicItem.contentType}/${topicItem.id}`}
         />
       ))
-    : null
   );
 }

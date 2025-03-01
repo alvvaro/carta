@@ -2,10 +2,12 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 
 export default function Row({
   title,
+  live = false,
   children,
   onClick,
 }: {
   title: string;
+  live?: boolean;
   children: ReactNode;
   onClick?: () => void;
 }) {
@@ -91,12 +93,12 @@ export default function Row({
         {canScrollLeft || onClick ?
           <button
             onClick={handleTitleClick}
-            className="apply-hover-bg flex-1 select-none p-3 text-start text-xl"
+            className="apply-hover-bg flex-1 p-3 text-start text-xl select-none"
           >
-            {title}
+            {title} {live ? '🛜' : null}
           </button>
-        : <div className="flex-1 select-none p-3 text-start text-xl">
-            {title}
+        : <div className="flex-1 p-3 text-start text-xl select-none">
+            {title} {live ? '🛜' : null}
           </div>
         }
 

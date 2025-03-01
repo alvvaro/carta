@@ -65,7 +65,7 @@ export default function Card({
         <div className="opacity-40">{pretitle}</div>
         <div className="card-title font-bold">{title}</div>
 
-        {duration || start ?
+        {durationStr || date ?
           <div className="opacity-80">
             {intersperseArr([durationStr, date], ' · ')}
           </div>

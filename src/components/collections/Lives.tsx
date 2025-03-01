@@ -9,21 +9,30 @@ export default function Lives({ code }: { code: string | undefined }) {
   return (
     error ?
       <ErrorMessage className="m-3 h-64 w-full rounded-md" error={error} />
-    : isLoading ? <Skeleton className="m-3 h-64 w-full rounded-md" />
-    : lives ?
-      lives.page.items.map((liveItem) => (
+    : isLoading ?
+      Array.from({ length: 10 }).map((_, i) => (
+        <Skeleton
+          key={i}
+          className="m-3 mb-24 aspect-video w-80 shrink-0 rounded-md"
+        />
+      ))
+    : lives?.page.items.map((liveItem) => (
         <Card
           key={JSON.stringify(liveItem)}
           onClick={() => console.log(liveItem)}
           logo={liveItem.logo_desktop}
           img={liveItem.imagen}
           pretitle={liveItem.antetitulo}
-          title={liveItem.titulo || '--- SIN TITULO ---'}
+          title={
+            liveItem.titulo ||
+            liveItem.now?.titulo ||
+            liveItem.canal ||
+            liveItem.id
+          }
           subtitle={liveItem.metaTitle}
           liveProgress={liveItem.porcentaje || undefined}
           href={`live/${liveItem.idAsset}`}
         />
       ))
-    : null
   );
 }

@@ -21,7 +21,13 @@ export default function Collection({ code }: { code: string | undefined }) {
   return (
     error ?
       <ErrorMessage error={error} className="m-3 h-64 w-full rounded-md" />
-    : isLoading ? <Skeleton className="m-3 h-64 w-full rounded-md" />
+    : isLoading ?
+      Array.from({ length: 10 }).map((_, i) => (
+        <Skeleton
+          key={i}
+          className="m-3 mb-24 aspect-video w-80 shrink-0 rounded-md"
+        />
+      ))
     : collectionItems.map((collectionItem) => (
         <Card
           key={JSON.stringify(collectionItem)}

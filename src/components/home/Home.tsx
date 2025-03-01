@@ -29,23 +29,25 @@ export default function Home() {
 
       {error ?
         <ErrorMessage
-          className="h-96 w-full"
+          className="aspect-video w-full"
           error={error}
           text="No se ha podido conectar con RTVE Play"
         />
       : isLoading ?
-        <Skeleton className="h-96" />
-      : home ?
-        home.rows.map((row, i) => (
+        Array.from({ length: 6 }).map((_, i) => (
+          <Skeleton key={i} className="m-3 h-80 not-last:mb-0" />
+        ))
+      : home?.rows.map((row, i) => (
           <Row
             key={row.orden}
             title={row.title || (i === 0 ? 'Portada' : 'Destacado')}
+            live={row.moduleType === 'livesCollection'}
             onClick={() => console.log(row)}
           >
             <HomeModule row={row} />
           </Row>
         ))
-      : null}
+      }
     </>
   );
 }

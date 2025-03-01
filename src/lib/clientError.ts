@@ -1,7 +1,8 @@
 export enum CLIENT_ERROR {
-  UNHANDLED = -1,
-  FETCH_FAILED = 101,
-  BAD_RESPONSE = 102,
+  UNHANDLED,
+  FETCH_FAILED,
+  BAD_RESPONSE,
+  KO_RESPONSE,
 }
 
 export class ClientError {

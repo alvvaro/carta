@@ -13,7 +13,7 @@ export default function ErrorMessage({
   return (
     <div
       className={strConcat(
-        'flex h-full flex-col items-center justify-center bg-white/10',
+        'flex flex-col items-center justify-center bg-white/10 py-6',
         className,
       )}
     >
@@ -22,7 +22,7 @@ export default function ErrorMessage({
           {text ||
             (error?.status === 404 ?
               '404: Recurso no encontrado'
-            : 'Error al cargar este elemento')}
+            : 'Error al cargar este recurso')}
         </div>
         {error?.message ?
           <div className="opacity-60">{error.message}</div>

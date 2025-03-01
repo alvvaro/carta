@@ -51,43 +51,14 @@ export const fetchApi = async <T>(
   if (typeof body === 'object') {
     const serverError = body as { message: string };
     throw new ClientError({
-      type: CLIENT_ERROR.BAD_RESPONSE,
+      type: CLIENT_ERROR.KO_RESPONSE,
       status: response.status,
       message: serverError.message,
     });
   }
 
   throw new ClientError({
-    type: CLIENT_ERROR.BAD_RESPONSE,
-    status: response.status,
-    message: body as string,
-  });
-};
-
-export const fetchApiForceTextResponse = async (
-  ...args: Parameters<typeof safeFetch>
-): Promise<string> => {
-  const response = await safeFetch(...args);
-
-  if (response.ok) {
-    return await response.text();
-  }
-
-  const body = await getBody(response);
-
-  if (typeof body === 'object') {
-    const serverError = body as VFD['ErrorResponse'];
-    throw new ClientError({
-      type: CLIENT_ERROR.BAD_RESPONSE,
-      status: response.status,
-      code: serverError.code,
-      message: serverError.message,
-      trace: serverError.trace,
-    });
-  }
-
-  throw new ClientError({
-    type: CLIENT_ERROR.BAD_RESPONSE,
+    type: CLIENT_ERROR.KO_RESPONSE,
     status: response.status,
     message: body as string,
   });

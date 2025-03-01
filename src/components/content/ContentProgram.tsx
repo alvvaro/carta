@@ -1,4 +1,4 @@
-import { useSearchParams } from 'wouter';
+import { Link, useSearchParams } from 'wouter';
 
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
@@ -11,20 +11,22 @@ import ContentProgramVideos from './ContentProgramVideos';
 
 export default function ContentProgram({ id }: { id: string }) {
   const { program, isLoading, error } = useProgram(id);
+
   const programEl = program?.page.items[0];
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const selectedSeason = parseInt(searchParams.get('season') || '0') - 1;
-  const seasons = (programEl?.seasons || []).sort(
+  const seasons = (programEl?.seasons || []).toSorted(
     (seasonA, seasonB) => seasonA.orden - seasonB.orden,
   );
+
+  const [searchParams] = useSearchParams();
+
+  const selectedSeason = parseInt(searchParams.get('season') || '0') - 1;
   const selectedSeasonId = seasons.at(selectedSeason)?.id;
 
-  const setSelectedSeason = (number: number) =>
-    setSearchParams({
-      season: (number + 1).toString(),
-    });
+  const getSeasonHref = (index: number) => {
+    const url = new URL(window.location.toString());
+    url.searchParams.set('season', (index + 1).toString());
+    return url.toString();
+  };
 
   return (
     <>
@@ -43,9 +45,10 @@ export default function ContentProgram({ id }: { id: string }) {
         <Skeleton className="aspect-video w-full" />
       : programEl ?
         <>
-          <div className="w-full">
-            <img src={programEl.imgBanner2 || programEl.imgBanner} />
-          </div>
+          <img
+            src={programEl.imgBanner2 || programEl.imgBanner}
+            className="block aspect-video w-full object-cover"
+          />
 
           <div className="p-4 text-xl font-bold">{programEl.title}</div>
 
@@ -69,7 +72,7 @@ export default function ContentProgram({ id }: { id: string }) {
               </div>
               <div className="flex flex-row flex-wrap bg-black/50">
                 {seasons.map((season, index) => (
-                  <button
+                  <Link
                     key={season.id}
                     className={strConcat(
                       'apply-hover-bg border-r-[1px] border-white/10 p-4',
@@ -77,10 +80,10 @@ export default function ContentProgram({ id }: { id: string }) {
                         'font-bold underline'
                       : '',
                     )}
-                    onClick={() => setSelectedSeason(index)}
+                    href={getSeasonHref(index)}
                   >
                     {season.longTitle}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </>
