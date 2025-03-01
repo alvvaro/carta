@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import { Link } from 'wouter';
 
 import dateUtils from '@/utils/date';
@@ -28,8 +26,8 @@ export default function Card({
   duration?: number;
   onClick?: () => void;
 }) {
-  const date = useMemo(() => dateUtils.toCalendar(start), [start]);
-  const durationStr = useMemo(() => dateUtils.toDuration(duration), [duration]);
+  const date = dateUtils.toCalendar(start);
+  const durationStr = dateUtils.toDuration(duration);
 
   return (
     <Link

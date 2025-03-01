@@ -26,9 +26,13 @@ export default function ContentProgramVideos({
       </Portal>
 
       {error ?
-        <ErrorMessage className="w-full" error={error} />
+        <ErrorMessage
+          className="h-80 w-full"
+          error={error}
+          text="Vídeos no disponibles"
+        />
       : isLoading ?
-        <Skeleton className="w-full" />
+        <Skeleton className="h-80 w-full" />
       : videos ?
         <>
           {videos.map((video) => (

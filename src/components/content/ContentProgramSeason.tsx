@@ -30,9 +30,13 @@ export default function ContentProgramSeason({
       </Portal>
 
       {error ?
-        <ErrorMessage className="w-full" error={error} />
+        <ErrorMessage
+          className="h-80 w-full"
+          error={error}
+          text="Temporada no disponible"
+        />
       : isLoading ?
-        <Skeleton className="w-full" />
+        <Skeleton className="h-80 w-full" />
       : videos ?
         <>
           {videos.map((video) => (

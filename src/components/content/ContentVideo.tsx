@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
@@ -21,18 +21,9 @@ export default function ContentVideo({
   const { video, isLoading, error } = useVideo(id);
 
   const videoEl = video?.page.items[0];
-  const date = useMemo(
-    () => dateUtils.toDate(videoEl?.dateOfEmission),
-    [videoEl?.dateOfEmission],
-  );
-  const expiration = useMemo(
-    () => dateUtils.toDate(videoEl?.expirationDate || undefined),
-    [videoEl?.expirationDate],
-  );
-  const duration = useMemo(
-    () => dateUtils.toDuration(videoEl?.duration),
-    [videoEl?.duration],
-  );
+  const date = dateUtils.toDate(videoEl?.dateOfEmission);
+  const expiration = dateUtils.toDate(videoEl?.expirationDate || undefined);
+  const duration = dateUtils.toDuration(videoEl?.duration);
 
   return (
     <>
@@ -68,8 +59,8 @@ export default function ContentVideo({
           }
 
           <div className="p-4 text-xl font-bold">
-            {videoEl.title}{' '}
-            {videoEl.productionDate ? `(${videoEl.productionDate})` : null}
+            {videoEl.title}
+            {videoEl.productionDate ? ` (${videoEl.productionDate})` : null}
           </div>
 
           {duration ?

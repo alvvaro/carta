@@ -4,12 +4,7 @@ import ContentVideo from '@/components/content/ContentVideo';
 
 import ContentProgram from './ContentProgram';
 
-enum ContentType {
-  live = 'live',
-  video = 'video',
-  program = 'program',
-  collection = 'collection',
-}
+type ContentType = 'live' | 'video' | 'program' | 'collection';
 
 export default function Content() {
   const params = useParams();
@@ -17,14 +12,9 @@ export default function Content() {
   const id = params.id as string;
 
   return (
-    <>
-      {kind === ContentType.video ?
-        <ContentVideo id={id} />
-      : kind === ContentType.live ?
-        <ContentVideo id={id} autoPlay />
-      : kind === ContentType.program ?
-        <ContentProgram id={id} />
-      : JSON.stringify(params)}
-    </>
+    kind === 'video' ? <ContentVideo id={id} />
+    : kind === 'live' ? <ContentVideo id={id} autoPlay />
+    : kind === 'program' ? <ContentProgram id={id} />
+    : JSON.stringify(params)
   );
 }

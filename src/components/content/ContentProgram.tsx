@@ -106,10 +106,6 @@ export default function ContentProgram({ id }: { id: string }) {
               : null}
             </div>
           : null}
-
-          {/* <pre className="bg-black/50 p-4 text-wrap">
-            {JSON.stringify(program, undefined, 2)}
-          </pre> */}
         </>
       : null}
     </>
