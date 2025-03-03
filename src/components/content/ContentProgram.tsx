@@ -46,7 +46,12 @@ export default function ContentProgram({ id }: { id: string }) {
       : programEl ?
         <>
           <img
-            src={programEl.imgBanner2 || programEl.imgBanner}
+            src={
+              programEl.imgPortada ||
+              programEl.imgPortada2 ||
+              programEl.imgBanner2 ||
+              programEl.imgBanner
+            }
             className="block aspect-video w-full object-cover"
           />
 

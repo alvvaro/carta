@@ -19,8 +19,9 @@ export default function VideoPlayer({
       <ErrorMessage
         error={error}
         text="No se han podido obtener los derechos de streaming de este contenido"
+        className="aspect-video w-full"
       />
-    : isLoading ? <Skeleton />
+    : isLoading ? <Skeleton className="aspect-video w-full" />
     : token ?
       <VideoPlayerWidevine
         url={url}
