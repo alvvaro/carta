@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             }}
           />
         </LogoLink>
-        <div id="header-slot" className="flex flex-row"></div>
+        <div id="header-slot" className="flex flex-row" />
       </div>
 
       <div className="flex flex-col divide-y-[1px] divide-white/10">

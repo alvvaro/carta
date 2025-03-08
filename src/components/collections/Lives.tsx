@@ -16,22 +16,17 @@ export default function Lives({ code }: { code: string | undefined }) {
           className="m-3 mb-24 aspect-video w-80 shrink-0 rounded-md"
         />
       ))
-    : lives?.page.items.map((liveItem) => (
+    : lives?.page.items.map((live) => (
         <Card
-          key={JSON.stringify(liveItem)}
-          onClick={() => console.log(liveItem)}
-          logo={liveItem.logo_desktop}
-          img={liveItem.imagen}
-          pretitle={liveItem.antetitulo}
-          title={
-            liveItem.titulo ||
-            liveItem.now?.titulo ||
-            liveItem.canal ||
-            liveItem.id
-          }
-          subtitle={liveItem.metaTitle}
-          liveProgress={liveItem.porcentaje || undefined}
-          href={`live/${liveItem.idAsset}`}
+          key={JSON.stringify(live)}
+          onClick={() => console.log(live)}
+          logo={live.logo_desktop}
+          img={live.imagen}
+          pretitle={live.antetitulo}
+          title={live.titulo || live.now?.titulo || live.canal || live.id}
+          subtitle={live.metaTitle}
+          liveProgress={live.porcentaje || undefined}
+          href={`live/${live.idAsset}`}
         />
       ))
   );

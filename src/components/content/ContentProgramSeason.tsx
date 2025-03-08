@@ -9,7 +9,7 @@ export default function ContentProgramSeason({
   seasonId,
 }: {
   programId: string;
-  seasonId: string;
+  seasonId: number;
 }) {
   const { videos, isLoading, error, hasMorePages, setSize } = useProgramSeason(
     programId,

@@ -5,25 +5,25 @@ import RTVEVideos from '@/types/videos';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath =
-  (programCode: string | undefined, seasonCode: string | undefined) =>
+  (programId: string | undefined, seasonId: number | undefined) =>
   (
     pageIndex: number,
     prevPageData: { page: { totalPages: number } } | undefined,
   ) => {
-    if (!programCode || !seasonCode) return null;
+    if (!programId || !seasonId) return null;
     if (prevPageData && prevPageData.page.totalPages === pageIndex) return null;
 
-    return `https://api.rtve.es/api/programas/${programCode}/temporadas/${seasonCode}/videos.json?page=${pageIndex + 1}`;
+    return `https://api.rtve.es/api/programas/${programId}/temporadas/${seasonId}/videos.json?page=${pageIndex + 1}`;
   };
 
 export default function useProgramSeason(
-  programCode: string | undefined,
-  seasonCode: string | undefined,
+  programId: string | undefined,
+  seasonId: number | undefined,
 ) {
   const { data, isLoading, size, ...rest } = useSWRInfinite<
     RTVEVideos,
     ClientError
-  >(getApiPath(programCode, seasonCode), fetchApi, {
+  >(getApiPath(programId, seasonId), fetchApi, {
     shouldRetryOnError: false,
     revalidateIfStale: false,
     revalidateOnFocus: false,

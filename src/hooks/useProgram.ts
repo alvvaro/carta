@@ -1,7 +1,8 @@
 import useSWRImmutable from 'swr/immutable';
 
 import { ClientError } from '@/lib/clientError';
-import RTVEProgram from '@/types/program';
+import RTVE from '@/types';
+import { Pagination } from '@/types/Pagination';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath = (code: string | undefined) => {
@@ -11,16 +12,15 @@ const getApiPath = (code: string | undefined) => {
 };
 
 export default function useProgram(code: string | undefined) {
-  const { data, ...rest } = useSWRImmutable<RTVEProgram, ClientError>(
-    getApiPath(code),
-    fetchApi,
-    {
-      shouldRetryOnError: false,
-    },
-  );
+  const { data, ...rest } = useSWRImmutable<
+    Pagination<RTVE['Program']>,
+    ClientError
+  >(getApiPath(code), fetchApi, {
+    shouldRetryOnError: false,
+  });
 
   return {
-    program: data,
+    programs: data,
     ...rest,
   };
 }

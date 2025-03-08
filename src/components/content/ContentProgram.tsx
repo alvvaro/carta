@@ -9,17 +9,17 @@ import ContentProgramSeason from './ContentProgramSeason';
 import ContentProgramVideos from './ContentProgramVideos';
 
 export default function ContentProgram({ id }: { id: string }) {
-  const { program, isLoading, error } = useProgram(id);
+  const { programs, isLoading, error } = useProgram(id);
 
-  const programEl = program?.page.items[0];
-  const seasons = (programEl?.seasons || []).toSorted(
+  const program = programs?.page.items[0];
+  const seasons = (program?.seasons || []).toSorted(
     (seasonA, seasonB) => seasonA.orden - seasonB.orden,
   );
 
   const [searchParams] = useSearchParams();
 
-  const selectedSeason = parseInt(searchParams.get('season') || '0') - 1;
-  const selectedSeasonId = seasons.at(selectedSeason)?.id;
+  const selectedSeason = Number.parseInt(searchParams.get('season') || '0') - 1;
+  const selectedSeasonId = seasons.at(selectedSeason)?.id || -1;
 
   const getSeasonHref = (index: number) => {
     const url = new URL(window.location.toString());
@@ -31,7 +31,7 @@ export default function ContentProgram({ id }: { id: string }) {
     <>
       <Portal slotId="header-slot">
         <button
-          onClick={() => console.log(program)}
+          onClick={() => console.log(programs)}
           className="apply-hover-bg-white px-4"
         >
           log program
@@ -42,37 +42,37 @@ export default function ContentProgram({ id }: { id: string }) {
         <ErrorMessage className="aspect-video w-full" error={error} />
       : isLoading ?
         <Skeleton className="aspect-video w-full" />
-      : programEl ?
+      : program ?
         <>
           <img
             src={
-              programEl.imgPortada ||
-              programEl.imgPortada2 ||
-              programEl.imgBanner2 ||
-              programEl.imgBanner
+              program.imgPortada ||
+              program.imgPortada2 ||
+              program.imgBanner2 ||
+              program.imgBanner
             }
             className="block aspect-video w-full object-cover"
           />
 
-          <div className="p-4 text-xl font-bold">{programEl.title}</div>
+          <div className="p-4 text-xl font-bold">{program.title}</div>
 
-          {programEl.emission ?
+          {program.emission ?
             <div className="p-4">
-              <div>{programEl.emission}</div>
+              <div>{program.emission}</div>
             </div>
           : null}
 
-          {programEl.longDescription ?
+          {program.longDescription ?
             <div
               className="p-4"
-              dangerouslySetInnerHTML={{ __html: programEl.longDescription }}
+              dangerouslySetInnerHTML={{ __html: program.longDescription }}
             />
           : null}
 
-          {programEl.seasons?.length ?
+          {program.seasons?.length ?
             <>
               <div className="bg-black/50 p-4 text-xl">
-                {programEl.seasons.length} temporadas
+                {program.seasons.length} temporadas
               </div>
               <div className="flex flex-row flex-wrap bg-black/50">
                 {seasons.map((season, index) => (
@@ -92,20 +92,20 @@ export default function ContentProgram({ id }: { id: string }) {
             </>
           : null}
 
-          {programEl.seasons?.length ?
+          {program.seasons?.length ?
             <ContentProgramSeason
-              programId={programEl.id}
+              programId={program.id}
               seasonId={selectedSeasonId}
             />
-          : <ContentProgramVideos programId={programEl.id} />}
+          : <ContentProgramVideos programId={program.id} />}
 
-          {programEl.showMan || programEl.casting ?
+          {program.showMan || program.casting ?
             <div className="p-4">
-              {programEl.showMan ?
-                <div>Presentado por: {programEl.showMan}</div>
+              {program.showMan ?
+                <div>Presentado por: {program.showMan}</div>
               : null}
-              {programEl.casting ?
-                <div>Reparto: {programEl.casting}</div>
+              {program.casting ?
+                <div>Reparto: {program.casting}</div>
               : null}
             </div>
           : null}
