@@ -1,43 +1,33 @@
 import RTVE from '.';
 
 export default interface Collection {
-  page: {
-    items: {
-      itemDestacado: CollectionItem | null;
-      collectionItems: CollectionItem[];
-      id: string;
-      htmlUrl: string | null;
-      name: string;
-      title: string;
-      urlTitle: string | null;
-      anteTitle: string | null;
-      description: string | null;
-      generatePf: boolean;
-      context: string | null;
-      template: 'comp_nV' | 'comp_xV' | 'comp_nC' | 'comp_xC';
-      designCode: string;
-      type: 'collection';
-      modificationDate: Date;
-      hidePublicationDate: boolean;
-      previews: {
-        horizontal: null | string;
-        vertical: null | string;
-        square: null | string;
-      };
-      seo: SEO;
-      number: number;
-      size: number;
-      totalItems: number;
-      totalPages: number;
-      numElements: number;
-    }[];
-    number: number;
-    size: number;
-    offset: number;
-    total: number;
-    totalPages: number;
-    numElements: number;
+  itemDestacado: CollectionItem | null;
+  collectionItems: CollectionItem[];
+  id: string;
+  htmlUrl: string | null;
+  name: string;
+  title: string;
+  urlTitle: string | null;
+  anteTitle: string | null;
+  description: string | null;
+  generatePf: boolean;
+  context: string | null;
+  template: 'comp_nV' | 'comp_xV' | 'comp_nC' | 'comp_xC';
+  designCode: string;
+  type: 'collection';
+  modificationDate: Date;
+  hidePublicationDate: boolean;
+  previews: {
+    horizontal: null | string;
+    vertical: null | string;
+    square: null | string;
   };
+  seo: SEO;
+  number: number;
+  size: number;
+  totalItems: number;
+  totalPages: number;
+  numElements: number;
 }
 
 type ContentTypeEnum = 'program' | 'video' | 'audio';
@@ -191,14 +181,6 @@ type PaidCountry =
   | 'IN'
   | 'JP';
 
-interface Season {
-  id: number;
-  shorttitle: string;
-  longTitle: string;
-  numEpisodes: string;
-  orden: number;
-}
-
 interface SEO {
   imageSEO: null | string;
   metaTitle: null | string;
@@ -218,7 +200,6 @@ interface CollectionItem {
   live?: boolean;
   porcentaje?: number;
   tipo?: string;
-  contentType: string;
   permalink?: string;
   descripcion?: null | string;
   logo?: string;
@@ -279,7 +260,7 @@ interface CollectionItem {
   isComplete?: boolean;
   noFragments?: boolean;
   generos?: RTVE['Genre'][] | null;
-  seasons?: Season[] | null;
+  seasons?: RTVE['Season'][] | null;
   numSeasons?: number;
   paidCountries?: PaidCountry[] | null;
   contentType: ContentTypeEnum;

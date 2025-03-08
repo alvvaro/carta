@@ -1,9 +1,9 @@
-export default interface RTVEProgram {
-  page: Page;
+export interface Pagination<T> {
+  page: Page<T>;
 }
 
-interface Page {
-  items: any[];
+export interface Page<T> {
+  items: T[];
   number: number;
   size: number;
   offset: number;
