@@ -8,13 +8,16 @@ import {
 
 /* ------------------ */
 
-const ENTRYPOINT =
-  'https://api.rtve.es/api/agr-programas/{code}/programas.json';
-const NAME = 'AgrDirectos';
-const MAX_ITERATIONS = 5000;
-const FILE_PATH = './example.ts';
+const ENTRYPOINT = 'https://www.rtve.es/api/programas.json?page={code}';
+const NAME = 'Programas';
+const MAX_ITERATIONS = 237;
+const FILE_PATH = './src/types/Program.d.ts';
 
 /* ------------------ */
+
+async function delay(del: number = 1000) {
+  return await new Promise((resolve) => setTimeout(resolve, del));
+}
 
 function generateEntries() {
   const entries: string[] = [];
@@ -56,6 +59,8 @@ async function fetchJSON(url: string) {
 async function reduceEntries(accP: Promise<string[]>, val: string) {
   const acc = await accP;
 
+  await delay();
+  console.log('fetching', val);
   const json = await fetchJSON(val);
   if (json) {
     acc.push(json);
@@ -86,16 +91,19 @@ async function quicktypeJSON(name: string, samples: string[]) {
 
 async function saveType(type: Awaited<ReturnType<typeof quicktypeJSON>>) {
   await fs.promises.writeFile(FILE_PATH, type.lines.join('\n'));
-  console.info('saved to', FILE_PATH);
+  console.info('Saved to', FILE_PATH, '. Exiting...');
 }
 
 async function main() {
   const entries = generateEntries();
+  console.log('Generated', entries.length, 'entries');
   const samples = await entries.reduce<Promise<string[]>>(
     reduceEntries,
     Promise.resolve([]),
   );
+  console.log('Fetched', samples.length, 'samples');
   const file = await quicktypeJSON(NAME, samples);
+  console.log('Type generated');
   await saveType(file);
 }
 
