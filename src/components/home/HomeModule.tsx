@@ -4,7 +4,6 @@ import Lives from '@/components/collections/Lives';
 import Topic from '@/components/collections/Topic';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import RTVE from '@/types';
-import { strBetween } from '@/utils/string';
 
 export default function HomeModule({
   row,
@@ -20,20 +19,20 @@ export default function HomeModule({
 
   switch (row.moduleType) {
     case 'Collection': {
-      const code = strBetween(row.urlContent, '/', '.json');
+      const code = row.urlContent.between('/', '.json');
 
       return <Collection code={code} />;
     }
     case 'livesCollection': {
-      const code = strBetween(row.urlContent, 'directos/', '/directos.json');
+      const code = row.urlContent.between('directos/', '/directos.json');
 
       return <Lives code={code} />;
     }
     case 'catalogs': {
       switch (row.tipo) {
         case 'videos': {
-          const code = strBetween(row.urlContent, 'tematicas/', '/videos.json');
-          const type = strBetween(row.urlContent, 'type=', '');
+          const code = row.urlContent.between('tematicas/', '/videos.json');
+          const type = row.urlContent.between('type=', '');
 
           return <Topic code={code} type={type} />;
         }

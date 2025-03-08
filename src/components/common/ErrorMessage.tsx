@@ -1,5 +1,4 @@
 import { ClientError } from '@/lib/clientError';
-import { strConcat } from '@/utils/string';
 
 export default function ErrorMessage({
   text,
@@ -12,8 +11,7 @@ export default function ErrorMessage({
 }) {
   return (
     <div
-      className={strConcat(
-        'flex flex-col items-center justify-center bg-white/10 py-6',
+      className={'flex flex-col items-center justify-center bg-white/10 py-6'.append(
         className,
       )}
     >

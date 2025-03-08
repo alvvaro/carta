@@ -1,7 +1,6 @@
 import { Link } from 'wouter';
 
 import dateUtils from '@/utils/date';
-import intersperseArr from '@/utils/intersperse';
 
 export default function Card({
   img,
@@ -26,7 +25,7 @@ export default function Card({
   duration?: number;
   onClick?: () => void;
 }) {
-  const date = dateUtils.toCalendar(start);
+  const startStr = dateUtils.toCalendar(start);
   const durationStr = dateUtils.toDuration(duration);
 
   return (
@@ -63,9 +62,9 @@ export default function Card({
         <div className="opacity-40">{pretitle}</div>
         <div className="card-title font-bold">{title}</div>
 
-        {durationStr || date ?
+        {durationStr || startStr ?
           <div className="opacity-80">
-            {intersperseArr([durationStr, date], ' · ')}
+            {[durationStr, startStr].compact().interleave(' · ')}
           </div>
         : null}
 

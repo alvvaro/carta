@@ -15,7 +15,7 @@ export default function Collection({ code }: { code: string | undefined }) {
     return [
       ...collection.page.items.map((item) => item.itemDestacado),
       ...collection.page.items.flatMap((item) => item.collectionItems),
-    ].filter((x) => !!x);
+    ].compact();
   }, [collection]);
 
   return (

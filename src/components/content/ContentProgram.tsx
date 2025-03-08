@@ -4,7 +4,6 @@ import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import Portal from '@/components/layout/Portal';
 import useProgram from '@/hooks/useProgram';
-import { strConcat } from '@/utils/string';
 
 import ContentProgramSeason from './ContentProgramSeason';
 import ContentProgramVideos from './ContentProgramVideos';
@@ -79,8 +78,7 @@ export default function ContentProgram({ id }: { id: string }) {
                 {seasons.map((season, index) => (
                   <Link
                     key={season.id}
-                    className={strConcat(
-                      'apply-hover-bg border-r-[1px] border-white/10 p-4',
+                    className={'apply-hover-bg border-r-[1px] border-white/10 p-4'.append(
                       selectedSeasonId === season.id ?
                         'font-bold underline'
                       : '',
