@@ -3,6 +3,14 @@ import Skeleton from '@/components/common/Skeleton';
 import VideoPlayerWidevine from '@/components/videoPlayer/VideoPlayerWidevine';
 import useToken from '@/hooks/useToken';
 
+import VideoPlayerFairplay from './VideoPlayerFairplay';
+
+const isSafari = () => {
+  // const video = document.createElement('video');
+  // return 'webkitSetMediaKeys' in video;
+  return 'GestureEvent' in window;
+};
+
 export default function VideoPlayer({
   id,
   autoPlay = false,
@@ -23,11 +31,18 @@ export default function VideoPlayer({
       />
     : isLoading ? <Skeleton className="aspect-video w-full" />
     : token ?
-      <VideoPlayerWidevine
-        url={url}
-        widevineURL={token.widevineURL}
-        autoPlay={autoPlay}
-      />
+      isSafari() ?
+        <VideoPlayerFairplay
+          url={url}
+          fairplayURL={token.fairplayURL}
+          fairplayCer={token.fairplayCer}
+          autoPlay={autoPlay}
+        />
+      : <VideoPlayerWidevine
+          url={url}
+          widevineURL={token.widevineURL}
+          autoPlay={autoPlay}
+        />
     : null
   );
 }

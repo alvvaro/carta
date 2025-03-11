@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { RefCallback, memo, useCallback } from 'react';
 
 import { MediaPlayer } from 'dashjs';
 
@@ -11,20 +11,24 @@ const VideoPlayerWidevine = memo(function VideoPlayerWidevine({
   widevineURL: string;
   autoPlay?: boolean;
 }) {
+  const widevineRef: RefCallback<HTMLVideoElement> = useCallback(
+    function (video) {
+      const player = MediaPlayer().create();
+      player.setProtectionData({
+        'com.widevine.alpha': { serverURL: widevineURL },
+      });
+      player.initialize(video as HTMLVideoElement, url, autoPlay);
+
+      return () => player.destroy();
+    },
+    [url, widevineURL, autoPlay],
+  );
+
   return (
     <video
-      id="videoPlayer"
+      id="videoPlayerWidevine"
       controls
-      autoPlay={false}
-      ref={(video) => {
-        const player = MediaPlayer().create();
-        player.setProtectionData({
-          'com.widevine.alpha': { serverURL: widevineURL },
-        });
-        player.initialize(video as HTMLVideoElement, url, autoPlay);
-
-        return () => player.destroy();
-      }}
+      ref={widevineRef}
       className="aspect-video w-full"
     />
   );

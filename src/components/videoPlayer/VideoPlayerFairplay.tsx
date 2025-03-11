@@ -1,33 +1,55 @@
-import { memo } from 'react';
+import { RefCallback, memo, useCallback } from 'react';
 
-import { MediaPlayer } from 'dashjs';
+import shaka from 'shaka-player';
 
-const VideoPlayerWidevine = memo(function VideoPlayerWidevine({
+shaka.polyfill.installAll();
+
+const VideoPlayerFairplay = memo(function VideoPlayerFairplay({
   url,
-  widevineURL,
+  fairplayURL,
+  fairplayCer,
   autoPlay = false,
 }: {
   url: string;
-  widevineURL: string;
+  fairplayURL: string;
+  fairplayCer: string;
   autoPlay?: boolean;
 }) {
-  return (
-    <video
-      id="videoPlayer"
-      controls
-      autoPlay={false}
-      ref={(video) => {
-        const player = MediaPlayer().create();
-        player.setProtectionData({
-          'com.widevine.alpha': { serverURL: widevineURL },
-        });
-        player.initialize(video as HTMLVideoElement, url, autoPlay);
+  const fairplayRef: RefCallback<HTMLVideoElement> = useCallback(
+    function (video) {
+      const player = new shaka.Player();
 
-        return () => player.destroy();
-      }}
-      className="aspect-video w-full"
-    />
+      player.configure(
+        'drm.advanced.com\\.apple\\.fps.individualizationServer',
+        fairplayURL,
+      );
+      player.configure(
+        'drm.advanced.com\\.apple\\.fps.serverCertificateUri',
+        fairplayCer,
+      );
+
+      (async function init() {
+        await player.attach(video as HTMLMediaElement);
+        await player.load(url);
+      })();
+
+      return () => void player.destroy();
+    },
+    [url, fairplayURL, fairplayCer],
   );
+
+  return shaka.Player.isBrowserSupported() ?
+      <>
+        <video
+          id="videoPlayerFairplay"
+          controls
+          autoPlay={autoPlay}
+          ref={fairplayRef}
+          className="aspect-video w-full"
+        />
+        Fairplay supported
+      </>
+    : 'Fairplay not supported';
 });
 
-export default VideoPlayerWidevine;
+export default VideoPlayerFairplay;
