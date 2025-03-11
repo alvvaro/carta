@@ -41,7 +41,7 @@ export default function Home() {
           <Row
             key={row.orden}
             title={row.title || (i === 0 ? 'Portada' : 'Destacado')}
-            live={row.moduleType === 'livesCollection'}
+            postTitle={row.moduleType}
             onClick={() => console.log(row)}
           >
             <HomeModule row={row} />

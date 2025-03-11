@@ -2,12 +2,12 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 
 export default function Row({
   title,
-  live = false,
+  postTitle = '',
   children,
   onClick,
 }: {
   title: string;
-  live?: boolean;
+  postTitle?: string;
   children: ReactNode;
   onClick?: () => void;
 }) {
@@ -95,10 +95,10 @@ export default function Row({
             onClick={handleTitleClick}
             className="apply-hover-bg flex-1 p-3 text-start text-xl select-none"
           >
-            {title} {live ? '🛜' : null}
+            {title} ({postTitle})
           </button>
         : <div className="flex-1 p-3 text-start text-xl select-none">
-            {title} {live ? '🛜' : null}
+            {title} ({postTitle})
           </div>
         }
 

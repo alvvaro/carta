@@ -37,7 +37,8 @@ const toDuration = memoFn((number: number | undefined) => {
   return (
     duration.asHours() >= 1 ? duration.format('H[h] m[min]')
     : duration.asMinutes() >= 1 ? duration.format('m[min]')
-    : duration.format('s[s]')
+    : duration.asSeconds() >= 1 ? duration.format('s[s]')
+    : undefined
   );
 });
 
