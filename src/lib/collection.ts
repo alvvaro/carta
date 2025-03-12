@@ -48,6 +48,11 @@ const collectionUtils = {
   getItemSubtitle: (collectionItem: CollectionItem) => {
     return collectionItem.promoText || collectionItem.metaTitle || undefined;
   },
+  getItemDescription: (collectionItem: CollectionItem) => {
+    return (
+      collectionItem.description || collectionItem.descripcion || undefined
+    );
+  },
   getItemType: (collectionItem: CollectionItem) => {
     const type =
       collectionItem.lastMultimedia ?

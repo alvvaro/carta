@@ -2,6 +2,7 @@ import { useParams } from 'wouter';
 
 import ContentVideo from '@/components/content/ContentVideo';
 
+import ContentCollection from './ContentCollection';
 import ContentProgram from './ContentProgram';
 
 type ContentType = 'live' | 'video' | 'program' | 'collection';
@@ -15,6 +16,7 @@ export default function Content() {
     kind === 'video' ? <ContentVideo id={id} />
     : kind === 'live' ? <ContentVideo id={id} autoPlay />
     : kind === 'program' ? <ContentProgram id={id} />
+    : kind === 'collection' ? <ContentCollection code={id} />
     : JSON.stringify(params)
   );
 }
