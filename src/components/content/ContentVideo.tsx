@@ -4,6 +4,7 @@ import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import Portal from '@/components/layout/Portal';
 import VideoPlayer from '@/components/videoPlayer/VideoPlayer';
+import VideoPlayerIframe from '@/components/videoPlayer/VideoPlayerIframe';
 import useVideo from '@/hooks/useVideo';
 import dateUtils from '@/utils/date';
 
@@ -15,6 +16,7 @@ export default function ContentVideo({
   autoPlay?: boolean;
 }) {
   const [playing, setPlaying] = useState(autoPlay);
+  const [iframeFallback, setIframeFallback] = useState(true);
 
   const handleStartPlay = () => setPlaying(true);
 
@@ -29,6 +31,21 @@ export default function ContentVideo({
     <>
       <Portal slotId="header-slot">
         <button
+          onClick={() => setIframeFallback((s) => !s)}
+          className="apply-hover-bg-white px-4"
+        >
+          {iframeFallback ? 'Try native' : 'Try embed'}
+        </button>
+        {videoEl?.htmlUrl ?
+          <a
+            href={videoEl.htmlUrl}
+            target="_blank"
+            className="apply-hover-bg-white flex items-center justify-center px-4"
+          >
+            Watch on RTVE Play
+          </a>
+        : null}
+        <button
           onClick={() => console.log(video)}
           className="apply-hover-bg-white px-4"
         >
@@ -42,7 +59,9 @@ export default function ContentVideo({
         <Skeleton className="aspect-video w-full" />
       : videoEl ?
         <>
-          {playing ?
+          {iframeFallback ?
+            <VideoPlayerIframe id={id} />
+          : playing ?
             <VideoPlayer id={id} autoPlay />
           : <div className="relative">
               <img
