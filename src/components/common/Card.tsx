@@ -13,6 +13,7 @@ export default function Card({
   liveProgress,
   duration,
   onClick,
+  horizontal = false,
 }: {
   img?: string;
   logo?: string;
@@ -24,17 +25,20 @@ export default function Card({
   liveProgress?: number;
   duration?: number;
   onClick?: () => void;
+  horizontal?: boolean;
 }) {
   const startStr = dateUtils.toCalendar(start);
   const durationStr = dateUtils.toDuration(duration);
 
   return (
     <Link
-      className="apply-hover-bg flex cursor-pointer flex-col gap-2 p-3 select-none hover:[&_.card-title]:underline"
+      className={'apply-hover-bg flex cursor-pointer p-3 select-none hover:[&_.card-title]:underline'.append(
+        horizontal ? 'flex-row gap-4' : 'flex-col gap-2',
+      )}
       href={href}
       onClick={onClick}
     >
-      <div className="relative aspect-video w-80 overflow-clip rounded-md">
+      <div className="relative aspect-video w-80 shrink-0 overflow-clip rounded-md">
         {logo ?
           <img
             src={logo}

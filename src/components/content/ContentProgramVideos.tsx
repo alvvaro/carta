@@ -38,6 +38,7 @@ export default function ContentProgramVideos({
           {videos.map((video) => (
             <div key={video.uri} className="bg-black/50 p-1">
               <Card
+                horizontal
                 title={video.title}
                 subtitle={video.shortDescription}
                 href={`/video/${video.id}`}

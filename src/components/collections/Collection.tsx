@@ -6,7 +6,13 @@ import Skeleton from '@/components/common/Skeleton';
 import useCollection from '@/hooks/useCollection';
 import collectionUtils from '@/lib/collection';
 
-export default function Collection({ code }: { code: string | undefined }) {
+export default function Collection({
+  code,
+  horizontal = false,
+}: {
+  code: string | undefined;
+  horizontal?: boolean;
+}) {
   const { collection, isLoading, error } = useCollection(code);
 
   const collectionItems = useMemo(() => {
@@ -30,6 +36,7 @@ export default function Collection({ code }: { code: string | undefined }) {
       ))
     : collectionItems.map((collectionItem) => (
         <Card
+          horizontal={horizontal}
           key={JSON.stringify(collectionItem)}
           onClick={() => console.log(collectionItem)}
           logo={collectionItem.logo_desktop}

@@ -1,5 +1,4 @@
 import AgeRange from './AgeRange';
-import AgrProgramas from './AgrProgramas';
 import Channel from './Channel';
 import Collection from './Collection';
 import Escort from './Escort';
@@ -18,7 +17,6 @@ import Token from './Token';
 
 export default interface RTVE {
   AgeRange: AgeRange;
-  AgrProgramas: AgrProgramas;
   Channel: Channel;
   Collection: Collection;
   Escort: Escort;
