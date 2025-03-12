@@ -1,7 +1,6 @@
 import RTVE from '@/types';
 
-type CollectionItem =
-  RTVE['Collection']['page']['items'][0]['collectionItems'][0];
+type CollectionItem = RTVE['Collection']['collectionItems'][0];
 
 const collectionUtils = {
   getItemImg: (collectionItem: CollectionItem) => {
@@ -68,7 +67,7 @@ const collectionUtils = {
     const type = collectionUtils.getItemType(collectionItem);
     const id = collectionUtils.getItemID(collectionItem);
 
-    return `${type}/${id}`;
+    return `/${type}/${id}`;
   },
 };
 

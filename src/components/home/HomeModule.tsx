@@ -32,7 +32,8 @@ export default function HomeModule({
       switch (row.tipo) {
         case 'videos': {
           const code = row.urlContent.between('tematicas/', '/videos.json');
-          const type = row.urlContent.between('type=', '');
+          const type =
+            new URL(row.urlContent).searchParams.get('type') || undefined;
 
           return <Topic code={code} type={type} />;
         }

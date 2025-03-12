@@ -37,16 +37,18 @@ export default function Home() {
         Array.from({ length: 6 }).map((_, i) => (
           <Skeleton key={i} className="m-3 h-80 not-last:mb-0" />
         ))
-      : home?.rows.map((row, i) => (
-          <Row
-            key={row.orden}
-            title={row.title || (i === 0 ? 'Portada' : 'Destacado')}
-            postTitle={row.moduleType}
-            onClick={() => console.log(row)}
-          >
-            <HomeModule row={row} />
-          </Row>
-        ))
+      : home?.rows
+          .filter((row) => row.moduleType !== 'KeepWatching')
+          .map((row, i) => (
+            <Row
+              key={row.orden}
+              title={row.title || (i === 0 ? 'Portada' : 'Destacado')}
+              postTitle={row.moduleType}
+              onClick={() => console.log(row)}
+            >
+              <HomeModule row={row} />
+            </Row>
+          ))
       }
     </>
   );

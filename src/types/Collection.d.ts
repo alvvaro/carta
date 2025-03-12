@@ -30,7 +30,7 @@ export default interface Collection {
   numElements: number;
 }
 
-type ContentTypeEnum = 'program' | 'video' | 'audio';
+type ContentTypeEnum = 'program' | 'video' | 'audio' | 'directo';
 
 interface LastMultimedia {
   id: string;
