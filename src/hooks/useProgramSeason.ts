@@ -1,7 +1,7 @@
 import useSWRInfinite from 'swr/infinite';
 
 import { ClientError } from '@/lib/clientError';
-import RTVEVideos from '@/types/videos';
+import RTVEVideos from '@/types/rtve/videos';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath =

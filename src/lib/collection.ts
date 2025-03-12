@@ -1,4 +1,4 @@
-import RTVE from '@/types';
+import RTVE from '@/types/rtve';
 
 type CollectionItem = RTVE['Collection']['collectionItems'][0];
 

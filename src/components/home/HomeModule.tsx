@@ -3,7 +3,7 @@ import Links from '@/components/collections/Links';
 import Lives from '@/components/collections/Lives';
 import Topic from '@/components/collections/Topic';
 import ErrorMessage from '@/components/common/ErrorMessage';
-import RTVE from '@/types';
+import RTVE from '@/types/rtve';
 
 export default function HomeModule({
   row,

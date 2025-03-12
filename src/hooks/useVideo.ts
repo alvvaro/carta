@@ -1,7 +1,7 @@
 import useSWRImmutable from 'swr/immutable';
 
 import { ClientError } from '@/lib/clientError';
-import RTVEVideos from '@/types/videos';
+import RTVEVideos from '@/types/rtve/videos';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath = (code: string | undefined) => {
