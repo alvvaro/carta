@@ -7,7 +7,6 @@ export enum CLIENT_ERROR {
 
 export class ClientError {
   type: CLIENT_ERROR;
-  status?: number;
   code?: number;
   message?: string;
   trace?: string;
@@ -15,21 +14,18 @@ export class ClientError {
 
   constructor({
     type,
-    status,
     code,
     message,
     trace,
     error,
   }: {
     type: ClientError['type'];
-    status?: ClientError['status'];
     code?: ClientError['code'];
     message?: ClientError['message'];
     trace?: ClientError['trace'];
     error?: ClientError['error'];
   }) {
     this.type = type;
-    this.status = status;
     this.code = code;
     this.message = message;
     this.trace = trace;
@@ -45,7 +41,6 @@ export class ClientError {
   toObject() {
     return {
       type: CLIENT_ERROR[this.type],
-      status: this.status,
       code: this.code,
       message: this.message,
       trace: this.trace,

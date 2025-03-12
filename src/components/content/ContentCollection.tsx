@@ -18,8 +18,6 @@ export default function ContentCollection({ code }: { code: string }) {
     return [colItem.itemDestacado, ...colItem.collectionItems].compact();
   }, [colItem]);
 
-  console.log(collectionItems);
-
   return (
     error ?
       <ErrorMessage error={error} className="m-3 h-64 w-full rounded-md" />

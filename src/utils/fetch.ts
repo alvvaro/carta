@@ -49,17 +49,17 @@ export const fetchApi = async <T>(
   }
 
   if (typeof body === 'object') {
-    const serverError = body as { message: string };
+    const serverError = body as { code: number; message: string };
     throw new ClientError({
       type: CLIENT_ERROR.KO_RESPONSE,
-      status: response.status,
+      code: serverError.code || response.status,
       message: serverError.message,
     });
   }
 
   throw new ClientError({
     type: CLIENT_ERROR.KO_RESPONSE,
-    status: response.status,
-    message: body as string,
+    code: response.status,
+    // message: body as string,
   });
 };
