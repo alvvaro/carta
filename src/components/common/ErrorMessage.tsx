@@ -21,7 +21,7 @@ export default function ErrorMessage({
       <div className="flex max-w-96 flex-col items-center justify-center gap-4 text-center">
         <div>
           {text ||
-            (error?.status === 404 ?
+            (error?.code === 404 ?
               '404: Recurso no encontrado'
             : 'Error al cargar este recurso')}
         </div>
