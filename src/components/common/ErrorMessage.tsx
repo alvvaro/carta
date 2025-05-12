@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { ClientError } from '@/lib/clientError';
 
 export default function ErrorMessage({
@@ -11,7 +13,8 @@ export default function ErrorMessage({
 }) {
   return (
     <div
-      className={'flex flex-col items-center justify-center bg-white/10 py-6'.append(
+      className={classNames(
+        'flex flex-col items-center justify-center bg-white/10 py-6',
         className,
       )}
     >

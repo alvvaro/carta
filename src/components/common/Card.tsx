@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link } from 'wouter';
 
 import dateUtils from '@/utils/date';
@@ -32,7 +33,8 @@ export default function Card({
 
   return (
     <Link
-      className={'apply-hover-bg flex cursor-pointer p-3 select-none hover:[&_.card-title]:underline'.append(
+      className={classNames(
+        'apply-hover-bg flex cursor-pointer p-3 select-none hover:[&_.card-title]:underline',
         horizontal ? 'flex-row gap-4' : 'flex-col gap-2',
       )}
       href={href}

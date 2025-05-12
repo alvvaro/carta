@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link, useSearchParams } from 'wouter';
 
 import ErrorMessage from '@/components/common/ErrorMessage';
@@ -78,10 +79,11 @@ export default function ContentProgram({ id }: { id: string }) {
                 {seasons.map((season, index) => (
                   <Link
                     key={season.id}
-                    className={'apply-hover-bg border-r-[1px] border-white/10 p-4'.append(
+                    className={classNames(
+                      'apply-hover-bg border-r-[1px] border-white/10 p-4',
                       selectedSeasonId === season.id ?
                         'font-bold underline'
-                      : '',
+                      : undefined,
                     )}
                     href={getSeasonHref(index)}
                   >

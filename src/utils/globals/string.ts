@@ -2,15 +2,8 @@ export {};
 
 declare global {
   interface String {
-    append(...strs: string[]): string;
     between(beginning: string, end: string): string;
   }
-}
-
-if (!String.prototype.append) {
-  String.prototype.append = function (this, ...strs) {
-    return [this, ...strs].join(' ').trim();
-  };
 }
 
 if (!String.prototype.between) {

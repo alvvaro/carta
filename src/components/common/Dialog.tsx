@@ -1,5 +1,7 @@
 import { ReactNode, useEffect, useRef } from 'react';
 
+import classNames from 'classnames';
+
 export default function Dialog({
   open,
   toggleOpen,
@@ -41,7 +43,8 @@ export default function Dialog({
     <dialog
       ref={modalRef}
       onCancel={toggleOpen}
-      className={'m-[revert] rounded-md shadow-lg backdrop:backdrop-blur-xs'.append(
+      className={classNames(
+        'm-[revert] rounded-md shadow-lg backdrop:backdrop-blur-xs',
         className,
       )}
     >
