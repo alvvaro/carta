@@ -2,8 +2,6 @@ import { RefCallback, memo, useCallback } from 'react';
 
 import shaka from 'shaka-player';
 
-shaka.polyfill.installAll();
-
 const VideoPlayerFairplay = memo(function VideoPlayerFairplay({
   url,
   fairplayURL,
@@ -19,18 +17,25 @@ const VideoPlayerFairplay = memo(function VideoPlayerFairplay({
     function (video) {
       const player = new shaka.Player();
 
-      player.configure(
-        'drm.advanced.com\\.apple\\.fps.individualizationServer',
-        fairplayURL,
-      );
-      player.configure(
-        'drm.advanced.com\\.apple\\.fps.serverCertificateUri',
-        fairplayCer,
-      );
+      const config: shaka.extern.PlayerConfiguration = {
+        drm: {
+          servers: {
+            'com.apple.fps.1_0': fairplayURL,
+          },
+          advanced: {
+            // @ts-expect-error -- config object does not need to be fully formed
+            'com.apple.fps.1_0': {
+              serverCertificateUri: fairplayCer,
+            },
+          },
+        },
+      };
+
+      player.configure(config);
 
       (async function init() {
         await player.attach(video as HTMLMediaElement);
-        await player.load(url);
+        await player.load(`${url}.m3u8`);
       })();
 
       return () => void player.destroy();
@@ -38,18 +43,15 @@ const VideoPlayerFairplay = memo(function VideoPlayerFairplay({
     [url, fairplayURL, fairplayCer],
   );
 
-  return shaka.Player.isBrowserSupported() ?
-      <>
-        <video
-          id="videoPlayerFairplay"
-          controls
-          autoPlay={autoPlay}
-          ref={fairplayRef}
-          className="aspect-video w-full"
-        />
-        Fairplay supported
-      </>
-    : 'Fairplay not supported';
+  return (
+    <video
+      id="videoPlayerFairplay"
+      controls
+      autoPlay={autoPlay}
+      ref={fairplayRef}
+      className="aspect-video w-full"
+    />
+  );
 });
 
 export default VideoPlayerFairplay;

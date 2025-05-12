@@ -6,9 +6,12 @@ import useToken from '@/hooks/useToken';
 import VideoPlayerFairplay from './VideoPlayerFairplay';
 
 const isSafari = () => {
-  // const video = document.createElement('video');
-  // return 'webkitSetMediaKeys' in video;
-  return 'GestureEvent' in window;
+  const video = document.createElement('video');
+  return (
+    'webkitSetMediaKeys' in video &&
+    typeof video.webkitSetMediaKeys === 'function'
+  );
+  // return 'GestureEvent' in window;
 };
 
 export default function VideoPlayer({
@@ -18,7 +21,7 @@ export default function VideoPlayer({
   id: string;
   autoPlay?: boolean;
 }) {
-  const url = `https://ztnr.rtve.es/ztnr/${id}.mpd`;
+  const url = `https://ztnr.rtve.es/ztnr/${id}`;
 
   const { token, isLoading, error } = useToken(id);
 

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import shaka from 'shaka-player';
+
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import Portal from '@/components/layout/Portal';
@@ -7,6 +9,8 @@ import VideoPlayer from '@/components/videoPlayer/VideoPlayer';
 import VideoPlayerIframe from '@/components/videoPlayer/VideoPlayerIframe';
 import useVideo from '@/hooks/useVideo';
 import dateUtils from '@/utils/date';
+
+const shakaSupported = shaka.Player.isBrowserSupported();
 
 export default function ContentVideo({
   id,
@@ -16,7 +20,7 @@ export default function ContentVideo({
   autoPlay?: boolean;
 }) {
   const [playing, setPlaying] = useState(autoPlay);
-  const [iframeFallback, setIframeFallback] = useState(true);
+  const [iframeFallback, setIframeFallback] = useState(!shakaSupported);
 
   const handleStartPlay = () => setPlaying(true);
 
@@ -65,7 +69,7 @@ export default function ContentVideo({
             <VideoPlayer id={id} autoPlay />
           : <div className="relative">
               <img
-                src={videoEl.thumbnail}
+                src={videoEl.thumbnail} // FIXME
                 className="aspect-video w-full object-cover"
               />
               <button
