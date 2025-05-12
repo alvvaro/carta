@@ -36,7 +36,7 @@ export default function Topic({
             topicItem.imageSEO
           }
           pretitle={
-            topicItem.programInfo.title ||
+            topicItem.programInfo?.title ||
             (topicItem.anteTitle as unknown as string)
           }
           title={

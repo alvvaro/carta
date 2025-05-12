@@ -44,9 +44,9 @@ export default function ContentProgramSeason({
               <Card
                 horizontal
                 title={video.title}
-                subtitle={video.shortDescription}
+                subtitle={video.shortDescription} // FIXME
                 href={`/video/${video.id}`}
-                img={video.thumbnail}
+                img={video.thumbnail} // FIXME
                 start={video.publicationDate}
                 duration={video.duration}
                 onClick={() => console.log(video)}

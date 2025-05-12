@@ -1,7 +1,8 @@
 import useSWRImmutable from 'swr/immutable';
 
 import { ClientError } from '@/lib/clientError';
-import RTVEVideos from '@/types/rtve/videos';
+import { Pagination } from '@/types/Pagination';
+import RTVE from '@/types/rtve';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath = (code: string | undefined) => {
@@ -11,13 +12,12 @@ const getApiPath = (code: string | undefined) => {
 };
 
 export default function useVideo(code: string | undefined) {
-  const { data, ...rest } = useSWRImmutable<RTVEVideos, ClientError>(
-    getApiPath(code),
-    fetchApi,
-    {
-      shouldRetryOnError: false,
-    },
-  );
+  const { data, ...rest } = useSWRImmutable<
+    Pagination<RTVE['Video']>,
+    ClientError
+  >(getApiPath(code), fetchApi, {
+    shouldRetryOnError: false,
+  });
 
   return {
     video: data,

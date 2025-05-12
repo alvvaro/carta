@@ -1,4 +1,5 @@
 import fs from 'graceful-fs';
+import nodePath from 'node:path';
 import {
   InputData,
   TypeScriptTargetLanguage,
@@ -8,10 +9,11 @@ import {
 
 /* ------------------ */
 
-const ENTRYPOINT = 'https://www.rtve.es/api/programas.json?page={code}';
-const NAME = 'Programas';
+const ENTRYPOINT: string = '';
+const ENTRYPOINT_FILE: string = './samples-flat/api_tematicas_{%%}.json';
+const NAME = 'Topics';
 const MAX_ITERATIONS = 237;
-const FILE_PATH = './src/types/Program.d.ts';
+const FILE_PATH = './src/types/Topics.d.ts';
 
 /* ------------------ */
 
@@ -19,20 +21,38 @@ async function delay(del: number = 1000) {
   return await new Promise((resolve) => setTimeout(resolve, del));
 }
 
-function generateEntries() {
+async function generateEntries() {
   const entries: string[] = [];
 
-  if (ENTRYPOINT.includes('{codeA}') && ENTRYPOINT.includes('{codeB}')) {
-    //
-  } else if (ENTRYPOINT.includes('{code}')) {
-    let counter = MAX_ITERATIONS;
+  if (ENTRYPOINT_FILE) {
+    const path = ENTRYPOINT_FILE.split('/').slice(0, -1).join('/');
+    const fullPath = nodePath.resolve(path);
+    const [fileTemplate] = ENTRYPOINT_FILE.split('/').slice(-1);
+    const [beginning, end] = fileTemplate.split('{%%}');
 
-    while (counter) {
-      entries.unshift(ENTRYPOINT.replace('{code}', counter.toString()));
-      counter--;
+    const files = await fs.promises.readdir(path);
+
+    for (const file of files) {
+      const begins = file.startsWith(beginning);
+      const ends = file.endsWith(end);
+      const middle =
+        (file.split(beginning).at(-1) || '').split(end).at(0) || '';
+
+      if (begins && ends && !Number.isNaN(+middle)) {
+        entries.push(`${fullPath}/${file}`);
+      }
     }
-  } else {
-    entries.push(ENTRYPOINT);
+  } else if (ENTRYPOINT) {
+    if (ENTRYPOINT.includes('{code}')) {
+      let counter = MAX_ITERATIONS;
+
+      while (counter) {
+        entries.unshift(ENTRYPOINT.replace('{code}', counter.toString()));
+        counter--;
+      }
+    } else {
+      entries.push(ENTRYPOINT);
+    }
   }
 
   return entries;
@@ -61,7 +81,14 @@ async function reduceEntries(accP: Promise<string[]>, val: string) {
 
   await delay();
   console.log('fetching', val);
-  const json = await fetchJSON(val);
+  let json: string | undefined;
+
+  if (val.startsWith('http')) {
+    json = await fetchJSON(val);
+  } else {
+    json = await fs.promises.readFile(val).then((bf) => bf.toString());
+  }
+
   if (json) {
     acc.push(json);
   }
@@ -95,7 +122,7 @@ async function saveType(type: Awaited<ReturnType<typeof quicktypeJSON>>) {
 }
 
 async function main() {
-  const entries = generateEntries();
+  const entries = await generateEntries();
   console.log('Generated', entries.length, 'entries');
   const samples = await entries.reduce<Promise<string[]>>(
     reduceEntries,

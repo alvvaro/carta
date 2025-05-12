@@ -7,6 +7,7 @@ import Language from './Language';
 import Live from './Live';
 import MConfigsRtvePlayEstructura from './MConfigsRtvePlayEstructura';
 import PlayIndexApps from './PlayIndexApps';
+import Previews from './Previews';
 import Program from './Program';
 import ProgramType from './ProgramType';
 import PubState from './PubState';
@@ -14,6 +15,7 @@ import RecommendAgesForChild from './RecommendAgesForChild';
 import RrssApp from './RrssApp';
 import Season from './Season';
 import Token from './Token';
+import Video from './Video';
 
 export default interface RTVE {
   AgeRange: AgeRange;
@@ -25,6 +27,7 @@ export default interface RTVE {
   Live: Live;
   MConfigsRtvePlayEstructura: MConfigsRtvePlayEstructura;
   PlayIndexApps: PlayIndexApps;
+  Previews: Previews;
   Program: Program;
   ProgramType: ProgramType;
   PubState: PubState;
@@ -32,4 +35,5 @@ export default interface RTVE {
   RrssApp: RrssApp;
   Season: Season;
   Token: Token;
+  Video: Video;
 }

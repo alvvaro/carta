@@ -1,7 +1,8 @@
 import useSWRInfinite from 'swr/infinite';
 
 import { ClientError } from '@/lib/clientError';
-import RTVEVideos from '@/types/rtve/videos';
+import { Pagination } from '@/types/Pagination';
+import RTVE from '@/types/rtve';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath =
@@ -21,7 +22,7 @@ export default function useProgramSeason(
   seasonId: number | undefined,
 ) {
   const { data, isLoading, size, ...rest } = useSWRInfinite<
-    RTVEVideos,
+    Pagination<RTVE['Video']>,
     ClientError
   >(getApiPath(programId, seasonId), fetchApi, {
     shouldRetryOnError: false,
