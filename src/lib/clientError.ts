@@ -3,6 +3,7 @@ export enum CLIENT_ERROR {
   FETCH_FAILED,
   BAD_RESPONSE,
   KO_RESPONSE,
+  SHAKA_ERROR,
 }
 
 export class ClientError {

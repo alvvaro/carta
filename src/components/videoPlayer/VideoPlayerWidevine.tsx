@@ -6,15 +6,19 @@ const VideoPlayerWidevine = memo(function VideoPlayerWidevine({
   url,
   widevineURL,
   autoPlay = false,
+  handleError,
 }: {
   url: string;
   widevineURL: string;
   autoPlay?: boolean;
+  handleError?: (error: unknown) => void;
 }) {
   const playerRef = useRef<shaka.Player | null>(null);
 
   const widevineRef: RefCallback<HTMLVideoElement> = useCallback(
     function (video) {
+      if (playerRef.current) return;
+
       const player = new shaka.Player();
 
       const config: shaka.extern.PlayerConfiguration = {
@@ -29,14 +33,18 @@ const VideoPlayerWidevine = memo(function VideoPlayerWidevine({
       player.configure(config);
 
       (async function init() {
-        await player.attach(video as HTMLMediaElement);
-        await player.load(`${url}.mpd`);
-        playerRef.current = player;
+        try {
+          await player.attach(video as HTMLMediaElement);
+          await player.load(`${url}.mpd`);
+          playerRef.current = player;
+        } catch (error) {
+          handleError?.(error);
+        }
       })();
 
       return () => void player.destroy();
     },
-    [url, widevineURL],
+    [url, widevineURL, handleError],
   );
 
   return (
