@@ -10,7 +10,6 @@ export default function HomeModule({
 }: {
   row: RTVE['PlayIndexApps']['rows'][0];
 }) {
-  if (row.tipo === 'seguirviendo') return null;
   if (!row.urlContent) {
     return (
       <ErrorMessage text="No existe el contenido" className="w-full p-3" />
