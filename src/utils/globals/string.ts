@@ -3,7 +3,7 @@ export {};
 declare global {
   interface String {
     append(...strs: string[]): string;
-    between(beggining: string, end: string): string;
+    between(beginning: string, end: string): string;
   }
 }
 
