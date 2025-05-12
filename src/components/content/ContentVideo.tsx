@@ -38,7 +38,7 @@ export default function ContentVideo({
           onClick={() => setIframeFallback((s) => !s)}
           className="apply-hover-bg-white px-4"
         >
-          {iframeFallback ? 'Try native' : 'Try embed'}
+          {iframeFallback ? 'Repr. nativo' : 'Repr. embebido'}
         </button>
         {videoEl?.htmlUrl ?
           <a
@@ -46,7 +46,7 @@ export default function ContentVideo({
             target="_blank"
             className="apply-hover-bg-white flex items-center justify-center px-4"
           >
-            Watch on RTVE Play
+            Ver en RTVE Play
           </a>
         : null}
         <button
@@ -69,7 +69,7 @@ export default function ContentVideo({
             <VideoPlayer id={id} autoPlay />
           : <div className="relative">
               <img
-                src={videoEl.thumbnail} // FIXME
+                src={videoEl.thumbnail as string} // FIXME
                 className="aspect-video w-full object-cover"
               />
               <button
