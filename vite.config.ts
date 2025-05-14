@@ -15,7 +15,7 @@ export default defineConfig({
     viteTsconfigPaths(),
     svgrPlugin(),
     eslintPlugin(),
-    cloudfare(),
+    cloudflare(),
   ],
   resolve: {
     alias: [
