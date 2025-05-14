@@ -1,4 +1,5 @@
 // vite.config.js
+import { cloudflare } from '@cloudflare/vite-plugin';
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import react from '@vitejs/plugin-react-swc';
 
@@ -9,7 +10,13 @@ import viteTsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), viteTsconfigPaths(), svgrPlugin(), eslintPlugin()],
+  plugins: [
+    react(),
+    viteTsconfigPaths(),
+    svgrPlugin(),
+    eslintPlugin(),
+    cloudfare(),
+  ],
   resolve: {
     alias: [
       {
