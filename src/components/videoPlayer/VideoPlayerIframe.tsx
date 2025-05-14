@@ -1,5 +1,5 @@
 export default function VideoPlayerIframe({ id }: { id: string }) {
-  const url = `http://www.rtve.es/drmn/embed/video/${id}`;
+  const url = `https://www.rtve.es/drmn/embed/video/${id}`;
 
   return (
     <iframe
