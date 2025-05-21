@@ -5,6 +5,7 @@ import Skeleton from '@/components/common/Skeleton';
 import HomeModule from '@/components/home/HomeModule';
 import Portal from '@/components/layout/Portal';
 import Row from '@/components/layout/Row';
+import SearchBar from '@/components/search/SearchBar';
 import useHome from '@/hooks/useHome';
 
 export default function Home() {
@@ -26,6 +27,8 @@ export default function Home() {
           Actualizar
         </button>
       </Portal>
+
+      <SearchBar />
 
       {error ?
         <ErrorMessage

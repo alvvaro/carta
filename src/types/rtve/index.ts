@@ -13,6 +13,7 @@ import ProgramType from './ProgramType';
 import PubState from './PubState';
 import RecommendAgesForChild from './RecommendAgesForChild';
 import RrssApp from './RrssApp';
+import SearchResults from './Search';
 import Season from './Season';
 import Token from './Token';
 import Video from './Video';
@@ -34,6 +35,7 @@ export default interface RTVE {
   RecommendAgesForChild: RecommendAgesForChild;
   RrssApp: RrssApp;
   Season: Season;
+  SearchResults: SearchResults;
   Token: Token;
   Video: Video;
 }
