@@ -1,8 +1,7 @@
 import Card from '@/components/common/Card';
+import Row from '@/components/layout/Row';
 import SearchBar from '@/components/search/SearchBar';
 import useSearch from '@/hooks/useSearch';
-
-import Row from '../layout/Row';
 
 export default function Search() {
   const { results } = useSearch();
@@ -35,7 +34,7 @@ export default function Search() {
               href={`${item.contentType}/${item.id}`}
               pretitle={item.dateOfEmission}
               title={item.title}
-              subtitle={item.programInfo.title}
+              subtitle={item.programInfo?.title}
               duration={item.duration}
             />
           ))}
@@ -49,7 +48,7 @@ export default function Search() {
               key={item.id}
               img={item.thumbnail as string}
               href={`${item.contentType}/${item.id}`}
-              pretitle={item.programInfo.title}
+              pretitle={item.programInfo?.title}
               title={item.title}
               duration={item.duration}
             />
