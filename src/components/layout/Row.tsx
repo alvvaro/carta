@@ -71,10 +71,8 @@ export default function Row({
           const div = rowRef.current;
           if (!div) return;
 
-          setCanScrollLeft(div.scrollLeft !== 0);
-          setCanScrollRight(
-            div.scrollLeft !== div.scrollWidth - div.offsetWidth,
-          );
+          setCanScrollLeft(div.scrollLeft > 0);
+          setCanScrollRight(div.scrollLeft < div.scrollWidth - div.offsetWidth);
         });
 
         tickingRef.current = true;
