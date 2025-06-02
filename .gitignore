@@ -16,6 +16,7 @@ dist-ssr
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+.zed/*
 .idea
 .DS_Store
 *.suo
@@ -26,3 +27,11 @@ dist-ssr
 
 # eslint
 .eslintcache
+
+# tsc
+tsconfig.tsbuildinfo
+
+# samples
+samples
+samples-2
+samples-flat
