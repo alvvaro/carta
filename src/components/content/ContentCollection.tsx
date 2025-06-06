@@ -3,9 +3,10 @@ import { useMemo } from 'react';
 import Card from '@/components/common/Card';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
-import Portal from '@/components/layout/Portal';
 import useCollection from '@/hooks/useCollection';
 import collectionUtils from '@/lib/collection';
+
+import DebugButton from '../common/DebugButton';
 
 export default function ContentCollection({ code }: { code: string }) {
   const { collection, isLoading, error } = useCollection(code);
@@ -30,14 +31,7 @@ export default function ContentCollection({ code }: { code: string }) {
       ))
     : colItem ?
       <>
-        <Portal slotId="header-slot">
-          <button
-            onClick={() => console.log(collection)}
-            className="apply-hover-bg-white px-4"
-          >
-            log collection
-          </button>
-        </Portal>
+        <DebugButton d={collection} />
 
         <div className="p-4 text-xl font-bold">{colItem.title}</div>
 
@@ -49,7 +43,7 @@ export default function ContentCollection({ code }: { code: string }) {
           <div key={JSON.stringify(collectionItem)} className="bg-black/50 p-1">
             <Card
               horizontal
-              onClick={() => console.log(collectionItem)}
+              debug={collectionItem}
               logo={collectionItem.logo_desktop}
               img={collectionUtils.getItemImg(collectionItem)}
               pretitle={collectionUtils.getItemPretitle(collectionItem)}

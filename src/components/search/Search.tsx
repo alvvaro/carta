@@ -1,14 +1,15 @@
 import Card from '@/components/common/Card';
 import Row from '@/components/layout/Row';
-import SearchBar from '@/components/search/SearchBar';
 import useSearch from '@/hooks/useSearch';
+
+import DebugButton from '../common/DebugButton';
 
 export default function Search() {
   const { results } = useSearch();
 
   return (
     <>
-      <SearchBar />
+      <DebugButton d={results} />
 
       {results?.programs?.page.items.length ?
         <Row title="Programas">
@@ -20,6 +21,7 @@ export default function Search() {
               pretitle={item.productionDate || undefined}
               title={item.title}
               subtitle={item.promoText || undefined}
+              debug={item}
             />
           ))}
         </Row>
@@ -36,6 +38,7 @@ export default function Search() {
               title={item.title}
               subtitle={item.programInfo?.title}
               duration={item.duration}
+              debug={item}
             />
           ))}
         </Row>
@@ -51,6 +54,7 @@ export default function Search() {
               pretitle={item.programInfo?.title}
               title={item.title}
               duration={item.duration}
+              debug={item}
             />
           ))}
         </Row>

@@ -3,6 +3,8 @@ import { Link } from 'wouter';
 
 import dateUtils from '@/utils/date';
 
+import DebugButton from './DebugButton';
+
 export default function Card({
   img,
   logo,
@@ -13,8 +15,8 @@ export default function Card({
   start,
   liveProgress,
   duration,
-  onClick,
   horizontal = false,
+  debug,
 }: {
   img?: string;
   logo?: string;
@@ -25,8 +27,8 @@ export default function Card({
   start?: string;
   liveProgress?: number;
   duration?: number;
-  onClick?: () => void;
   horizontal?: boolean;
+  debug?: unknown;
 }) {
   const startStr = dateUtils.toCalendar(start);
   const durationStr = dateUtils.toDuration(duration);
@@ -34,11 +36,10 @@ export default function Card({
   return (
     <Link
       className={classNames(
-        'apply-hover-bg flex cursor-pointer p-3 select-none hover:[&_.card-title]:underline',
+        'apply-hover-bg relative flex cursor-pointer p-3 select-none hover:[&_.card-title]:underline',
         horizontal ? 'flex-row gap-4' : 'flex-col gap-2',
       )}
       href={href}
-      onClick={onClick}
     >
       <div className="relative aspect-video w-80 shrink-0 overflow-clip rounded-md">
         {logo ?
@@ -76,6 +77,10 @@ export default function Card({
 
         <div className="opacity-60">{subtitle}</div>
       </div>
+
+      {debug && import.meta.env.DEV ?
+        <DebugButton d={debug} />
+      : null}
     </Link>
   );
 }

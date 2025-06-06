@@ -1,8 +1,9 @@
 import Card from '@/components/common/Card';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
-import Portal from '@/components/layout/Portal';
 import useProgramSeason from '@/hooks/useProgramSeason';
+
+import DebugButton from '../common/DebugButton';
 
 export default function ContentProgramSeason({
   programId,
@@ -20,14 +21,7 @@ export default function ContentProgramSeason({
 
   return (
     <>
-      <Portal slotId="header-slot">
-        <button
-          onClick={() => console.log(videos)}
-          className="apply-hover-bg-white px-4"
-        >
-          log season
-        </button>
-      </Portal>
+      <DebugButton d={videos} />
 
       {error ?
         <ErrorMessage
@@ -49,7 +43,7 @@ export default function ContentProgramSeason({
                 img={video.thumbnail as string} // FIXME
                 start={video.publicationDate}
                 duration={video.duration}
-                onClick={() => console.log(video)}
+                debug={video}
               />
             </div>
           ))}

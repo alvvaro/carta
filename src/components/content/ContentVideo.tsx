@@ -10,6 +10,8 @@ import VideoPlayerIframe from '@/components/videoPlayer/VideoPlayerIframe';
 import useVideo from '@/hooks/useVideo';
 import dateUtils from '@/utils/date';
 
+import DebugButton from '../common/DebugButton';
+
 const shakaSupported = shaka.Player.isBrowserSupported();
 
 export default function ContentVideo({
@@ -49,13 +51,9 @@ export default function ContentVideo({
             Ver en RTVE Play
           </a>
         : null}
-        <button
-          onClick={() => console.log(video)}
-          className="apply-hover-bg-white px-4"
-        >
-          log video
-        </button>
       </Portal>
+
+      <DebugButton d={video} />
 
       {error ?
         <ErrorMessage className="aspect-video w-full" error={error} />

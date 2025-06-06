@@ -1,13 +1,15 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
+import DebugButton from '../common/DebugButton';
+
 export default function Row({
   title,
   children,
-  onClick,
+  debug,
 }: {
   title: string;
   children: ReactNode;
-  onClick?: () => void;
+  debug?: unknown;
 }) {
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -23,8 +25,6 @@ export default function Row({
         behavior: 'smooth',
       });
     }
-
-    onClick?.();
   };
 
   const moveLeft = () => {
@@ -84,9 +84,9 @@ export default function Row({
   }, []);
 
   return (
-    <div className="">
+    <div className="relative">
       <div className="flex flex-row p-3 pb-0">
-        {canScrollLeft || onClick ?
+        {canScrollLeft ?
           <button
             onClick={handleTitleClick}
             className="apply-hover-bg flex-1 p-3 text-start text-xl select-none"
@@ -121,6 +121,10 @@ export default function Row({
       <div className="flex flex-row overflow-x-auto p-3 pt-0" ref={rowRef}>
         {children}
       </div>
+
+      {debug ?
+        <DebugButton d={debug} />
+      : null}
     </div>
   );
 }

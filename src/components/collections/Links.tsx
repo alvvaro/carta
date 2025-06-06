@@ -9,7 +9,7 @@ export default function Links({
   return links.map((link) => (
     <Card
       key={link.url}
-      onClick={() => console.log(link)}
+      debug={link}
       img={link.image || link.imgHorizontal || link.imgSquare}
       title={link.title}
       href={`collection/${link.url.between('collection/', '.json')}`}

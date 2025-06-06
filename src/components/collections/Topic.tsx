@@ -25,7 +25,7 @@ export default function Topic({
     : topic?.page.items.map((topicItem) => (
         <Card
           key={JSON.stringify(topicItem)}
-          onClick={() => console.log(topicItem)}
+          debug={topicItem}
           img={
             topicItem.previews.horizontal2 ||
             topicItem.previews.horizontal ||

@@ -3,8 +3,9 @@ import { Link, useSearchParams } from 'wouter';
 
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
-import Portal from '@/components/layout/Portal';
 import useProgram from '@/hooks/useProgram';
+
+import DebugButton from '../common/DebugButton';
 
 import ContentProgramSeason from './ContentProgramSeason';
 import ContentProgramVideos from './ContentProgramVideos';
@@ -30,14 +31,7 @@ export default function ContentProgram({ id }: { id: string }) {
 
   return (
     <>
-      <Portal slotId="header-slot">
-        <button
-          onClick={() => console.log(programs)}
-          className="apply-hover-bg-white px-4"
-        >
-          log program
-        </button>
-      </Portal>
+      <DebugButton d={programs} />
 
       {error ?
         <ErrorMessage className="aspect-video w-full" error={error} />

@@ -38,7 +38,7 @@ export default function Collection({
         <Card
           horizontal={horizontal}
           key={JSON.stringify(collectionItem)}
-          onClick={() => console.log(collectionItem)}
+          debug={collectionItem}
           logo={collectionItem.logo_desktop}
           img={collectionUtils.getItemImg(collectionItem)}
           pretitle={collectionUtils.getItemPretitle(collectionItem)}

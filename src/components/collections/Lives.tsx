@@ -19,7 +19,7 @@ export default function Lives({ code }: { code: string | undefined }) {
     : lives?.page.items.map((live) => (
         <Card
           key={JSON.stringify(live)}
-          onClick={() => console.log(live)}
+          debug={live}
           logo={live.logo_desktop}
           img={live.imagen}
           pretitle={live.antetitulo}

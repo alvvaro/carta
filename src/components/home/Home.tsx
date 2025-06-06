@@ -5,8 +5,9 @@ import Skeleton from '@/components/common/Skeleton';
 import HomeModule from '@/components/home/HomeModule';
 import Portal from '@/components/layout/Portal';
 import Row from '@/components/layout/Row';
-import SearchBar from '@/components/search/SearchBar';
 import useHome from '@/hooks/useHome';
+
+import DebugButton from '../common/DebugButton';
 
 export default function Home() {
   const { home, isLoading, error } = useHome();
@@ -15,12 +16,6 @@ export default function Home() {
     <>
       <Portal slotId="header-slot">
         <button
-          onClick={() => console.log(home)}
-          className="apply-hover-bg-white px-4"
-        >
-          log home
-        </button>
-        <button
           onClick={() => mutate(() => true)}
           className="apply-hover-bg-white px-4 disabled:opacity-50"
         >
@@ -28,7 +23,7 @@ export default function Home() {
         </button>
       </Portal>
 
-      <SearchBar />
+      <DebugButton d={home} />
 
       {error ?
         <ErrorMessage
@@ -47,7 +42,7 @@ export default function Home() {
               key={row.orden}
               title={row.title || (i === 0 ? 'Portada' : 'Destacado')}
               // postTitle={row.moduleType}
-              onClick={() => console.log(row)}
+              debug={row}
             >
               <HomeModule row={row} />
             </Row>
