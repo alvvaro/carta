@@ -30,9 +30,11 @@ export default function ContentCollection({ code }: { code: string }) {
       ))
     : colItem ?
       <>
-        <DebugButton d={collection} />
+        <div className="relative p-4 text-xl font-bold">
+          {colItem.title}
 
-        <div className="p-4 text-xl font-bold">{colItem.title}</div>
+          <DebugButton d={collection} />
+        </div>
 
         {colItem.description ?
           <div className="p-4">{colItem.description}</div>

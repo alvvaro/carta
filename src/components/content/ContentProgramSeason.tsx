@@ -20,7 +20,7 @@ export default function ContentProgramSeason({
 
   return (
     <>
-      <DebugButton d={videos} />
+      <DebugButton d={videos} position="right" />
 
       {error ?
         <ErrorMessage

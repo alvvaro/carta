@@ -1,4 +1,4 @@
-import { ChangeEvent, RefCallback, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { useLocation, useSearchParams } from 'wouter';
 

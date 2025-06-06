@@ -16,7 +16,7 @@ export default function ContentProgramVideos({
 
   return (
     <>
-      <DebugButton d={videos} />
+      <DebugButton d={videos} position="right" />
 
       {error ?
         <ErrorMessage

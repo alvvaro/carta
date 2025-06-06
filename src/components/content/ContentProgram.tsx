@@ -104,6 +104,17 @@ export default function ContentProgram({ id }: { id: string }) {
               : null}
             </div>
           : null}
+
+          {program.technicalTeam || program.director ?
+            <div className="p-4">
+              {program.showMan ?
+                <div>Dirigido por: {program.director}</div>
+              : null}
+              {program.technicalTeam ?
+                <div>Equipo: {program.technicalTeam}</div>
+              : null}
+            </div>
+          : null}
         </>
       : null}
     </>
