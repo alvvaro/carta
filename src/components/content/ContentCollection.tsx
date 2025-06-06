@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
 
 import Card from '@/components/common/Card';
+import DebugButton from '@/components/common/DebugButton';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import useCollection from '@/hooks/useCollection';
 import collectionUtils from '@/lib/collection';
-
-import DebugButton from '../common/DebugButton';
 
 export default function ContentCollection({ code }: { code: string }) {
   const { collection, isLoading, error } = useCollection(code);

@@ -28,8 +28,8 @@ export default function SearchBar() {
     updateSearch(event.target.value);
   }
 
-  const refCallback: RefCallback<HTMLInputElement> = (input) => {
-    const handleKeyPress = (event: KeyboardEvent) => {
+  function refCallback(input: HTMLInputElement) {
+    function handleKeyPress(event: KeyboardEvent) {
       if (
         (event.metaKey || event.ctrlKey) &&
         (event.key === 'k' || event.key === 'K')
@@ -38,11 +38,11 @@ export default function SearchBar() {
         input?.focus();
         input?.select();
       }
-    };
+    }
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  };
+  }
 
   const keyboardHint = (() => {
     let modifierKeyPrefix = 'Ctrl ';
@@ -65,7 +65,6 @@ export default function SearchBar() {
       <input
         className="col-start-1 col-end-4 row-start-1 row-end-2 flex-1 rounded-sm border border-white/30 p-2 pl-[36px] text-xl"
         placeholder="Buscar"
-        // autoFocus
         type="search"
         value={inputValue}
         onChange={handleChange}

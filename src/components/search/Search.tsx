@@ -1,8 +1,7 @@
 import Card from '@/components/common/Card';
+import DebugButton from '@/components/common/DebugButton';
 import Row from '@/components/layout/Row';
 import useSearch from '@/hooks/useSearch';
-
-import DebugButton from '../common/DebugButton';
 
 export default function Search() {
   const { results } = useSearch();

@@ -8,18 +8,28 @@ import { fetchApi } from '@/utils/fetch';
 
 // https://api.rtve.es/api/search/results?search=caracola&context=tve&tipology=video&type=completo
 
-const getApiPath = (query: string | null) => {
+const getApiPath = (searchParams: URLSearchParams) => {
+  const query = searchParams.get(SEARCH_PARAM);
   if (!query) return null;
 
-  return `https://api.rtve.es/api/search/results?search=${query}&context=tve&tipology=video&type=completo`;
+  const searchURL = new URL('https://api.rtve.es/api/search/results');
+
+  for (const [key, value] of searchParams.entries().toArray()) {
+    if (key === SEARCH_PARAM) {
+      searchURL.searchParams.append('search', value);
+    } else {
+      searchURL.searchParams.append(key, value);
+    }
+  }
+
+  return searchURL.toString();
 };
 
 export default function useSearch() {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get(SEARCH_PARAM);
 
   const { data, ...rest } = useSWRImmutable<RTVE['SearchResults'], ClientError>(
-    getApiPath(query),
+    getApiPath(searchParams),
     fetchApi,
     {
       shouldRetryOnError: false,

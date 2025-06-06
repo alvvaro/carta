@@ -78,9 +78,7 @@ export default function Card({
         <div className="opacity-60">{subtitle}</div>
       </div>
 
-      {debug && import.meta.env.DEV ?
-        <DebugButton d={debug} />
-      : null}
+      <DebugButton d={debug} />
     </Link>
   );
 }

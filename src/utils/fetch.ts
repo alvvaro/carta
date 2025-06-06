@@ -12,11 +12,13 @@ const safeFetch: typeof fetch = async (...args) => {
 };
 
 const getBody = async (response: Response) => {
-  const responseContentType = response.headers.get('Content-Type');
-  const isResponseJson =
-    responseContentType?.includes('application/json') || false;
+  const responseContentType = response.headers.get('Content-Type') || '';
+  const isResponseJson = responseContentType.includes('application/json');
   const isArrayBuffer =
-    responseContentType?.includes('application/octet-stream') || false;
+    responseContentType.includes('application/') ||
+    responseContentType.includes('video/') ||
+    responseContentType.includes('audio/') ||
+    responseContentType.includes('image/');
 
   try {
     switch (true) {
@@ -60,6 +62,5 @@ export const fetchApi = async <T>(
   throw new ClientError({
     type: CLIENT_ERROR.KO_RESPONSE,
     code: response.status,
-    // message: body as string,
   });
 };

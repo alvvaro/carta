@@ -1,13 +1,12 @@
 import { mutate } from 'swr';
 
+import DebugButton from '@/components/common/DebugButton';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import HomeModule from '@/components/home/HomeModule';
 import Portal from '@/components/layout/Portal';
 import Row from '@/components/layout/Row';
 import useHome from '@/hooks/useHome';
-
-import DebugButton from '../common/DebugButton';
 
 export default function Home() {
   const { home, isLoading, error } = useHome();

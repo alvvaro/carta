@@ -1,4 +1,4 @@
-import { Pagination } from '../Pagination';
+import { Pagination } from '@/types/Pagination';
 
 import Program from './Program';
 import Video from './Video';

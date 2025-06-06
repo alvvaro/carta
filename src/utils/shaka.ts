@@ -5,7 +5,6 @@ import { CLIENT_ERROR, ClientError } from '@/lib/clientError';
 export function createShakaError(error: unknown) {
   switch (true) {
     case error instanceof shaka.util.Error: {
-      console.error(error);
       return new ClientError({
         type: CLIENT_ERROR.SHAKA_ERROR,
         message: error.message,

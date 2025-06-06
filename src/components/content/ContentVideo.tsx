@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import shaka from 'shaka-player';
 
+import DebugButton from '@/components/common/DebugButton';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import Portal from '@/components/layout/Portal';
@@ -9,8 +10,6 @@ import VideoPlayer from '@/components/videoPlayer/VideoPlayer';
 import VideoPlayerIframe from '@/components/videoPlayer/VideoPlayerIframe';
 import useVideo from '@/hooks/useVideo';
 import dateUtils from '@/utils/date';
-
-import DebugButton from '../common/DebugButton';
 
 const shakaSupported = shaka.Player.isBrowserSupported();
 

@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
-import DebugButton from '../common/DebugButton';
+import DebugButton from '@/components/common/DebugButton';
 
 export default function Row({
   title,

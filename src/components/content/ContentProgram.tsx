@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import { Link, useSearchParams } from 'wouter';
 
+import DebugButton from '@/components/common/DebugButton';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import useProgram from '@/hooks/useProgram';
-
-import DebugButton from '../common/DebugButton';
 
 import ContentProgramSeason from './ContentProgramSeason';
 import ContentProgramVideos from './ContentProgramVideos';

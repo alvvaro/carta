@@ -1,9 +1,8 @@
 import Card from '@/components/common/Card';
+import DebugButton from '@/components/common/DebugButton';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import useProgramVideos from '@/hooks/useProgramVideos';
-
-import DebugButton from '../common/DebugButton';
 
 export default function ContentProgramVideos({
   programId,
