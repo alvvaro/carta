@@ -58,19 +58,21 @@ export default function SearchBar() {
   })();
 
   return (
-    <div className="bg-black/30 p-6">
-      <div className="flex w-full flex-row items-center gap-2 rounded-sm border border-white/30 has-[:focus]:border-white/60 has-[:focus]:outline-2 has-[:focus]:outline-blue-500">
-        <div className="pl-4 select-none">🔍</div>
-        <input
-          className="flex-1 p-2 text-xl outline-0"
-          placeholder="Buscar"
-          autoFocus
-          type="search"
-          value={inputValue}
-          onChange={handleChange}
-          ref={refCallback}
-        />
-        <div className="pr-4 opacity-80 select-none">{keyboardHint}</div>
+    <div className="grid grid-cols-[42px_1fr_42px] bg-black/30 p-6">
+      <div className="pointer-events-none col-start-1 col-end-2 row-start-1 row-end-2 flex items-center justify-center select-none">
+        🔍
+      </div>
+      <input
+        className="col-start-1 col-end-4 row-start-1 row-end-2 flex-1 rounded-sm border border-white/30 p-2 pl-[36px] text-xl"
+        placeholder="Buscar"
+        // autoFocus
+        type="search"
+        value={inputValue}
+        onChange={handleChange}
+        ref={refCallback}
+      />
+      <div className="pointer-events-none col-start-3 col-end-4 row-start-1 row-end-2 m-2 flex items-center justify-center opacity-80 select-none">
+        {keyboardHint}
       </div>
     </div>
   );
