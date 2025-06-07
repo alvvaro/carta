@@ -2,6 +2,8 @@ import Card from '@/components/common/Card';
 import DebugButton from '@/components/common/DebugButton';
 import Row from '@/components/layout/Row';
 import useSearch from '@/hooks/useSearch';
+import programUtils from '@/lib/program';
+import videoUtils from '@/lib/video';
 
 export default function Search() {
   const { results } = useSearch();
@@ -15,11 +17,11 @@ export default function Search() {
           {results.programs.page.items.map((item) => (
             <Card
               key={item.id}
-              img={item.imgPortada || item.imgBanner}
-              href={`${item.contentType}/${item.id}`}
-              pretitle={item.productionDate || undefined}
-              title={item.title}
-              subtitle={item.promoText || undefined}
+              img={programUtils.getItemImg(item)}
+              href={programUtils.getItemHref(item)}
+              pretitle={programUtils.getItemPretitle(item)}
+              title={programUtils.getItemTitle(item)}
+              subtitle={programUtils.getItemSubtitle(item)}
               debug={item}
             />
           ))}
@@ -31,11 +33,11 @@ export default function Search() {
           {results.videos.page.items.map((item) => (
             <Card
               key={item.id}
-              img={item.thumbnail as string}
-              href={`${item.contentType}/${item.id}`}
-              pretitle={item.dateOfEmission}
-              title={item.title}
-              subtitle={item.programInfo?.title}
+              img={videoUtils.getItemImg(item)}
+              href={videoUtils.getItemHref(item)}
+              pretitle={videoUtils.getItemPretitle(item)}
+              title={videoUtils.getItemTitle(item)}
+              subtitle={videoUtils.getItemSubtitle(item)}
               duration={item.duration}
               debug={item}
             />
@@ -48,10 +50,11 @@ export default function Search() {
           {results.contents.page.items.map((item) => (
             <Card
               key={item.id}
-              img={item.thumbnail as string}
-              href={`${item.contentType}/${item.id}`}
-              pretitle={item.programInfo?.title}
-              title={item.title}
+              img={videoUtils.getItemImg(item)}
+              href={videoUtils.getItemHref(item)}
+              pretitle={videoUtils.getItemPretitle(item)}
+              title={videoUtils.getItemTitle(item)}
+              subtitle={videoUtils.getItemSubtitle(item)}
               duration={item.duration}
               debug={item}
             />

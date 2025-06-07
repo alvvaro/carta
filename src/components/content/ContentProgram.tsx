@@ -43,7 +43,8 @@ export default function ContentProgram({ id }: { id: string }) {
               program.imgPortada ||
               program.imgPortada2 ||
               program.imgBanner2 ||
-              program.imgBanner
+              program.imgBanner ||
+              undefined
             }
             className="block aspect-video w-full object-cover"
           />
@@ -60,6 +61,11 @@ export default function ContentProgram({ id }: { id: string }) {
             <div
               className="p-4"
               dangerouslySetInnerHTML={{ __html: program.longDescription }}
+            />
+          : program.description ?
+            <div
+              className="p-4"
+              dangerouslySetInnerHTML={{ __html: program.description }}
             />
           : null}
 

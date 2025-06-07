@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import { useLocation, useSearchParams } from 'wouter';
 
@@ -12,6 +12,7 @@ export default function SearchBar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get(SEARCH_PARAM);
 
+  const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState(query || '');
 
   const updateSearch = useThrottleAndDebounce((newQuery: string) => {
@@ -28,26 +29,33 @@ export default function SearchBar() {
     updateSearch(event.target.value);
   }
 
-  function refCallback(input: HTMLInputElement) {
+  useEffect(() => {
     function handleKeyPress(event: KeyboardEvent) {
       if (
         (event.metaKey || event.ctrlKey) &&
-        (event.key === 'k' || event.key === 'K')
+        (event.key === 'k' || event.key === 'K') &&
+        inputRef.current
       ) {
         event.preventDefault();
-        input?.focus();
-        input?.select();
+        inputRef.current.focus();
+        inputRef.current.select();
       }
     }
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }
+  }, []);
+
+  useEffect(() => {
+    if (document.activeElement !== inputRef.current) {
+      setInputValue(query || '');
+    }
+  }, [query]);
 
   const keyboardHint = (() => {
     let modifierKeyPrefix = 'Ctrl ';
     if (
-      navigator.platform.indexOf('Mac') === 0 ||
+      navigator.platform.startsWith('Mac') ||
       navigator.platform === 'iPhone' ||
       navigator.platform === 'iPad'
     ) {
@@ -68,7 +76,7 @@ export default function SearchBar() {
         type="search"
         value={inputValue}
         onChange={handleChange}
-        ref={refCallback}
+        ref={inputRef}
       />
       <div className="pointer-events-none col-start-3 col-end-4 row-start-1 row-end-2 m-2 flex items-center justify-center opacity-80 select-none">
         {keyboardHint}
