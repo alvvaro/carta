@@ -11,8 +11,8 @@ import {
 
 const ENTRYPOINT: string = '';
 const ENTRYPOINT_FILE: string = './samples-flat/api_tematicas_{%%}.json';
-const NAME = 'Topics';
 const MAX_ITERATIONS = 237;
+const NAME = 'Topics';
 const FILE_PATH = './src/types/Topics.d.ts';
 
 /* ------------------ */
@@ -43,11 +43,11 @@ async function generateEntries() {
       }
     }
   } else if (ENTRYPOINT) {
-    if (ENTRYPOINT.includes('{code}')) {
+    if (ENTRYPOINT.includes('{%%}')) {
       let counter = MAX_ITERATIONS;
 
       while (counter) {
-        entries.unshift(ENTRYPOINT.replace('{code}', counter.toString()));
+        entries.unshift(ENTRYPOINT.replace('{%%}', counter.toString()));
         counter--;
       }
     } else {
