@@ -1,5 +1,6 @@
 import { Route, Switch, Router as Wouter } from 'wouter';
 
+import About from '@/components/about/About';
 import Content from '@/components/content/Content';
 import Home from '@/components/home/Home';
 import Layout from '@/components/layout/Layout';
@@ -17,6 +18,9 @@ export default function Router() {
           </Route>
           <Route path="/:kind/:id">
             <Content />
+          </Route>
+          <Route path="/about">
+            <About />
           </Route>
           <Route>
             <SearchBar />

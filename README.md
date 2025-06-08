@@ -65,14 +65,21 @@ You may use the Node script at `/quicktype.ts` to draft a new TypeScript file.
 
 Edit the necessary inputs at the beggining of the file:
 
-```json
-{
-  "ENTRYPOINT": "string - URL pattern to fetch. '{%%}' will be replaced with decreasing numbers, finishing with 1. If ENTRYPOINT_FILE is truthy, this value is ignored",
-  "ENTRYPOINT_FILE": "string - Local files to convert. Use the '{%%}' placeholder to include all files with a numeric part. If this value is truthy, ENTRYPOINT is ignored",
-  "MAX_ITERATIONS": "number - When using ENTRYPOINT, max amount of URLs to fetch",
-  "NAME": "string - Name of the final interface",
-  "FILE_PATH": "string - Relative path to save the generated definitions to"
-}
+```
+ENTRYPOINT (string)
+URL pattern to fetch. '{%%}' will be replaced with decreasing numbers, finishing with 1. If ENTRYPOINT_FILE is truthy, this value is ignored
+
+ENTRYPOINT_FILE (string)
+Local files to convert. Use the '{%%}' placeholder to include all files with a numeric part. If this value is truthy, ENTRYPOINT is ignored
+
+MAX_ITERATIONS (number)
+When using ENTRYPOINT, maximum amount of URLs to fetch
+
+NAME (string)
+Name of the generated interface
+
+FILE_PATH (string)
+Relative path to save the generated definitions to
 ```
 
 and then run the script using Node:

@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <div id="header-slot" className="flex flex-row" />
       </div>
 
-      <div className="flex flex-col divide-y-[1px] divide-white/10">
+      <div className="flex min-h-dvh flex-col divide-y-[1px] divide-white/10">
         {children}
       </div>
 
@@ -28,15 +28,20 @@ export default function Layout({ children }: { children: ReactNode }) {
           <div className="flex-1 opacity-50">
             Carta — Un frontal alternativo para RTVE Play de código abierto
           </div>
-          <div className="opacity-50">
-            <a className="hover:underline">GitHub</a> |{' '}
-            <a className="hover:underline">Acerca</a>
-          </div>
         </div>
-        {/* <div className="flex flex-row">
-          <div className="opacity-25">
-          </div>
-        </div> */}
+        <div className="opacity-50">
+          <Link href="/about" className="hover:underline">
+            Acerca
+          </Link>
+          {' | '}
+          <a
+            href="https://github.com/alvvaro/carta"
+            target="_blank"
+            className="hover:underline"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
   );
