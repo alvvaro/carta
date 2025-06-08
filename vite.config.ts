@@ -1,6 +1,7 @@
 // vite.config.js
 import { cloudflare } from '@cloudflare/vite-plugin';
 import eslintPlugin from '@nabla/vite-plugin-eslint';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react-swc';
 
 import { URL, fileURLToPath } from 'node:url';
@@ -15,6 +16,7 @@ export default defineConfig({
     viteTsconfigPaths(),
     svgrPlugin(),
     eslintPlugin(),
+    tailwindcss(),
     cloudflare(),
   ],
   resolve: {

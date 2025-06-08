@@ -13,11 +13,10 @@
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.2.3",
-    "@tailwindcss/postcss": "^4.1.7",
+    "@tailwindcss/vite": "^4.1.8",
     "classnames": "^2.5.1",
     "core-js": "^3.42.0",
     "dayjs": "^1.11.13",
-    "postcss": "^8.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "shaka-player": "^4.14.13",
