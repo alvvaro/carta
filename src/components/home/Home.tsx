@@ -9,13 +9,14 @@ import Row from '@/components/layout/Row';
 import useHome from '@/hooks/useHome';
 
 export default function Home() {
-  const { home, isLoading, error } = useHome();
+  const { home, isLoading, isValidating, error } = useHome();
 
   return (
     <>
       <Portal slotId="header-slot">
         <button
           onClick={() => mutate(() => true)}
+          disabled={isLoading || isValidating}
           className="apply-hover-bg-white px-4 disabled:opacity-50"
         >
           Actualizar

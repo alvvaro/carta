@@ -1,19 +1,32 @@
+import { useSearchParams } from 'wouter';
+
 import Card from '@/components/common/Card';
 import DebugButton from '@/components/common/DebugButton';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
+import Tabs from '@/components/common/Tabs';
 import useProgramSeason from '@/hooks/useProgramSeason';
+import RTVE from '@/types/rtve';
 
 export default function ContentProgramSeason({
   programId,
-  seasonId,
+  seasons,
 }: {
   programId: string;
-  seasonId: number;
+  seasons: RTVE['Season'][];
 }) {
+  const sortedSeasons = seasons.toSorted(
+    (seasonA, seasonB) => seasonA.orden - seasonB.orden,
+  );
+
+  const [searchParams] = useSearchParams();
+
+  const selectedSeason = Number.parseInt(searchParams.get('season') || '0') - 1;
+  const selectedSeasonId = sortedSeasons.at(selectedSeason)?.id || -1;
+
   const { videos, isLoading, error, hasMorePages, setSize } = useProgramSeason(
     programId,
-    seasonId,
+    selectedSeasonId,
   );
 
   const handleNextPage = () => setSize((s) => s + 1);
@@ -21,6 +34,18 @@ export default function ContentProgramSeason({
   return (
     <>
       <DebugButton d={videos} position="right" />
+
+      {sortedSeasons.length ?
+        <Tabs
+          items={sortedSeasons.map((season, index) => ({
+            id: season.id,
+            title: season.longTitle,
+            href: `?season=${index + 1}`,
+          }))}
+          selectedItem={selectedSeasonId}
+          className="bg-black/50"
+        />
+      : null}
 
       {error ?
         <ErrorMessage
@@ -57,10 +82,6 @@ export default function ContentProgramSeason({
               </button>
             </div>
           : null}
-
-          {/* <pre className="bg-black/50 p-4 text-wrap">
-            {JSON.stringify(videos, undefined, 2)}
-          </pre> */}
         </>
       : null}
     </>

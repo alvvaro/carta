@@ -1,32 +1,31 @@
-import classNames from 'classnames';
-import { Link, useSearchParams } from 'wouter';
+import { useSearchParams } from 'wouter';
 
 import DebugButton from '@/components/common/DebugButton';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
+import Tabs from '@/components/common/Tabs';
 import useProgram from '@/hooks/useProgram';
 
 import ContentProgramSeason from './ContentProgramSeason';
 import ContentProgramVideos from './ContentProgramVideos';
 
+const VIDEOS = 'videos';
+const SEASONS = 'seasons';
+
+const filters = [
+  { id: SEASONS, title: 'Temporadas', href: `?filter=${SEASONS}` },
+  { id: VIDEOS, title: 'Videos', href: `?filter=${VIDEOS}` },
+];
+
 export default function ContentProgram({ id }: { id: string }) {
   const { programs, isLoading, error } = useProgram(id);
 
   const program = programs?.page.items[0];
-  const seasons = (program?.seasons || []).toSorted(
-    (seasonA, seasonB) => seasonA.orden - seasonB.orden,
-  );
+  const hasSeasons = program?.seasons?.length || false;
 
   const [searchParams] = useSearchParams();
-
-  const selectedSeason = Number.parseInt(searchParams.get('season') || '0') - 1;
-  const selectedSeasonId = seasons.at(selectedSeason)?.id || -1;
-
-  const getSeasonHref = (index: number) => {
-    const url = new URL(window.location.toString());
-    url.searchParams.set('season', (index + 1).toString());
-    return url.toString();
-  };
+  const selectedFilter =
+    searchParams.get('filter') || (hasSeasons ? SEASONS : VIDEOS);
 
   return (
     <>
@@ -69,34 +68,18 @@ export default function ContentProgram({ id }: { id: string }) {
             />
           : null}
 
-          {program.seasons?.length ?
-            <>
-              <div className="bg-black/50 p-4 text-xl">
-                {program.seasons.length} temporadas
-              </div>
-              <div className="flex flex-row flex-wrap bg-black/50">
-                {seasons.map((season, index) => (
-                  <Link
-                    key={season.id}
-                    className={classNames(
-                      'apply-hover-bg border-r-[1px] border-white/10 p-4',
-                      selectedSeasonId === season.id ?
-                        'font-bold underline'
-                      : undefined,
-                    )}
-                    href={getSeasonHref(index)}
-                  >
-                    {season.longTitle}
-                  </Link>
-                ))}
-              </div>
-            </>
+          {hasSeasons ?
+            <Tabs
+              items={filters}
+              selectedItem={selectedFilter}
+              className="bg-black/50"
+            />
           : null}
 
-          {program.seasons?.length ?
+          {selectedFilter === SEASONS ?
             <ContentProgramSeason
+              seasons={program?.seasons || []}
               programId={program.id}
-              seasonId={selectedSeasonId}
             />
           : <ContentProgramVideos programId={program.id} />}
 

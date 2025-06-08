@@ -1,8 +1,7 @@
 import { useParams } from 'wouter';
 
+import ErrorMessage from '@/components/common/ErrorMessage';
 import ContentVideo from '@/components/content/ContentVideo';
-
-import ErrorMessage from '../common/ErrorMessage';
 
 import ContentCollection from './ContentCollection';
 import ContentProgram from './ContentProgram';
