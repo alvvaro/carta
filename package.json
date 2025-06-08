@@ -20,12 +20,10 @@
     "postcss": "^8.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-use": "^17.6.0",
     "shaka-player": "^4.14.13",
     "swr": "^2.3.3",
     "tailwindcss": "^4.1.7",
-    "wouter": "^3.7.0",
-    "zod": "^3.25.55"
+    "wouter": "^3.7.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
