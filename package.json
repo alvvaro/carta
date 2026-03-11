@@ -13,7 +13,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cloudflare/vite-plugin": "^1.2.3",
     "@tailwindcss/vite": "^4.1.8",
     "classnames": "^2.5.1",
     "core-js": "^3.42.0",
