@@ -43,7 +43,7 @@ export default [
 
   // SPECIFICS
   {
-    ignores: ['**/build/', '**/public/', '**/viafirma-definitions.d.ts'],
+    ignores: ['**/build/', '**/public/'],
   },
   {
     rules: {
