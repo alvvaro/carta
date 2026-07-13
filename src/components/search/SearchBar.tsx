@@ -5,7 +5,7 @@ import { useLocation, useSearchParams } from 'wouter';
 import useThrottleAndDebounce from '@/hooks/useThrottleAndDebounce';
 import { SEARCH_PARAM } from '@/utils/constants';
 
-const SEARCH_PAGE = 'search';
+const SEARCH_PAGE = '/search';
 
 export default function SearchBar() {
   const [location, setLocation] = useLocation();

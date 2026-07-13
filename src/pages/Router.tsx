@@ -9,7 +9,7 @@ import SearchBar from '@/components/search/SearchBar';
 
 export default function Router() {
   return (
-    <Wouter>
+    <Wouter base={import.meta.env.BASE_URL}>
       <Layout>
         <Switch>
           <Route path="/search">
