@@ -46,7 +46,7 @@ export default function Topic({
             topicItem.id
           }
           duration={topicItem.duration}
-          href={`${topicItem.contentType}/${topicItem.id}`}
+          href={`/${topicItem.contentType}/${topicItem.id}`}
         />
       ))
   );

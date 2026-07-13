@@ -12,7 +12,7 @@ export default function Links({
       debug={link}
       img={link.image || link.imgHorizontal || link.imgSquare}
       title={link.title}
-      href={`collection/${link.url.between('collection/', '.json')}`}
+      href={`/collection/${link.url.between('collection/', '.json')}`}
     />
   ));
 }

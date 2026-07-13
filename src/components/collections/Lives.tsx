@@ -26,7 +26,7 @@ export default function Lives({ code }: { code: string | undefined }) {
           title={live.titulo || live.now?.titulo || live.canal || live.id}
           subtitle={live.metaTitle}
           liveProgress={live.porcentaje || undefined}
-          href={`live/${live.idAsset}`}
+          href={`/live/${live.idAsset}`}
         />
       ))
   );
