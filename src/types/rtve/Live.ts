@@ -1,4 +1,4 @@
-export default interface Live {
+export interface Live {
   uri: string;
   id: string;
   htmlUrl: string;

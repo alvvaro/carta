@@ -1,6 +1,6 @@
-import RTVE from '.';
+import { type RTVE } from '.';
 
-export default interface Video {
+export interface Video {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;

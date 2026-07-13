@@ -1,3 +1,1 @@
-type Language = 'es' | 'ca' | 'en';
-
-export default Language;
+export type Language = 'es' | 'ca' | 'en';

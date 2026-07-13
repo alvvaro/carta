@@ -1,24 +1,24 @@
-import AgeRange from './AgeRange';
-import Channel from './Channel';
-import Collection from './Collection';
-import Escort from './Escort';
-import Genre from './Genre';
-import Language from './Language';
-import Live from './Live';
-import MConfigsRtvePlayEstructura from './MConfigsRtvePlayEstructura';
-import PlayIndexApps from './PlayIndexApps';
-import Previews from './Previews';
-import Program from './Program';
-import ProgramType from './ProgramType';
-import PubState from './PubState';
-import RecommendAgesForChild from './RecommendAgesForChild';
-import RrssApp from './RrssApp';
-import SearchResults from './Search';
-import Season from './Season';
-import Token from './Token';
-import Video from './Video';
+import { type AgeRange } from './AgeRange';
+import { type Channel } from './Channel';
+import { type Collection } from './Collection';
+import { type Escort } from './Escort';
+import { type Genre } from './Genre';
+import { type Language } from './Language';
+import { type Live } from './Live';
+import { type MConfigsRtvePlayEstructura } from './MConfigsRtvePlayEstructura';
+import { type PlayIndexApps } from './PlayIndexApps';
+import { type Previews } from './Previews';
+import { type Program } from './Program';
+import { type ProgramType } from './ProgramType';
+import { type PubState } from './PubState';
+import { type RecommendAgesForChild } from './RecommendAgesForChild';
+import { type RrssApp } from './RrssApp';
+import { type SearchResults } from './Search';
+import { type Season } from './Season';
+import { type Token } from './Token';
+import { type Video } from './Video';
 
-export default interface RTVE {
+export interface RTVE {
   AgeRange: AgeRange;
   Channel: Channel;
   Collection: Collection;

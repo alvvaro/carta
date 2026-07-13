@@ -1,4 +1,4 @@
-export default interface PlayIndexApps {
+export interface PlayIndexApps {
   id: string;
   category: {
     breadcrumb: string;

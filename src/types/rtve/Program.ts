@@ -1,6 +1,6 @@
-import RTVE from '.';
+import { type RTVE } from '.';
 
-export default interface Program {
+export interface Program {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;

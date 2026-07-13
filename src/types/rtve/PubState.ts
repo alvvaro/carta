@@ -1,4 +1,4 @@
-type PubState =
+export type PubState =
   | {
       code: 'ENPUB';
       description: 'En publicación';
@@ -7,5 +7,3 @@ type PubState =
       code: 'DESPU';
       description: 'Despublicado';
     };
-
-export default PubState;

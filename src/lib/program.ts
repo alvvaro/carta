@@ -1,4 +1,4 @@
-import RTVE from '@/types/rtve';
+import { type RTVE } from '@/types/rtve';
 
 type Program = RTVE['Program'];
 

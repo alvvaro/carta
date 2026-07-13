@@ -1,4 +1,4 @@
-export default interface Token {
+export interface Token {
   token: string;
   widevineURL: string;
   fairplayURL: string;

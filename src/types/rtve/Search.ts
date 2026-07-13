@@ -1,9 +1,9 @@
-import { Pagination } from '@/types/Pagination';
+import { type Pagination } from '@/types/Pagination';
 
-import Program from './Program';
-import Video from './Video';
+import { type Program } from './Program';
+import { type Video } from './Video';
 
-export default interface SearchResults {
+export interface SearchResults {
   contents?: Pagination<Video>;
   programs?: Pagination<Program>;
   videos?: Pagination<Video>;

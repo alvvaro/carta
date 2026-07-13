@@ -1,6 +1,6 @@
-import RTVE from '.';
+import { type RTVE } from '.';
 
-export default interface Collection {
+export interface Collection {
   itemDestacado: CollectionItem | null;
   collectionItems: CollectionItem[];
   id: string;

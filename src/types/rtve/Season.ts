@@ -1,4 +1,4 @@
-export default interface Season {
+export interface Season {
   shorttitle: string;
   longTitle: string;
   id: number;

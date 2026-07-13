@@ -1,4 +1,4 @@
-export default interface RrssApp {
+export interface RrssApp {
   Twitter: string;
   Facebook: null | string;
   Instagram: null | string;

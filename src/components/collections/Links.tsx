@@ -1,5 +1,5 @@
 import Card from '@/components/common/Card';
-import RTVE from '@/types/rtve';
+import { type RTVE } from '@/types/rtve';
 
 export default function Links({
   links = [],

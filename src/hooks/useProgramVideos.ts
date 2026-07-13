@@ -1,8 +1,8 @@
 import useSWRInfinite from 'swr/infinite';
 
 import { ClientError } from '@/lib/clientError';
-import { Pagination } from '@/types/Pagination';
-import RTVE from '@/types/rtve';
+import { type Pagination } from '@/types/Pagination';
+import { type RTVE } from '@/types/rtve';
 import { fetchApi } from '@/utils/fetch';
 
 const getApiPath =

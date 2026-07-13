@@ -1,4 +1,4 @@
-export default interface Channel {
+export interface Channel {
   uri: string;
   htmlUrl: string;
   htmlShortUrl: string;

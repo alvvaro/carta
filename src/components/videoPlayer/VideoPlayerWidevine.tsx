@@ -1,4 +1,4 @@
-import { RefCallback, memo, useCallback, useRef } from 'react';
+import { type RefCallback, memo, useCallback, useRef } from 'react';
 
 import shaka from 'shaka-player';
 

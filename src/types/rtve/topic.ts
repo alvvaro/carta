@@ -1,4 +1,4 @@
-export default interface RTVETopic {
+export interface RTVETopic {
   page: Page;
 }
 

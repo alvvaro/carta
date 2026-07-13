@@ -1,4 +1,4 @@
-export default interface Genero {
+export interface Genre {
   generoInf: GeneroInf;
   generoInfUid: GeneroInfUid;
   generoId: string;

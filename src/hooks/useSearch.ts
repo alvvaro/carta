@@ -2,7 +2,7 @@ import useSWRImmutable from 'swr/immutable';
 import { useSearchParams } from 'wouter';
 
 import { ClientError } from '@/lib/clientError';
-import RTVE from '@/types/rtve';
+import { type RTVE } from '@/types/rtve';
 import { SEARCH_PARAM } from '@/utils/constants';
 import { fetchApi } from '@/utils/fetch';
 
@@ -14,7 +14,7 @@ const getApiPath = (searchParams: URLSearchParams) => {
 
   const searchURL = new URL('https://api.rtve.es/api/search/results');
 
-  for (const [key, value] of searchParams.entries().toArray()) {
+  for (const [key, value] of searchParams.entries()) {
     if (key === SEARCH_PARAM) {
       searchURL.searchParams.append('search', value);
     } else {

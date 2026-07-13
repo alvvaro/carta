@@ -1,4 +1,4 @@
-type ProgramType =
+export type ProgramType =
   | 'Series de Archivo'
   | 'Magacines'
   | 'Infantiles'
@@ -25,5 +25,3 @@ type ProgramType =
   | 'Recetas'
   | 'Series catalán'
   | 'Contenedor Películas';
-
-export default ProgramType;

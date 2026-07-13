@@ -18,7 +18,7 @@ if (!Array.prototype.interleave) {
       }
     }
 
-    return _interleave(this, delim).toArray();
+    return Array.from(_interleave(this, delim));
   };
 }
 

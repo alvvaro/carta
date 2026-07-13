@@ -6,7 +6,7 @@ import ErrorMessage from '@/components/common/ErrorMessage';
 import Skeleton from '@/components/common/Skeleton';
 import Tabs from '@/components/common/Tabs';
 import useProgramSeason from '@/hooks/useProgramSeason';
-import RTVE from '@/types/rtve';
+import { type RTVE } from '@/types/rtve';
 
 export default function ContentProgramSeason({
   programId,

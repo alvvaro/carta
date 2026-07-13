@@ -1,4 +1,4 @@
-export default interface Previews {
+export interface Previews {
   horizontal: string | null;
   horizontal2: string | null;
   vertical: string | null;

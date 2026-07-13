@@ -1,4 +1,4 @@
-export default interface RecommendAgesForChild {
+export interface RecommendAgesForChild {
   ageRangeInfUid: AgeRangeInfUid;
   ageRangeInf: AgeRangeInf;
 }
